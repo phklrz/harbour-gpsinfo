@@ -4,27 +4,27 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="47"/>
+        <location filename="../qml/pages/AboutPage.qml" line="52"/>
         <source>An app to show all position information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="53"/>
+        <location filename="../qml/pages/AboutPage.qml" line="58"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="65"/>
+        <location filename="../qml/pages/AboutPage.qml" line="70"/>
         <source>GPSInfo is open source software licensed under the terms of the GNU General Public License.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="70"/>
+        <location filename="../qml/pages/AboutPage.qml" line="22"/>
         <source>View license</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="79"/>
+        <location filename="../qml/pages/AboutPage.qml" line="76"/>
         <source>For suggestions, bugs and ideas visit </source>
         <translation type="unfinished"></translation>
     </message>
@@ -237,14 +237,6 @@
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="225"/>
         <source>Compass calibration</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>LicensePage</name>
-    <message>
-        <location filename="../qml/pages/LicensePage.qml" line="20"/>
-        <source>License</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

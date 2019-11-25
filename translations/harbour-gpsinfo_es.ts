@@ -195,13 +195,6 @@
     </message>
 </context>
 <context>
-    <name>LicensePage</name>
-    <message>
-        <source>License</source>
-        <translation>Licencia</translation>
-    </message>
-</context>
-<context>
     <name>SatelliteInfoPage</name>
     <message>
         <source>Satellite Info</source>

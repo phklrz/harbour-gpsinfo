@@ -4,27 +4,27 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="47"/>
+        <location filename="../qml/pages/AboutPage.qml" line="52"/>
         <source>An app to show all position information</source>
         <translation>显示所有位置信息的软件</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="53"/>
+        <location filename="../qml/pages/AboutPage.qml" line="58"/>
         <source>Version</source>
         <translation>版本</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="65"/>
+        <location filename="../qml/pages/AboutPage.qml" line="70"/>
         <source>GPSInfo is open source software licensed under the terms of the GNU General Public License.</source>
         <translation>GPSInfo  是 GNU 通用许可协议条款下的开源软件。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="70"/>
+        <location filename="../qml/pages/AboutPage.qml" line="22"/>
         <source>View license</source>
         <translation>查看版本</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="79"/>
+        <location filename="../qml/pages/AboutPage.qml" line="76"/>
         <source>For suggestions, bugs and ideas visit </source>
         <translation>提出建议、反馈 bug 并给予灵感</translation>
     </message>
@@ -243,9 +243,8 @@
 <context>
     <name>LicensePage</name>
     <message>
-        <location filename="../qml/pages/LicensePage.qml" line="20"/>
         <source>License</source>
-        <translation>许可协议</translation>
+        <translation type="vanished">许可协议</translation>
     </message>
 </context>
 <context>
