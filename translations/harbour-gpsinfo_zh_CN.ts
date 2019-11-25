@@ -241,13 +241,6 @@
     </message>
 </context>
 <context>
-    <name>LicensePage</name>
-    <message>
-        <source>License</source>
-        <translation type="vanished">许可协议</translation>
-    </message>
-</context>
-<context>
     <name>SatelliteInfoPage</name>
     <message>
         <location filename="../qml/pages/SatelliteInfoPage.qml" line="15"/>

@@ -9,9 +9,6 @@ SOURCES += \
     src/app.cpp \
     src/harbour-gpsinfo.cpp
 
-OTHER_FILES += \
-    translations/harbour-gpsinfo*.ts
-
 DISTFILES += qml/pages/CoverPage.qml \
     qml/components/AboutLabel.qml \
     qml/pages/FirstPage.qml \
@@ -27,7 +24,16 @@ DISTFILES += qml/pages/CoverPage.qml \
     qml/harbour-gpsinfo.qml \
     qml/pages/SatelliteInfoPage.qml \
     images/coverbg.png \
-    rpm/harbour-gpsinfo.yaml
+    rpm/harbour-gpsinfo.yaml \
+    translations/harbour-gpsinfo_de.ts \
+    translations/harbour-gpsinfo_es.ts \
+    translations/harbour-gpsinfo_fi.ts \
+    translations/harbour-gpsinfo_fr.ts \
+    translations/harbour-gpsinfo_nl.ts \
+    translations/harbour-gpsinfo_pl.ts \
+    translations/harbour-gpsinfo_ru.ts \
+    translations/harbour-gpsinfo_sv.ts \
+    translations/harbour-gpsinfo_zh_CN.ts
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172 256x256
 
@@ -39,7 +45,16 @@ HEADERS += \
 
 QT += positioning
 
-TRANSLATIONS += translations/harbour-gpsinfo_*.ts
+TRANSLATIONS += \
+    translations/harbour-gpsinfo_de.ts \
+    translations/harbour-gpsinfo_es.ts \
+    translations/harbour-gpsinfo_fi.ts \
+    translations/harbour-gpsinfo_fr.ts \
+    translations/harbour-gpsinfo_nl.ts \
+    translations/harbour-gpsinfo_pl.ts \
+    translations/harbour-gpsinfo_ru.ts \
+    translations/harbour-gpsinfo_sv.ts \
+    translations/harbour-gpsinfo_zh_CN.ts
 
 images.files = \
     images/coverbg.png
