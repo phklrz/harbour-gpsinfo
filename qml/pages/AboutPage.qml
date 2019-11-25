@@ -7,24 +7,29 @@ Page {
 
     allowedOrientations: Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted
 
+    onStatusChanged: {
+        if(status === PageStatus.Active)
+            pageStack.pushAttached(Qt.resolvedUrl("LicensePage.qml"))
+    }
+
     SilicaFlickable {
+        id: aboutFlickable
         anchors.fill: parent
-        contentHeight: column.height
+        contentHeight: header.height + column.height
+
+        PageHeader {
+            id: header
+            title: qsTr("View license")
+        }
 
         Column {
             id: column
             anchors {
-                top: parent.top
-                left: parent.left
-                leftMargin: aboutPage.isPortrait ? Theme.horizontalPageMargin : Theme.horizontalPageMargin * 3
+                top: header.bottom
+                horizontalCenter: parent.horizontalCenter
             }
-            width: parent.width - 2*anchors.leftMargin
+            width: Math.min(Screen.width, aboutFlickable.width)
             spacing: Theme.paddingLarge
-
-            Item {
-                width: parent.width
-                height: Theme.paddingLarge
-            }
 
             Image {
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -65,30 +70,16 @@ Page {
                 text: qsTr("GPSInfo is open source software licensed under the terms of the GNU General Public License.")
             }
 
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("View license")
-                onClicked: {
-                    pageStack.push(Qt.resolvedUrl("LicensePage.qml"));
-                }
-            }
-
             AboutLabel {
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.secondaryColor
                 text: qsTr("For suggestions, bugs and ideas visit ")
             }
 
-            AboutLabel {
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeSmall
-                font.underline: true
-                text: "https://github.com/direc85/harbour-gpsinfo"
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: Qt.openUrlExternally(parent.text)
-                }
+            Button {
+                text: "GitHub"
+                anchors.horizontalCenter: parent.horizontalCenter
+                onClicked: Qt.openUrlExternally("https://github.com/direc85/harbour-gpsinfo")
             }
 
             Item {
