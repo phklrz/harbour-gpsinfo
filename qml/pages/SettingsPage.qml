@@ -38,6 +38,7 @@ Page {
         case "pl": return 7
         case "ru": return 8
         case "sv": return 9
+        case "zh_CN": return 10
         default:   return 0
         }
     }
@@ -124,6 +125,7 @@ Page {
                     MenuItem { text: "Polskie";    onClicked: settings.locale = "pl"; }
                     MenuItem { text: "Pусский";    onClicked: settings.locale = "ru"; }
                     MenuItem { text: "Svenska";    onClicked: settings.locale = "sv"; }
+                    MenuItem { text: "Chinese";    onClicked: settings.locale = "zh_CN"; }
                 }
                 Component.onCompleted: currentIndex = setLanguageCombobox()
             }
