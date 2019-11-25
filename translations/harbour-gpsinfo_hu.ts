@@ -4,27 +4,27 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="47"/>
+        <location filename="../qml/pages/AboutPage.qml" line="52"/>
         <source>An app to show all position information</source>
         <translation>Egy alkalmazás ami megjeleníti az összes elérhető pozíció információt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="53"/>
+        <location filename="../qml/pages/AboutPage.qml" line="58"/>
         <source>Version</source>
         <translation>Verzió</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="65"/>
+        <location filename="../qml/pages/AboutPage.qml" line="86"/>
         <source>GPSInfo is open source software licensed under the terms of the GNU General Public License.</source>
         <translation>A GPSInfo egy nyílt forráskódú GNU General Public licenszű szoftver.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="70"/>
+        <location filename="../qml/pages/AboutPage.qml" line="22"/>
         <source>View license</source>
         <translation>Licensz megtekintése</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="79"/>
+        <location filename="../qml/pages/AboutPage.qml" line="92"/>
         <source>For suggestions, bugs and ideas visit </source>
         <translation>Javaslataiddal, hibajelentésekkel 
 kérjük ide fordulj</translation>
@@ -115,7 +115,7 @@ kérjük ide fordulj</translation>
     <message>
         <location filename="../qml/pages/CoverPage.qml" line="156"/>
         <source>Cal.</source>
-        <translation/>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -148,7 +148,7 @@ kérjük ide fordulj</translation>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="93"/>
         <source>GPSInfo</source>
-        <translation/>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="108"/>
@@ -238,15 +238,7 @@ kérjük ide fordulj</translation>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="225"/>
         <source>Compass calibration</source>
-        <translation/>
-    </message>
-</context>
-<context>
-    <name>LicensePage</name>
-    <message>
-        <location filename="../qml/pages/LicensePage.qml" line="20"/>
-        <source>License</source>
-        <translation>Licensz</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -265,163 +257,163 @@ kérjük ide fordulj</translation>
 <context>
     <name>SettingsPage</name>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="48"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="50"/>
         <source>Settings</source>
         <translation>Beállítások</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="52"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="54"/>
         <source>Coordinate format</source>
         <translation>Koordináta formátum</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="55"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="57"/>
         <source>degree</source>
         <translation>fok</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="59"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="61"/>
         <source>decimal</source>
         <translation>tizedes</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="66"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="68"/>
         <source>Units</source>
         <translation>Mértékegységek</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="69"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="71"/>
         <source>metric</source>
         <translation>metrikus</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="76"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="78"/>
         <source>imperial</source>
         <translation>imperiális</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="87"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="224"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="89"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="228"/>
         <source>Speed</source>
         <translation>Sebesség</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="91"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="93"/>
         <source>m/s</source>
         <translation>m/s</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="96"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="98"/>
         <source>km/h</source>
         <translation>km/h</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="101"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="103"/>
         <source>ft/s</source>
         <translation>láb/s</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="106"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="108"/>
         <source>mph</source>
         <translation>mph</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="114"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="116"/>
         <source>Language</source>
         <translation>Nyelv</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="132"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="136"/>
         <source>Update interval</source>
         <translation>Frissítési időköz</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="146"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="150"/>
         <source>Rotate satellite view</source>
-        <translation/>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="149"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="153"/>
         <source>yes</source>
-        <translation/>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="155"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="159"/>
         <source>no</source>
-        <translation/>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="174"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="178"/>
         <source>Show</source>
         <translation>Megjelenítés</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="180"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="184"/>
         <source>Appview</source>
         <translation>Alkalmazás</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="186"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="190"/>
         <source>Cover</source>
         <translation>Borító</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="192"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="196"/>
         <source>GPS state</source>
         <translation>GPS-állapot</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="200"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="204"/>
         <source>Latitude</source>
         <translation>Szélesség</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="208"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="212"/>
         <source>Longitude</source>
         <translation>Hosszúság</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="216"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="220"/>
         <source>Altitude</source>
         <translation>Magasság</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="232"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="236"/>
         <source>Movement Direction</source>
         <translation>Mozgás iránya</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="240"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="244"/>
         <source>Last Update</source>
         <translation>Legutóbbi frissítés</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="248"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="252"/>
         <source>Vertical Accuracy</source>
         <translation>Függőleges pontosság</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="256"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="260"/>
         <source>Horizontal Accuracy</source>
         <translation>Vízszintes pontosság</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="264"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="268"/>
         <source>Satellite Info</source>
         <translation>Műholdak</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="272"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="276"/>
         <source>Compass Direction</source>
         <translation>Iránytű</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="280"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="284"/>
         <source>Compass Calibration</source>
-        <translation/>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="290"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="294"/>
         <source>requires app restart</source>
         <translation>átállítása az alkalmazás újraindítását igényli</translation>
     </message>

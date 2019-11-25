@@ -65,6 +65,22 @@ Page {
             }
 
             AboutLabel {
+                font.pixelSize: Theme.fontSizeExtraSmall
+                color: Theme.secondaryColor
+                text: "English: Marcel Witte\n"+
+                      "Deutsch: Marcel Witte\n"+
+                      "Español: ???\n"+
+                      "Suomi: Tenho\n"+
+                      "Français: ???\n"+
+                      "Nederlands: ???\n"+
+                      "Magyar: ???\n"+
+                      "Polskie: ???\n"+
+                      "Pусский: ???\n"+
+                      "Svenska: Åke Engelbrektson\n"+
+                      "Chinese: dashinfantry"
+            }
+
+            AboutLabel {
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.secondaryColor
                 text: qsTr("GPSInfo is open source software licensed under the terms of the GNU General Public License.")
