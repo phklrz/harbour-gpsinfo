@@ -21,6 +21,11 @@ Page {
         gpsDataSource: page.gpsDataSource
     }
 
+    SatelliteBarchartPage {
+        id: satelliteBarchartPage
+        gpsDataSource: page.gpsDataSource
+    }
+
     property bool satellitePagePushed: false
     onStatusChanged: {
         if (status == PageStatus.Active && !satellitePagePushed) {

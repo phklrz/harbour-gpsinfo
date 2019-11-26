@@ -120,135 +120,148 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="49"/>
+        <location filename="../qml/pages/FirstPage.qml" line="54"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="53"/>
+        <location filename="../qml/pages/FirstPage.qml" line="58"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="57"/>
+        <location filename="../qml/pages/FirstPage.qml" line="62"/>
         <source>Deactivate GPS</source>
         <translation>关闭 GPS</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="57"/>
+        <location filename="../qml/pages/FirstPage.qml" line="62"/>
         <source>Activate GPS</source>
         <translation>激活 GPS</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="74"/>
+        <location filename="../qml/pages/FirstPage.qml" line="79"/>
         <source>Copy location</source>
         <translation>复制位置</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="93"/>
+        <location filename="../qml/pages/FirstPage.qml" line="98"/>
         <source>GPSInfo</source>
         <translation>GPSInfo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="108"/>
+        <location filename="../qml/pages/FirstPage.qml" line="113"/>
         <source>GPS</source>
         <translation>GPS</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="110"/>
+        <location filename="../qml/pages/FirstPage.qml" line="115"/>
         <source>active</source>
         <translation>激活</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="110"/>
+        <location filename="../qml/pages/FirstPage.qml" line="115"/>
         <source>inactive</source>
         <translation>未激活</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="113"/>
+        <location filename="../qml/pages/FirstPage.qml" line="118"/>
         <source>Latitude</source>
         <translation>纬度</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="127"/>
+        <location filename="../qml/pages/FirstPage.qml" line="132"/>
         <source>Longitude</source>
         <translation>经度</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="141"/>
+        <location filename="../qml/pages/FirstPage.qml" line="146"/>
         <source>Altitude</source>
         <translation>海拔</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="155"/>
+        <location filename="../qml/pages/FirstPage.qml" line="160"/>
         <source>Speed</source>
         <translation>速度</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="161"/>
+        <location filename="../qml/pages/FirstPage.qml" line="166"/>
         <source>m/s</source>
         <translation>米/秒</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="163"/>
+        <location filename="../qml/pages/FirstPage.qml" line="168"/>
         <source>km/h</source>
         <translation>千米/时</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="167"/>
+        <location filename="../qml/pages/FirstPage.qml" line="172"/>
         <source>ft/s</source>
         <translation>英尺/秒</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="169"/>
+        <location filename="../qml/pages/FirstPage.qml" line="174"/>
         <source>mph</source>
         <translation>英里/时</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="177"/>
+        <location filename="../qml/pages/FirstPage.qml" line="182"/>
         <source>Movement direction</source>
         <translation>运动方向</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="182"/>
+        <location filename="../qml/pages/FirstPage.qml" line="187"/>
         <source>Last update</source>
         <translation>最近更新</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="187"/>
+        <location filename="../qml/pages/FirstPage.qml" line="192"/>
         <source>Vertical accuracy</source>
         <translation>垂直精度</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="201"/>
+        <location filename="../qml/pages/FirstPage.qml" line="206"/>
         <source>Horizontal accuracy</source>
         <translation>水平精度</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="215"/>
+        <location filename="../qml/pages/FirstPage.qml" line="220"/>
         <source>Satellites in use / view</source>
         <translation>使用及找到的卫星</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="220"/>
+        <location filename="../qml/pages/FirstPage.qml" line="225"/>
         <source>Compass direction</source>
         <translation>罗盘方向</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="225"/>
+        <location filename="../qml/pages/FirstPage.qml" line="230"/>
         <source>Compass calibration</source>
         <translation>罗盘校正</translation>
     </message>
 </context>
 <context>
+    <name>SatelliteBarchartPage</name>
+    <message>
+        <location filename="../qml/pages/SatelliteBarchartPage.qml" line="16"/>
+        <source>Satellite signal strengths</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SatelliteBarchartPage.qml" line="34"/>
+        <source>RSSI</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SatelliteInfoPage</name>
     <message>
-        <location filename="../qml/pages/SatelliteInfoPage.qml" line="15"/>
+        <location filename="../qml/pages/SatelliteInfoPage.qml" line="17"/>
         <source>Satellite Info</source>
         <translation>卫星信息</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SatelliteInfoPage.qml" line="180"/>
+        <location filename="../qml/pages/SatelliteInfoPage.qml" line="189"/>
         <source>Satellites in use / view</source>
         <translation>使用及找到的卫星</translation>
     </message>

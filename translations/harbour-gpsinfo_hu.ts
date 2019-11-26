@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="hu_HU">
+<TS version="2.0" language="hu_HU">
 <context>
     <name>AboutPage</name>
     <message>
@@ -121,135 +121,148 @@ kérjük ide fordulj</translation>
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="49"/>
+        <location filename="../qml/pages/FirstPage.qml" line="54"/>
         <source>About</source>
         <translation>Az alkalmazásról</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="53"/>
+        <location filename="../qml/pages/FirstPage.qml" line="58"/>
         <source>Settings</source>
         <translation>Beállítások</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="57"/>
+        <location filename="../qml/pages/FirstPage.qml" line="62"/>
         <source>Deactivate GPS</source>
         <translation>GPS kikapcsolása</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="57"/>
+        <location filename="../qml/pages/FirstPage.qml" line="62"/>
         <source>Activate GPS</source>
         <translation>GPS bekapcsolása</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="74"/>
+        <location filename="../qml/pages/FirstPage.qml" line="79"/>
         <source>Copy location</source>
         <translation>Pozíció vágólapra másolása</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="93"/>
+        <location filename="../qml/pages/FirstPage.qml" line="98"/>
         <source>GPSInfo</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="108"/>
+        <location filename="../qml/pages/FirstPage.qml" line="113"/>
         <source>GPS</source>
         <translation>GPS</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="110"/>
+        <location filename="../qml/pages/FirstPage.qml" line="115"/>
         <source>active</source>
         <translation>bekapcsolva</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="110"/>
+        <location filename="../qml/pages/FirstPage.qml" line="115"/>
         <source>inactive</source>
         <translation>kikapcsolva</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="113"/>
+        <location filename="../qml/pages/FirstPage.qml" line="118"/>
         <source>Latitude</source>
         <translation>Szélesség</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="127"/>
+        <location filename="../qml/pages/FirstPage.qml" line="132"/>
         <source>Longitude</source>
         <translation>Hosszúság</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="141"/>
+        <location filename="../qml/pages/FirstPage.qml" line="146"/>
         <source>Altitude</source>
         <translation>Magasság</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="155"/>
+        <location filename="../qml/pages/FirstPage.qml" line="160"/>
         <source>Speed</source>
         <translation>Sebesség</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="161"/>
+        <location filename="../qml/pages/FirstPage.qml" line="166"/>
         <source>m/s</source>
         <translation>m/s</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="163"/>
+        <location filename="../qml/pages/FirstPage.qml" line="168"/>
         <source>km/h</source>
         <translation>km/h</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="167"/>
+        <location filename="../qml/pages/FirstPage.qml" line="172"/>
         <source>ft/s</source>
         <translation>láb/s</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="169"/>
+        <location filename="../qml/pages/FirstPage.qml" line="174"/>
         <source>mph</source>
         <translation>mph</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="177"/>
+        <location filename="../qml/pages/FirstPage.qml" line="182"/>
         <source>Movement direction</source>
         <translation>Mozgás iránya</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="182"/>
+        <location filename="../qml/pages/FirstPage.qml" line="187"/>
         <source>Last update</source>
         <translation>Legutóbbi frissítés</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="187"/>
+        <location filename="../qml/pages/FirstPage.qml" line="192"/>
         <source>Vertical accuracy</source>
         <translation>Függőleges pontosság</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="201"/>
+        <location filename="../qml/pages/FirstPage.qml" line="206"/>
         <source>Horizontal accuracy</source>
         <translation>Vízszintes pontosság</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="215"/>
+        <location filename="../qml/pages/FirstPage.qml" line="220"/>
         <source>Satellites in use / view</source>
         <translation>Műholdak száma</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="220"/>
+        <location filename="../qml/pages/FirstPage.qml" line="225"/>
         <source>Compass direction</source>
         <translation>Iránytű</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="225"/>
+        <location filename="../qml/pages/FirstPage.qml" line="230"/>
         <source>Compass calibration</source>
-        <translation></translation>
+        <translation>Iránytű kalibráció</translation>
+    </message>
+</context>
+<context>
+    <name>SatelliteBarchartPage</name>
+    <message>
+        <location filename="../qml/pages/SatelliteBarchartPage.qml" line="16"/>
+        <source>Satellite signal strengths</source>
+        <translation>Műhold jelerősségek</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SatelliteBarchartPage.qml" line="34"/>
+        <source>RSSI</source>
+        <translation>RSSI</translation>
     </message>
 </context>
 <context>
     <name>SatelliteInfoPage</name>
     <message>
-        <location filename="../qml/pages/SatelliteInfoPage.qml" line="15"/>
+        <location filename="../qml/pages/SatelliteInfoPage.qml" line="17"/>
         <source>Satellite Info</source>
         <translation>Műholdak</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SatelliteInfoPage.qml" line="180"/>
+        <location filename="../qml/pages/SatelliteInfoPage.qml" line="189"/>
         <source>Satellites in use / view</source>
         <translation>Műholdak száma</translation>
     </message>

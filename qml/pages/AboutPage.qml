@@ -73,7 +73,7 @@ Page {
                       "Suomi: Tenho\n"+
                       "Français: ???\n"+
                       "Nederlands: ???\n"+
-                      "Magyar: ???\n"+
+                      "Magyar: Márton Miklós\n"+
                       "Polskie: ???\n"+
                       "Pусский: ???\n"+
                       "Svenska: Åke Engelbrektson\n"+

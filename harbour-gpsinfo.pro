@@ -1,6 +1,7 @@
 TARGET = harbour-gpsinfo
 
-CONFIG += sailfishapp sailfishapp_i18n
+CONFIG += sailfishapp
+#CONFIG += sailfishapp_i18n
 
 SOURCES += \
     src/gpsdatasource.cpp \
@@ -11,8 +12,12 @@ SOURCES += \
 
 DISTFILES += qml/pages/CoverPage.qml \
     qml/components/AboutLabel.qml \
+    qml/QChart/QChart.js \
+    qml/QChart/QChart.qml \
+    qml/QChart/qmldir \
     qml/pages/FirstPage.qml \
     qml/components/InfoField.qml \
+    qml/pages/SatelliteBarchartPage.qml \
     qml/pages/SettingsPage.qml \
     qml/LocationFormatter.js \
     qml/components/Providers.qml \
