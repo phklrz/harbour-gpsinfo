@@ -125,7 +125,7 @@ Page {
                     MenuItem { text: "Polskie";    onClicked: settings.locale = "pl"; }
                     MenuItem { text: "Pусский";    onClicked: settings.locale = "ru"; }
                     MenuItem { text: "Svenska";    onClicked: settings.locale = "sv"; }
-                    MenuItem { text: "Chinese";    onClicked: settings.locale = "zh_CN"; }
+                    MenuItem { text: "简体中文";       onClicked: settings.locale = "zh_CN"; }
                 }
                 Component.onCompleted: currentIndex = setLanguageCombobox()
             }

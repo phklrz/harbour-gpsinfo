@@ -77,7 +77,7 @@ Page {
                       "Polskie: ???\n"+
                       "Pусский: ???\n"+
                       "Svenska: Åke Engelbrektson\n"+
-                      "Chinese: dashinfantry"
+                      "简体中文: dashinfantry"
             }
 
             AboutLabel {
