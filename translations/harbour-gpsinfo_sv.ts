@@ -92,7 +92,7 @@
     </message>
     <message>
         <source>Cal.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kal.</translation>
     </message>
 </context>
 <context>
@@ -191,7 +191,14 @@
     </message>
     <message>
         <source>Compass calibration</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompasskalibrering</translation>
+    </message>
+</context>
+<context>
+    <name>LicensePage</name>
+    <message>
+        <source>License</source>
+        <translation>Licens</translation>
     </message>
 </context>
 <context>
@@ -321,19 +328,19 @@
     </message>
     <message>
         <source>Rotate satellite view</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotera satelitvyn</translation>
     </message>
     <message>
         <source>yes</source>
-        <translation type="unfinished">ja</translation>
+        <translation>ja</translation>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished">nej</translation>
+        <translation>nej</translation>
     </message>
     <message>
         <source>Compass Calibration</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompasskalibrering</translation>
     </message>
 </context>
 </TS>
