@@ -156,7 +156,7 @@ Page {
                         y = center - Math.cos(azimuthRad) * radius * Math.cos(elevationRad);
                         dx = sat.identifier >= 100 ? 1.8 : (sat.identifier >= 10 ? 1.4 : 1.0);
 
-                        ctx.fillStyle = "hsl(" + (sat.signalStrength < 40 ? sat.signalStrength : 40) * 3 + ",100%,35%)";
+                        ctx.fillStyle = "hsl(" + Math.floor(sat.signalStrength < 40.0 ? sat.signalStrength-(1.0/sat.signalStrength) : 40.0) * 3.0 + ",100%,35%)";
                         if (sat.inUse) {
                             ctx.fillRect(x - signSizeActive*dx / 2 - 2, y - signSizeActive / 2 - 2, signSizeActive*dx + 4, signSizeActive + 4);
                             ctx.fillRect(x - signSizeActive*dx / 2,     y - signSizeActive / 2,     signSizeActive*dx,     signSizeActive);
