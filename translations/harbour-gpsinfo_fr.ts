@@ -195,6 +195,17 @@
     </message>
 </context>
 <context>
+    <name>SatelliteBarchartPage</name>
+    <message>
+        <source>Satellite signal strengths</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RSSI</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SatelliteInfoPage</name>
     <message>
         <source>Satellite Info</source>

@@ -11,8 +11,17 @@ Page {
 
     property Compass compass
     property GPSDataSource gpsDataSource
+    property bool satelliteBarchartPagePushed: false
+
     PageHeader {
         title: qsTr("Satellite Info")
+    }
+
+    onStatusChanged: {
+        if (status == PageStatus.Active && !satelliteBarchartPagePushed) {
+            pageStack.pushAttached(satelliteBarchartPage)
+            satelliteBarchartPagePushed = true
+        }
     }
 
     onVisibleChanged: {
@@ -88,7 +97,10 @@ Page {
         property int signSizeSmall: Theme.fontSizeExtraSmall + 4;
         property int signSizeActive: Theme.fontSizeExtraSmall + 4;
         onNorthChanged: requestPaint();
-        onSatellitesChanged: requestPaint();
+        onSatellitesChanged: function () {
+            if (pageStack.currentPage == satelliteInfoPage)
+                requestPaint();
+        }
         onPaint: {
             if (visible) {
                 var ctx = canvas.getContext('2d');
