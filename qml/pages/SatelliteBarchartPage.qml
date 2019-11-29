@@ -79,7 +79,19 @@ Page {
                     rssiBarChart.chartData.datasets[0].fillColor.push(getRSSI_Color(barSat.signalStrength));
                 });
 
+                // Draw minimum of 5 (10) bars in portrait (landscape)
+                var additionalBars = 0
+                if(satelliteBarchartPage.isPortrait && results.length < 5)
+                    additionalBars = 5 - results.length
+                else if(satelliteBarchartPage.isLandscape && results.length < 10)
+                    additionalBars = 10 - results.length
 
+                while(additionalBars > 0){
+                    rssiBarChart.chartData.labels.push(" ");
+                    rssiBarChart.chartData.datasets[0].data.push(0);
+                    rssiBarChart.chartData.datasets[0].fillColor.push("transparent");
+                    additionalBars--
+                }
             }
             rssiBarChart.requestPaint();
         }
