@@ -149,22 +149,24 @@ Page {
 //                                + "\t and elevation " + sat.elevation
 //                                + "\twith signal strength " + sat.signalStrength
 //                                + " \t" + inUseStr);
-                    azimuthRad = ((sat.azimuth - north) % 360) * Math.PI / 180;
-                    elevationRad = sat.elevation * Math.PI / 180;
-                    x = center + Math.sin(azimuthRad) * radius * Math.cos(elevationRad);
-                    y = center - Math.cos(azimuthRad) * radius * Math.cos(elevationRad);
-                    dx = sat.identifier >= 100 ? 1.8 : (sat.identifier >= 10 ? 1.4 : 1.0);
+                    if(sat.signalStrength > 0) {
+                        azimuthRad = ((sat.azimuth - north) % 360) * Math.PI / 180;
+                        elevationRad = sat.elevation * Math.PI / 180;
+                        x = center + Math.sin(azimuthRad) * radius * Math.cos(elevationRad);
+                        y = center - Math.cos(azimuthRad) * radius * Math.cos(elevationRad);
+                        dx = sat.identifier >= 100 ? 1.8 : (sat.identifier >= 10 ? 1.4 : 1.0);
 
-                    ctx.fillStyle = "hsl(" + (sat.signalStrength < 40 ? sat.signalStrength : 40) * 3 + ",100%,35%)";
-                    if (sat.inUse) {
-                        ctx.fillRect(x - signSizeActive*dx / 2 - 2, y - signSizeActive / 2 - 2, signSizeActive*dx + 4, signSizeActive + 4);
-                        ctx.fillRect(x - signSizeActive*dx / 2,     y - signSizeActive / 2,     signSizeActive*dx,     signSizeActive);
-                    } else {
-                        ctx.fillRect(x - signSizeSmall*dx / 2,      y - signSizeSmall / 2,      signSizeSmall*dx,      signSizeSmall);
+                        ctx.fillStyle = "hsl(" + (sat.signalStrength < 40 ? sat.signalStrength : 40) * 3 + ",100%,35%)";
+                        if (sat.inUse) {
+                            ctx.fillRect(x - signSizeActive*dx / 2 - 2, y - signSizeActive / 2 - 2, signSizeActive*dx + 4, signSizeActive + 4);
+                            ctx.fillRect(x - signSizeActive*dx / 2,     y - signSizeActive / 2,     signSizeActive*dx,     signSizeActive);
+                        } else {
+                            ctx.fillRect(x - signSizeSmall*dx / 2,      y - signSizeSmall / 2,      signSizeSmall*dx,      signSizeSmall);
+                        }
+
+                        ctx.fillStyle = Qt.rgba(1.0, 1.0, 1.0, 1.0);
+                        ctx.fillText(sat.identifier, x, y + Theme.fontSizeExtraSmall / 2 - 5)
                     }
-
-                    ctx.fillStyle = Qt.rgba(1.0, 1.0, 1.0, 1.0);
-                    ctx.fillText(sat.identifier, x, y + Theme.fontSizeExtraSmall / 2 - 5)
                 });
 
                 // Signs
