@@ -48,15 +48,7 @@ Page {
 
         function getRSSI_Color(rssi)
         {
-            if (rssi < 10)
-                return "#ff3e07";
-
-            if (rssi < 20)
-                return "#ffa03b";
-
-            if (rssi < 40)
-                return "#ebf573";
-            return "#93eb55";
+            return "hsl(" + (rssi < 40 ? rssi : 40) * 3 + ",100%,35%)";
         }
 
         onSatellitesChanged: {
