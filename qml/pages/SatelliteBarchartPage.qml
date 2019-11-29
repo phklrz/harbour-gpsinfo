@@ -55,43 +55,33 @@ Page {
             if (!rssiBarChart.componentLoaded || pageStack.currentPage !== satelliteBarchartPage)
                 return;
 
+            var results = [];
             gpsDataSource.satellites.forEach(function(sat) {
-                var found = false;
-                var labelIndex = 0;
-                var changed = false;
-                rssiBarChart.chartData.labels.forEach(function(label) {
-                    if (label === sat.identifier) {
-                        found = true;
-                        return true;
-                    }
-                    labelIndex++;
+
+                // Add visible satellites
+                if(sat.signalStrength > 0)
+                    results.push(sat)
+            });
+
+            if(results.length > 0) {
+                // Sort satellites by signal strength
+                results.sort(function(a,b) {return b.signalStrength - a.signalStrength})
+
+                // Clear the chart data
+                rssiBarChart.chartData.labels = []
+                rssiBarChart.chartData.datasets[0].data = []
+                rssiBarChart.chartData.datasets[0].fillColor = []
+
+                // Insert the data
+                results.forEach(function(barSat) {
+                    rssiBarChart.chartData.labels.push(barSat.identifier);
+                    rssiBarChart.chartData.datasets[0].data.push(barSat.signalStrength);
+                    rssiBarChart.chartData.datasets[0].fillColor.push(getRSSI_Color(barSat.signalStrength));
                 });
 
-                if (found) {
-                    if (sat.signalStrength === 0) {
-                        // remove column
-                        rssiBarChart.chartData.datasets.splice(labelIndex, 1);
-                        changed = true;
-                    } else {
-                        /// update column
-                        if (rssiBarChart.chartData.datasets[0].data[labelIndex] !== sat.signalStrength) {
-                            rssiBarChart.chartData.datasets[0].data[labelIndex] = sat.signalStrength;
-                            rssiBarChart.chartData.datasets[0].fillColor[labelIndex] = getRSSI_Color(sat.signalStrength);
-                            changed = true;
-                        }
-                    }
-                } else {
-                    if (sat.signalStrength !== 0) {
-                        rssiBarChart.chartData.labels.push(sat.identifier);
-                        rssiBarChart.chartData.datasets[0].data.push(sat.signalStrength);
-                        rssiBarChart.chartData.datasets[0].fillColor.push(getRSSI_Color(sat.signalStrength));
-                        changed = true;
-                    }
-                }
 
-                if (changed)
-                    rssiBarChart.requestPaint();
-            });
+            }
+            rssiBarChart.requestPaint();
         }
     }
 }
