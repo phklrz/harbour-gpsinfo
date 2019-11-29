@@ -37,7 +37,7 @@ Page {
             chartOptions = {
                 scaleStartValue: 0,
                 scaleStepWidth: 5,
-                scaleSteps: 20,
+                scaleSteps: 10,
                 scaleOverride: true,
                 scaleFontColor: Theme.secondaryHighlightColor,
                 scaleFontSize: Theme.fontSizeSmall,
