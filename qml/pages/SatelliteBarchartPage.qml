@@ -105,4 +105,13 @@ Page {
             rssiBarChart.requestPaint();
         }
     }
+    }
+    InfoField {
+        id: satellitesInfo
+        label: qsTr("Satellites in use / view")
+        value: gpsDataSource.numberOfUsedSatellites + " / " + gpsDataSource.numberOfVisibleSatellites
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: Theme.paddingLarge
+        visible: parent.isPortrait
+    }
 }
