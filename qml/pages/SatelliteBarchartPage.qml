@@ -15,11 +15,19 @@ Page {
         title: qsTr("Satellite signal strengths")
     }
 
+    Item {
+        anchors {
+            top: header.bottom
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+
     Chart {
         id: rssiBarChart;
-        width: satelliteBarchartPage.width;
-        height: satelliteBarchartPage.height - header.height;
-        y: header.height
+        width: parent.width - 2 * Theme.horizontalPageMargin
+        height: satelliteBarchartPage.isPortrait ? width : parent.height - 2 * Theme.horizontalPageMargin
+        anchors.centerIn: parent
         chartAnimated: true;
         chartAnimationEasing: Easing.Linear;
         chartAnimationDuration: 2000;
