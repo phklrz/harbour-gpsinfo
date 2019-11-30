@@ -35,6 +35,7 @@ class GPSInfoSettings : public QMLSettingsWrapper
     Q_PROPERTY(bool showVerticalAccuracyCover READ getShowVerticalAccuracyCover WRITE setShowVerticalAccuracyCover NOTIFY showVerticalAccuracyCoverChanged)
     Q_PROPERTY(QString speedUnit READ getSpeedUnit WRITE setSpeedUnit NOTIFY speedUnitChanged)
     Q_PROPERTY(QString units READ getUnits WRITE setUnits NOTIFY unitsChanged)
+    Q_PROPERTY(QString barChartOrder READ getBarChartOrder WRITE setBarChartOrder NOTIFY barChartOrderChanged)
     Q_PROPERTY(int updateInterval READ getUpdateInterval WRITE setUpdateInterval NOTIFY updateIntervalChanged)
     Q_PROPERTY(bool rotate READ getRotate WRITE setRotate NOTIFY rotateChanged)
 public:
@@ -68,6 +69,7 @@ public:
     bool getShowVerticalAccuracyCover() {return this->value("showVerticalAccuracyCover", false).toBool();}
     QString getSpeedUnit() {return this->value("speedUnit", "SEC").toString();}
     QString getUnits() {return this->value("units", "MET").toString();}
+    QString getBarChartOrder() {return this->value("barChartOrder", "id").toString();}
     int getUpdateInterval() {return this->value("updateInterval", 1).toInt();}
     bool getRotate() {return this->value("rotate", true).toBool();}
 
@@ -99,6 +101,7 @@ public:
     void setShowVerticalAccuracyCover(bool val) {this->setValue("showVerticalAccuracyCover", val); emit showVerticalAccuracyCoverChanged(val);}
     void setSpeedUnit(QString val) {this->setValue("speedUnit", val); emit speedUnitChanged(val);}
     void setUnits(QString val) {this->setValue("units", val); emit unitsChanged(val);}
+    void setBarChartOrder(QString val) {this->setValue("barChartOrder", val); emit barChartOrderChanged(val);}
     void setUpdateInterval(int val) {this->setValue("updateInterval", val); emit updateIntervalChanged(val);}
     void setRotate(bool val) {this->setValue("rotate", val); emit rotateChanged(val);}
 private:
@@ -132,6 +135,7 @@ signals:
     void showVerticalAccuracyCoverChanged(bool);
     void speedUnitChanged(QString);
     void unitsChanged(QString);
+    void barChartOrderChanged(QString);
     void updateIntervalChanged(int);
     void rotateChanged(bool);
 public slots:

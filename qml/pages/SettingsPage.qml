@@ -165,6 +165,25 @@ Page {
                 Component.onCompleted: currentIndex = settings.rotate ? 0 : 1
             }
 
+            ComboBox {
+                label: qsTr("Satellite bar chart order")
+                menu: ContextMenu {
+                    MenuItem {
+                        text: qsTr("identifier","'Number' of the satellite")
+                        onClicked: {
+                            settings.barChartOrder = "id";
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("signal strength")
+                        onClicked: {
+                            settings.barChartOrder = "signal";
+                        }
+                    }
+                }
+                Component.onCompleted: currentIndex = settings.barChartOrder == "id" ? 0 : 1
+            }
+
             Item {
                 width: parent.width
                 height: Theme.iconSizeLarge * 1.2

@@ -65,7 +65,8 @@ Page {
 
             if(results.length > 0) {
                 // Sort satellites by signal strength
-                results.sort(function(a,b) {return b.signalStrength - a.signalStrength})
+                if(settings.barChartOrder == "signal")
+                    results.sort(function(a,b) {return b.signalStrength - a.signalStrength})
 
                 // Clear the chart data
                 rssiBarChart.chartData.labels = []
