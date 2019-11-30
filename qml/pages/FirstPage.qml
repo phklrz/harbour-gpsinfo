@@ -15,21 +15,11 @@ Page {
 
     allowedOrientations: Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted
 
-    SatelliteInfoPage {
-        id: satelliteInfoPage
-        compass: page.compass
-        gpsDataSource: page.gpsDataSource
-    }
-
-    SatelliteBarchartPage {
-        id: satelliteBarchartPage
-        gpsDataSource: page.gpsDataSource
-    }
-
     property bool satellitePagePushed: false
     onStatusChanged: {
         if (status == PageStatus.Active && !satellitePagePushed) {
-            pageStack.pushAttached(satelliteInfoPage)
+            pageStack.pushAttached(Qt.resolvedUrl("SatelliteInfoPage.qml"),
+                                   { gpsDataSource: page.gpsDataSource, compass: page.compass})
             satellitePagePushed = true
         }
     }

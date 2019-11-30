@@ -19,7 +19,8 @@ Page {
 
     onStatusChanged: {
         if (status == PageStatus.Active && !satelliteBarchartPagePushed) {
-            pageStack.pushAttached(satelliteBarchartPage)
+            pageStack.pushAttached(Qt.resolvedUrl("SatelliteBarchartPage.qml"),
+                                   { gpsDataSource: satelliteInfoPage.gpsDataSource, compass: satelliteInfoPage.compass})
             satelliteBarchartPagePushed = true
         }
     }
