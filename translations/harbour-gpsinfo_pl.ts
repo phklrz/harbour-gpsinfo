@@ -198,7 +198,7 @@
     <name>SatelliteBarchartPage</name>
     <message>
         <source>Satellite signal strengths</source>
-        <translation>Moc sygnału z satelity</translation>
+        <translation>Moc sygnału satelity</translation>
     </message>
     <message>
         <source>Satellites in use / view</source>
