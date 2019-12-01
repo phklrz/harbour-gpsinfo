@@ -32,11 +32,11 @@
     </message>
     <message>
         <source>active</source>
-        <translation>aktywny</translation>
+        <translation>włączony</translation>
     </message>
     <message>
         <source>inactive</source>
-        <translation>nieaktywny</translation>
+        <translation>wyłączony</translation>
     </message>
     <message>
         <source>Latitude</source>
@@ -92,14 +92,14 @@
     </message>
     <message>
         <source>Cal.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kal.</translation>
     </message>
 </context>
 <context>
     <name>FirstPage</name>
     <message>
         <source>About</source>
-        <translation>Na temat</translation>
+        <translation>O GPSInfo</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -107,11 +107,11 @@
     </message>
     <message>
         <source>Deactivate GPS</source>
-        <translation>Deaktywuj GPS</translation>
+        <translation>Wyłącz GPS</translation>
     </message>
     <message>
         <source>Activate GPS</source>
-        <translation>Aktywuj GPS</translation>
+        <translation>Włącz GPS</translation>
     </message>
     <message>
         <source>GPSInfo</source>
@@ -123,11 +123,11 @@
     </message>
     <message>
         <source>active</source>
-        <translation>aktywny</translation>
+        <translation>włączony</translation>
     </message>
     <message>
         <source>inactive</source>
-        <translation>nieaktywny</translation>
+        <translation>wyłączony</translation>
     </message>
     <message>
         <source>Latitude</source>
@@ -143,7 +143,7 @@
     </message>
     <message>
         <source>Last update</source>
-        <translation>Ostatnia Aktualizacja</translation>
+        <translation>Ostatnia aktualizacja</translation>
     </message>
     <message>
         <source>Horizontal accuracy</source>
@@ -191,14 +191,14 @@
     </message>
     <message>
         <source>Compass calibration</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalibracja kompasu</translation>
     </message>
 </context>
 <context>
     <name>SatelliteBarchartPage</name>
     <message>
         <source>Satellite signal strengths</source>
-        <translation type="unfinished"></translation>
+        <translation>Moc sygnału z satelity</translation>
     </message>
     <message>
         <source>Satellites in use / view</source>
@@ -332,32 +332,32 @@
     </message>
     <message>
         <source>Rotate satellite view</source>
-        <translation type="unfinished"></translation>
+        <translation>Obróć widok satelitarny</translation>
     </message>
     <message>
         <source>yes</source>
-        <translation type="unfinished">tak</translation>
+        <translation>tak</translation>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished">nie</translation>
+        <translation>nie</translation>
     </message>
     <message>
         <source>Compass Calibration</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalibracja kompasu</translation>
     </message>
     <message>
         <source>Satellite bar chart order</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolejność wykresów słupkowych satelit</translation>
     </message>
     <message>
         <source>identifier</source>
         <comment>&apos;Number&apos; of the satellite</comment>
-        <translation type="unfinished"></translation>
+        <translation>identyfikator</translation>
     </message>
     <message>
         <source>signal strength</source>
-        <translation type="unfinished"></translation>
+        <translation>siła sygnału</translation>
     </message>
 </context>
 </TS>
