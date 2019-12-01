@@ -12,15 +12,15 @@ Page {
     property PositionSource positionSource
     property Compass compass
     property GPSDataSource gpsDataSource
+    property bool subPagesPushed: false
 
     allowedOrientations: Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted
 
-    property bool satellitePagePushed: false
     onStatusChanged: {
-        if (status == PageStatus.Active && !satellitePagePushed) {
+        if (status == PageStatus.Active && !subPagesPushed) {
+            subPagesPushed = true
             pageStack.pushAttached(Qt.resolvedUrl("SatelliteInfoPage.qml"),
-                                   { gpsDataSource: page.gpsDataSource, compass: page.compass})
-            satellitePagePushed = true
+                           { gpsDataSource: page.gpsDataSource, compass: page.compass})
         }
     }
 

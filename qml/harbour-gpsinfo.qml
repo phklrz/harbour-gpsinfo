@@ -9,7 +9,7 @@ ApplicationWindow
         id: providers
     }
     initialPage: Component {
-        FirstPage {
+        SatelliteBarchartPage {
             positionSource: providers.positionSource
             compass: providers.compass
             gpsDataSource: providers.gpsDataSource

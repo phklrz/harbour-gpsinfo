@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtPositioning 5.2
 import QtSensors 5.0
 import harbour.gpsinfo 1.0
 import "../QChart"
@@ -8,8 +9,23 @@ import "../components"
 Page {
     id: satelliteBarchartPage
     allowedOrientations: Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted
-    property GPSDataSource gpsDataSource
 
+    property PositionSource positionSource
+    property Compass compass
+    property GPSDataSource gpsDataSource
+    property bool subPagesPushed: false
+
+    onStatusChanged: {
+        if (status == PageStatus.Active && !subPagesPushed) {
+            console.log(subPagesPushed)
+            subPagesPushed = true
+            pageStack.pushAttached(Qt.resolvedUrl("FirstPage.qml"),
+                           { positionSource: satelliteBarchartPage.positionSource,
+                               gpsDataSource: satelliteBarchartPage.gpsDataSource,
+                               compass: satelliteBarchartPage.compass})
+            pageStack.navigateForward(PageStackAction.Immediate)
+        }
+    }
     PageHeader {
         id: header
         title: qsTr("Satellite signal strengths")

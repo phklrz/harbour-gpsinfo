@@ -18,14 +18,6 @@ Page {
         title: qsTr("Satellite Info")
     }
 
-    onStatusChanged: {
-        if (status == PageStatus.Active && !satelliteBarchartPagePushed) {
-            pageStack.pushAttached(Qt.resolvedUrl("SatelliteBarchartPage.qml"),
-                                   { gpsDataSource: satelliteInfoPage.gpsDataSource, compass: satelliteInfoPage.compass})
-            satelliteBarchartPagePushed = true
-        }
-    }
-
     states: [
         State {
             name: 'landscape';
