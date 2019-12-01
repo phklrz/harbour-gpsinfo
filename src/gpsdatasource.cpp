@@ -53,16 +53,18 @@ void GPSDataSource::satellitesInViewUpdated(const QList<QGeoSatelliteInfo> &info
     qDeleteAll(this->satellites);
     this->satellites.clear();
     foreach (QGeoSatelliteInfo info, infos) {
-        GPSSatellite* sat = new GPSSatellite(this);
-        sat->setAzimuth(info.attribute(QGeoSatelliteInfo::Azimuth));
-        sat->setElevation(info.attribute(QGeoSatelliteInfo::Elevation));
-        sat->setIdentifier(info.satelliteIdentifier());
-        sat->setInUse(false);
-        sat->setSignalStrength(info.signalStrength());
-        this->satellites[info.satelliteIdentifier()] = sat;
+        if(info.signalStrength() > 0) {
+            GPSSatellite* sat = new GPSSatellite(this);
+            sat->setAzimuth(info.attribute(QGeoSatelliteInfo::Azimuth));
+            sat->setElevation(info.attribute(QGeoSatelliteInfo::Elevation));
+            sat->setIdentifier(info.satelliteIdentifier());
+            sat->setInUse(false);
+            sat->setSignalStrength(info.signalStrength());
+            this->satellites[info.satelliteIdentifier()] = sat;
+        }
     }
     emit this->satellitesChanged();
-    this->setNumberOfVisibleSatellites(infos.size());
+    this->setNumberOfVisibleSatellites(satellites.size());
 }
 
 void GPSDataSource::positionUpdated(QGeoPositionInfo info) {
