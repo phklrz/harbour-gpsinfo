@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtGraphicalEffects 1.0
 import Sailfish.Silica 1.0
 import QtSensors 5.0
 import harbour.gpsinfo 1.0
@@ -25,19 +26,12 @@ Page {
         }
     }
 
-    onVisibleChanged: {
-        if(visible) {
-            canvasBackground.requestPaint()
-            canvas.requestPaint()
-        }
-    }
-
     states: [
         State {
             name: 'landscape';
             when: orientation === Orientation.Landscape || orientation === Orientation.LandscapeInverted;
             AnchorChanges {
-                target: canvas;
+                target: radar;
                 anchors.horizontalCenter: undefined;
                 anchors.left: satelliteInfoPage.left;
             }
@@ -49,147 +43,151 @@ Page {
         }
     ]
 
-    property int canvasWidth: Screen.width - 30
-    property int radius: canvasWidth / 2 - 30
-    property int center: canvasWidth / 2
+    property int radarWidth: Screen.width - Theme.paddingLarge
+    property int diameter: radarWidth - 2 * Theme.paddingLarge
+    property int radius: diameter / 2
+    property int center: radarWidth / 2
 
-    Canvas {
-        id: canvasBackground
-        anchors.fill: canvas
-        onPaint: {
-            var ctx = canvasBackground.getContext('2d');
+    // Radar background gradient is symmetrical,
+    // so we don't have to waste cycles rotating it.
+    RadialGradient {
+        id: radarBG
+        anchors.centerIn: radar
+        width: diameter
+        height: diameter
+        source: Rectangle {
+            width: radarBG.width
+            height: width
+            radius: width / 2
+        }
 
-            ctx.clearRect(0, 0, canvasWidth, canvasWidth);
-
-            //Background
-            var grd=ctx.createRadialGradient(center,center,5,center,center,radius);
-            grd.addColorStop(0,Qt.rgba(0.0, 1.0, 0.0, 0.3));
-            grd.addColorStop(1,Qt.rgba(0.0, 1.0, 0.0, 0.6));
-            ctx.fillStyle = grd;
-            ctx.beginPath();
-            ctx.arc(center, center, radius, 0, Math.PI * 2, false);
-            ctx.closePath();
-            ctx.fill();
-
-            // Circles
-            ctx.strokeStyle = Qt.rgba(0.0, 1.0, 0.0, 1.0);
-
-            ctx.beginPath();
-            ctx.arc(center, center, radius * Math.cos(Math.PI * 1 / 6), 0, Math.PI * 2, false);
-            ctx.closePath();
-            ctx.stroke();
-
-            ctx.beginPath();
-            ctx.arc(center, center, radius * Math.cos(Math.PI * 2 / 6), 0, Math.PI * 2, false);
-            ctx.closePath();
-            ctx.stroke();
+        horizontalOffset: 0
+        horizontalRadius: width / 2
+        verticalRadius: width / 2
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: Qt.rgba(0.0, 0.3, 0.0, 0.8) }
+            GradientStop { position: 1.0; color: Qt.rgba(0.0, 0.7, 0.0, 0.8) }
         }
     }
 
-    Canvas {
-        id: canvas
-        width: canvasWidth
-        height: canvasWidth
+    // The same applies to the radar rings, too.
+    Repeater {
+        model: [ 1, 2 ]
+        delegate: Rectangle {
+            width: diameter * Math.cos(Math.PI * modelData / 6)
+            height: width
+            anchors.centerIn: radar
+            radius: width / 2
+            color: "transparent"
+            border.color: "#77ff77"
+            border.width: Theme.iconSizeExtraSmall / 10.0
+            opacity: 0.5
+        }
+    }
+
+    // The main radar container item
+    Item {
+        id: radar
+        width: radarWidth
+        height: radarWidth
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: satelliteInfoPage.horizontalCenter;
         anchors.left: undefined;
-        property int north : !settings.rotate || compass.reading === null ? 0 : compass.reading.azimuth;
-        property variant satellites : gpsDataSource.satellites;
-        property int signSizeSmall: Theme.fontSizeExtraSmall + 4;
-        property int signSizeActive: Theme.fontSizeExtraSmall + 4;
-        onNorthChanged: requestPaint();
-        onSatellitesChanged: function () {
-            if (pageStack.currentPage == satelliteInfoPage)
-                requestPaint();
+
+        // At least with Jolla Phone, the reading must be negated
+        // so that the compass turns in correct direction.
+        property int north: !settings.rotate || compass.reading === null ? 0 : -compass.reading.azimuth;
+        rotation: north
+
+        // At least with Sony Xperia XA2, the compass value is updated
+        // only a few times a second, resulting in jerkiness and poor user experience.
+        // RotationAnimation really saves the day here!
+        Behavior on rotation {
+            RotationAnimation {
+                easing.type: Easing.Linear
+                direction: RotationAnimation.Shortest
+            }
         }
-        onPaint: {
-            if (visible) {
-                var ctx = canvas.getContext('2d');
-                ctx.clearRect(0, 0, canvasWidth, canvasWidth);
-                var northRad = north * Math.PI / 180;
-                var compassPos = {
-                    north: {
-                        x: center - Math.sin(northRad) * radius,
-                        y: center - Math.cos(northRad) * radius
-                    },
-                    south: {
-                        x: center + Math.sin(northRad) * radius,
-                        y: center + Math.cos(northRad) * radius
-                    },
-                    west: {
-                        x: center + Math.sin(northRad - Math.PI / 2) * radius,
-                        y: center + Math.cos(northRad - Math.PI / 2) * radius
-                    },
-                    east: {
-                        x: center + Math.sin(northRad + Math.PI / 2) * radius,
-                        y: center + Math.cos(northRad + Math.PI / 2) * radius
-                    }
+
+        // The N-S and W-E lines, rotated by parent
+        Repeater {
+            model: [ 0, 1 ]
+            delegate: Rectangle {
+                width: Theme.iconSizeExtraSmall / 10.0
+                height: diameter
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                rotation: modelData * 90
+                color: "#77ff77"
+                opacity: 0.5
+            }
+        }
+
+        // Satellite identifiers (numbers)
+        // and their respective box color
+        Repeater {
+            model: gpsDataSource.satellites
+            delegate:
+                Label {
+                x: center + Math.sin((modelData.azimuth) * Math.PI / 180) * radius * Math.cos(modelData.elevation * Math.PI / 180) - width / 2.0
+                y: center - Math.cos((modelData.azimuth) * Math.PI / 180) * radius * Math.cos(modelData.elevation * Math.PI / 180) - height / 2.0
+                font.weight: Font.Bold
+                font.pixelSize: Theme.fontSizeExtraSmall
+                text: " "+modelData.identifier+" "
+                color: "white"
+
+                // Negate the radar containers rotation, so that the boxes and texts
+                // stay upright according to device orientation. Note that radar.rotation
+                // value read is already smoothed, so we can just use it raw.
+                rotation: -radar.rotation
+
+                Rectangle {
+                    z: -1
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: parent.width + parent.font.pixelSize / 8.0
+                    height: parent.height + parent.font.pixelSize / 8.0
+                    color: Qt.hsla(Math.floor(modelData.signalStrength < 40.0 ? modelData.signalStrength-(1.0/modelData.signalStrength) : 40.0) / 120.0, 1.0, 0.35, 1.0)
+                    radius: parent.font.pixelSize / 8.0
+
+                    // If the satellite is used for calculating the position,
+                    // draw a white border around the background box.
+                    border.color: modelData.inUse ? "white" : "transparent"
+                    border.width: modelData.inUse ? Theme.iconSizeExtraSmall / 10.0 : 0.0
                 }
+            }
+        }
 
-                // Lines
-                ctx.strokeStyle = Qt.rgba(0.0, 1.0, 0.0, 1.0);
-                ctx.beginPath();
-                ctx.moveTo(compassPos.north.x, compassPos.north.y);
-                ctx.lineTo(compassPos.south.x, compassPos.south.y);
-                ctx.closePath();
-                ctx.stroke();
-                ctx.beginPath();
-                ctx.moveTo(compassPos.west.x, compassPos.west.y);
-                ctx.lineTo(compassPos.east.x, compassPos.east.y);
-                ctx.closePath();
-                ctx.stroke();
+        // North, East, South and West indicators
+        Repeater {
+            model: ["N", "E", "S", "W"]
+            delegate:
+                Label {
+                x: center + Math.sin((index * 90) * Math.PI / 180) * radius - width / 2.0
+                y: center - Math.cos((index * 90) * Math.PI / 180) * radius - height / 2.0
+                color: "white"
+                font.weight: Font.Bold
+                font.pixelSize: Theme.fontSizeSmall
+                text: " "+modelData+" "
 
-                // Draw satellites one by one
-                ctx.textAlign = "center";
-                ctx.font = Theme.fontSizeExtraSmall + "px Sail Sans Pro";
-                var azimuthRad, elevationRad, x, y, dx;
-                satellites.forEach(function(sat) {
-//                    var inUseStr = sat.inUse ? "in use" : "not in use";
-//                    console.log("drawing sat " + sat.identifier
-//                                + "\tat azimuth " + sat.azimuth
-//                                + "\t and elevation " + sat.elevation
-//                                + "\twith signal strength " + sat.signalStrength
-//                                + " \t" + inUseStr);
-                    if(sat.signalStrength > 0) {
-                        azimuthRad = ((sat.azimuth - north) % 360) * Math.PI / 180;
-                        elevationRad = sat.elevation * Math.PI / 180;
-                        x = center + Math.sin(azimuthRad) * radius * Math.cos(elevationRad);
-                        y = center - Math.cos(azimuthRad) * radius * Math.cos(elevationRad);
-                        dx = sat.identifier >= 100 ? 1.8 : (sat.identifier >= 10 ? 1.4 : 1.0);
+                // Negate the radar containers rotation, so that the boxes and texts
+                // stay upright according to device orientation. Note that radar.rotation
+                // value read is already smoothed, so we can just use it raw.
+                rotation: -radar.rotation
 
-                        ctx.fillStyle = "hsl(" + Math.floor(sat.signalStrength < 40.0 ? sat.signalStrength-(1.0/sat.signalStrength) : 40.0) * 3.0 + ",100%,35%)";
-                        if (sat.inUse) {
-                            ctx.fillRect(x - signSizeActive*dx / 2 - 2, y - signSizeActive / 2 - 2, signSizeActive*dx + 4, signSizeActive + 4);
-                            ctx.fillRect(x - signSizeActive*dx / 2,     y - signSizeActive / 2,     signSizeActive*dx,     signSizeActive);
-                        } else {
-                            ctx.fillRect(x - signSizeSmall*dx / 2,      y - signSizeSmall / 2,      signSizeSmall*dx,      signSizeSmall);
-                        }
-
-                        ctx.fillStyle = Qt.rgba(1.0, 1.0, 1.0, 1.0);
-                        ctx.fillText(sat.identifier, x, y + Theme.fontSizeExtraSmall / 2 - 5)
-                    }
-                });
-
-                // Signs
-                ctx.textAlign = "center";
-                ctx.font = Theme.fontSizeSmall + "px Sail Sans Pro";
-                var signSize = Theme.fontSizeSmall + 3;
-
-                // North, South, West, East
-                ctx.fillStyle = Qt.rgba(0.0, 0.0, 1.0, 1.0);
-                ctx.fillRect(compassPos.north.x - signSize / 2, compassPos.north.y - signSize / 2, signSize, signSize);
-                ctx.fillRect(compassPos.south.x - signSize / 2, compassPos.south.y - signSize / 2, signSize, signSize);
-                ctx.fillRect(compassPos.west.x  - signSize / 2, compassPos.west.y  - signSize / 2, signSize, signSize);
-                ctx.fillRect(compassPos.east.x  - signSize / 2, compassPos.east.y  - signSize / 2, signSize, signSize);
-
-                ctx.fillStyle = Qt.rgba(1.0, 1.0, 1.0, 1.0);
-                ctx.fillText("N", compassPos.north.x, compassPos.north.y + Theme.fontSizeSmall / 2 - 5);
-                ctx.fillText("S", compassPos.south.x, compassPos.south.y + Theme.fontSizeSmall / 2 - 5);
-                ctx.fillText("W", compassPos.west.x,  compassPos.west.y  + Theme.fontSizeSmall / 2 - 5);
-                ctx.fillText("E", compassPos.east.x,  compassPos.east.y  + Theme.fontSizeSmall / 2 - 5);
+                Rectangle {
+                    z: -1
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: parent.width + parent.font.pixelSize / 8.0
+                    height: parent.height + parent.font.pixelSize / 8.0
+                    color: "blue"
+                    radius: parent.font.pixelSize / 8.0
+                }
             }
         }
     }
+
     InfoField {
         id: satellitesInfo
         label: qsTr("Satellites in use / view")
