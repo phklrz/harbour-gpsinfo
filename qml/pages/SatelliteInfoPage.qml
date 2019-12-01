@@ -96,7 +96,7 @@ Page {
 
         // At least with Jolla Phone, the reading must be negated
         // so that the compass turns in correct direction.
-        property int north: !settings.rotate || compass.reading === null ? 0 : -compass.reading.azimuth;
+        property int north: !settings.rotate || status === PageStatus.Inactive || compass.reading === null ? 0 : -compass.reading.azimuth;
         rotation: north
 
         // At least with Sony Xperia XA2, the compass value is updated
@@ -126,7 +126,7 @@ Page {
         // Satellite identifiers (numbers)
         // and their respective box color
         Repeater {
-            model: gpsDataSource.satellites
+            model: status === PageStatus.Inactive ? [] : gpsDataSource.satellites
             delegate:
                 Label {
                 x: center + Math.sin((modelData.azimuth) * Math.PI / 180) * radius * Math.cos(modelData.elevation * Math.PI / 180) - width / 2.0

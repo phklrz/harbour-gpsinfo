@@ -32,7 +32,7 @@ Page {
         chartAnimationEasing: Easing.Linear;
         chartAnimationDuration: 2000;
         chartType: Charts.ChartType.BAR
-        property variant satellites : gpsDataSource.satellites;
+        property variant satellites: status === PageStatus.Inactive ? [] : gpsDataSource.satellites;
         property bool componentLoaded: false
         Component.onCompleted: {
             chartData = {
