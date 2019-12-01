@@ -49,7 +49,11 @@ Page {
                 scaleOverride: true,
                 scaleFontColor: Theme.secondaryHighlightColor,
                 scaleFontSize: Theme.fontSizeSmall,
-                scaleFontFamily: Theme.fontFamily
+                scaleFontFamily: Theme.fontFamily,
+                scaleLineColor: Theme.rgba(Theme.highlightColor, Theme.highlightBackgroundOpacity),
+                scaleLineWidth: Theme.fontSizeTiny / 10.0,
+                scaleGridLineColor: Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity),
+                scaleGridLineWidth: Theme.fontSizeTiny / 10.0
             }
             rssiBarChart.componentLoaded = true
         }
