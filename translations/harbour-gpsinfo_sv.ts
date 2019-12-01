@@ -195,21 +195,14 @@
     </message>
 </context>
 <context>
-    <name>LicensePage</name>
-    <message>
-        <source>License</source>
-        <translation>Licens</translation>
-    </message>
-</context>
-<context>
     <name>SatelliteBarchartPage</name>
     <message>
         <source>Satellite signal strengths</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>RSSI</source>
-        <translation type="unfinished"></translation>
+        <source>Satellites in use / view</source>
+        <translation>Sat. som används / visas</translation>
     </message>
 </context>
 <context>
@@ -352,6 +345,19 @@
     <message>
         <source>Compass Calibration</source>
         <translation>Kompasskalibrering</translation>
+    </message>
+    <message>
+        <source>Satellite bar chart order</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>identifier</source>
+        <comment>&apos;Number&apos; of the satellite</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>signal strength</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

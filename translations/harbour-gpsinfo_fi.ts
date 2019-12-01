@@ -207,8 +207,8 @@ Longitude = Pituusaste</translatorcomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>RSSI</source>
-        <translation type="unfinished"></translation>
+        <source>Satellites in use / view</source>
+        <translation>Näkyvät satelliitit</translation>
     </message>
 </context>
 <context>
@@ -351,6 +351,19 @@ Longitude = Pituusaste</translatorcomment>
     <message>
         <source>Compass Calibration</source>
         <translation>Kompassikalibraatio</translation>
+    </message>
+    <message>
+        <source>Satellite bar chart order</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>identifier</source>
+        <comment>&apos;Number&apos; of the satellite</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>signal strength</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
