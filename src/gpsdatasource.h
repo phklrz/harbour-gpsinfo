@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QVariant>
 #include <QMap>
+#include <QTimer>
 #include <QGeoSatelliteInfoSource>
 #include <QGeoPositionInfoSource>
 
@@ -12,6 +13,7 @@ class GPSSatellite : public QObject {
     Q_PROPERTY(qreal azimuth READ getAzimuth WRITE setAzimuth NOTIFY azimuthChanged)
     Q_PROPERTY(qreal elevation READ getElevation WRITE setElevation NOTIFY elevationChanged)
     Q_PROPERTY(int identifier READ getIdentifier WRITE setIdentifier NOTIFY identifierChanged)
+    Q_PROPERTY(int system READ getSystem WRITE setSystem NOTIFY systemChanged)
     Q_PROPERTY(bool inUse READ isInUse WRITE setInUse NOTIFY inUseChanged)
     Q_PROPERTY(int signalStrength READ getSignalStrength WRITE setSignalStrength NOTIFY signalStrengthChanged)
 public:
@@ -20,6 +22,7 @@ private:
     qreal azimuth;
     qreal elevation;
     int identifier;
+    int system;
     bool inUse;
     int signalStrength;
 public slots:
@@ -27,16 +30,20 @@ public slots:
     qreal getElevation() {return this->elevation;}
     int getIdentifier() {return this->identifier;}
     int getSignalStrength() {return this->signalStrength;}
+    int getSystem() {return system;}
     bool isInUse() {return this->inUse;}
     void setAzimuth(qreal azimuth) {this->azimuth = azimuth; emit this->azimuthChanged(this->azimuth);}
     void setElevation(qreal elevation) {this->elevation = elevation; emit this->elevationChanged(this->elevation);}
     void setIdentifier(int identifier) {this->identifier = identifier; emit this->identifierChanged(this->identifier);}
+    void setSystem(int system) {this->system = system; emit this->systemChanged(this->system);}
     void setInUse(bool inUse) {this->inUse = inUse; emit this->inUseChanged(this->inUse);}
+
     void setSignalStrength(int signalStrength) {this->signalStrength = signalStrength; emit this->signalStrengthChanged(this->signalStrength);}
 signals:
     void azimuthChanged(qreal azimuth);
     void elevationChanged(qreal elevation);
     void identifierChanged(int identifier);
+    void systemChanged(int system);
     void inUseChanged(bool inUse);
     void signalStrengthChanged(int signalStrength);
 };
@@ -53,6 +60,7 @@ class GPSDataSource : public QObject
 public:
     explicit GPSDataSource(QObject *parent = 0);
 private:
+    QTimer SimulatorTimer;
     QGeoSatelliteInfoSource* sSource;
     QGeoPositionInfoSource* pSource;
     QMap<int, GPSSatellite*> satellites;
@@ -75,6 +83,7 @@ public slots:
     void setNumberOfUsedSatellites(int numberOfUsedSatellites) {this->numberOfUsedSatellites = numberOfUsedSatellites; emit this->numberOfUsedSatellitesChanged(numberOfUsedSatellites);}
     void setNumberOfVisibleSatellites(int numberOfVisibleSatellites) {this->numberOfVisibleSatellites = numberOfVisibleSatellites; emit this->numberOfVisibleSatellitesChanged(numberOfVisibleSatellites);}
     void setUpdateInterval(int updateInterval);
+    void SimulatorTimeout();
 signals:
     void activeChanged(bool);
     void movementDirectionChanged(qreal);
