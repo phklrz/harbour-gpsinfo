@@ -122,7 +122,7 @@ Page {
                     MenuItem { text: "Français";   onClicked: settings.locale = "fr"; }
                     MenuItem { text: "Nederlands"; onClicked: settings.locale = "nl"; }
                     MenuItem { text: "Magyar";     onClicked: settings.locale = "hu"; }
-                    MenuItem { text: "Polskie";    onClicked: settings.locale = "pl"; }
+                    MenuItem { text: "Polski";    onClicked: settings.locale = "pl"; }
                     MenuItem { text: "Pусский";    onClicked: settings.locale = "ru"; }
                     MenuItem { text: "Svenska";    onClicked: settings.locale = "sv"; }
                     MenuItem { text: "简体中文";       onClicked: settings.locale = "zh_CN"; }
