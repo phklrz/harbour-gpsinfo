@@ -16,7 +16,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="86"/>
         <source>GPSInfo is open source software licensed under the terms of the GNU General Public License.</source>
-        <translation>GPSInfo  是 GNU 通用许可协议条款下的开源软件。</translation>
+        <translation>GPSInfo 是 GNU 通用许可协议条款下的开源软件。</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="22"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="92"/>
         <source>For suggestions, bugs and ideas visit </source>
-        <translation>提出建议、反馈 bug 并给予灵感</translation>
+        <translation>提出建议、反馈缺陷并给予灵感</translation>
     </message>
 </context>
 <context>
@@ -147,7 +147,7 @@
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="88"/>
         <source>GPSInfo</source>
-        <translation>GPSInfo</translation>
+        <translation>GPS信息</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="103"/>
@@ -157,12 +157,12 @@
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="105"/>
         <source>active</source>
-        <translation>激活</translation>
+        <translation>活跃</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="105"/>
         <source>inactive</source>
-        <translation>未激活</translation>
+        <translation>不活跃</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="108"/>
@@ -227,7 +227,7 @@
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="210"/>
         <source>Satellites in use / view</source>
-        <translation>使用及找到的卫星</translation>
+        <translation>正在使用及找到的卫星</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="215"/>
@@ -250,7 +250,7 @@
     <message>
         <location filename="../qml/pages/SatelliteBarchartPage.qml" line="124"/>
         <source>Satellites in use / view</source>
-        <translation>使用及找到的卫星</translation>
+        <translation>正在使用找到的卫星</translation>
     </message>
 </context>
 <context>
@@ -263,7 +263,7 @@
     <message>
         <location filename="../qml/pages/SatelliteInfoPage.qml" line="185"/>
         <source>Satellites in use / view</source>
-        <translation>使用及找到的卫星</translation>
+        <translation>正在使用/找到的卫星</translation>
     </message>
 </context>
 <context>
@@ -359,12 +359,12 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="169"/>
         <source>Show empty channels</source>
-        <translation type="unfinished"></translation>
+        <translation>显示空频道</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="188"/>
         <source>Satellite bar chart order</source>
-        <translation type="unfinished"></translation>
+        <translation>卫星柱状图排序</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="191"/>
