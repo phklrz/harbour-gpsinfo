@@ -52,8 +52,9 @@ void GPSDataSource::satellitesInUseUpdated(const QList<QGeoSatelliteInfo> &infos
 void GPSDataSource::satellitesInViewUpdated(const QList<QGeoSatelliteInfo> &infos) {
     qDeleteAll(this->satellites);
     this->satellites.clear();
+    bool showAll = this->settings.getShowEmptyChannels();
     foreach (QGeoSatelliteInfo info, infos) {
-        if(info.signalStrength() > 0) {
+        if(showAll || info.signalStrength() > 0) {
             GPSSatellite* sat = new GPSSatellite(this);
             sat->setAzimuth(info.attribute(QGeoSatelliteInfo::Azimuth));
             sat->setElevation(info.attribute(QGeoSatelliteInfo::Elevation));
@@ -170,6 +171,13 @@ void GPSDataSource::SimulatorTimeout()
     satellite.setSatelliteIdentifier(228);
     satellite.setSatelliteSystem(QGeoSatelliteInfo::GPS);
     satellite.setSignalStrength(2);
+    satellites.append(satellite);
+
+    satellite.setAttribute(QGeoSatelliteInfo::Azimuth, 280.0);
+    satellite.setAttribute(QGeoSatelliteInfo::Elevation, 75.0);
+    satellite.setSatelliteIdentifier(247);
+    satellite.setSatelliteSystem(QGeoSatelliteInfo::GPS);
+    satellite.setSignalStrength(0);
     satellites.append(satellite);
 
     // Return all satellites in view

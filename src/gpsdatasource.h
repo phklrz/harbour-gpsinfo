@@ -7,6 +7,7 @@
 #include <QTimer>
 #include <QGeoSatelliteInfoSource>
 #include <QGeoPositionInfoSource>
+#include "gpsinfosettings.h"
 
 class GPSSatellite : public QObject {
     Q_OBJECT
@@ -68,6 +69,7 @@ private:
     qreal movementDirection = NAN;
     int numberOfUsedSatellites;
     int numberOfVisibleSatellites;
+    GPSInfoSettings settings;
 public slots:
     qreal getMovementDirection() {return this->movementDirection;}
     int getNumberOfUsedSatellites() {return this->numberOfUsedSatellites;}

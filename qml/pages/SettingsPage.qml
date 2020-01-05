@@ -166,6 +166,25 @@ Page {
             }
 
             ComboBox {
+                label: qsTr("Show empty channels")
+                menu: ContextMenu {
+                    MenuItem {
+                        text: qsTr("yes")
+                        onClicked: {
+                            settings.showEmptyChannels = true;
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("no")
+                        onClicked: {
+                            settings.showEmptyChannels = false;
+                        }
+                    }
+                }
+                Component.onCompleted: currentIndex = settings.showEmptyChannels ? 0 : 1
+            }
+
+            ComboBox {
                 label: qsTr("Satellite bar chart order")
                 menu: ContextMenu {
                     MenuItem {

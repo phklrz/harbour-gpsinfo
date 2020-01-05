@@ -243,12 +243,12 @@
 <context>
     <name>SatelliteBarchartPage</name>
     <message>
-        <location filename="../qml/pages/SatelliteBarchartPage.qml" line="31"/>
+        <location filename="../qml/pages/SatelliteBarchartPage.qml" line="30"/>
         <source>Satellite signal strengths</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SatelliteBarchartPage.qml" line="131"/>
+        <location filename="../qml/pages/SatelliteBarchartPage.qml" line="124"/>
         <source>Satellites in use / view</source>
         <translation>使用及找到的卫星</translation>
     </message>
@@ -305,7 +305,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="89"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="247"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="266"/>
         <source>Speed</source>
         <translation>速度</translation>
     </message>
@@ -346,102 +346,109 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="153"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="172"/>
         <source>yes</source>
         <translation>确认</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="159"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="178"/>
         <source>no</source>
         <translation>取消</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="169"/>
+        <source>Show empty channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="188"/>
         <source>Satellite bar chart order</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="172"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="191"/>
         <source>identifier</source>
         <comment>&apos;Number&apos; of the satellite</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="178"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="197"/>
         <source>signal strength</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="197"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="216"/>
         <source>Show</source>
         <translation>显示</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="203"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="222"/>
         <source>Appview</source>
         <translation>软件视图</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="209"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="228"/>
         <source>Cover</source>
         <translation>封面</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="215"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="234"/>
         <source>GPS state</source>
         <translation>GPS 状态</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="223"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="242"/>
         <source>Latitude</source>
         <translation>纬度</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="231"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="250"/>
         <source>Longitude</source>
         <translation>经度</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="239"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="258"/>
         <source>Altitude</source>
         <translation>海拔</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="255"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="274"/>
         <source>Movement Direction</source>
         <translation>运动方向</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="263"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="282"/>
         <source>Last Update</source>
         <translation>最近更新</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="271"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="290"/>
         <source>Vertical Accuracy</source>
         <translation>垂直精度</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="279"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="298"/>
         <source>Horizontal Accuracy</source>
         <translation>水平精度</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="287"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="306"/>
         <source>Satellite Info</source>
         <translation>卫星信息</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="295"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="314"/>
         <source>Compass Direction</source>
         <translation>罗盘方向</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="303"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="322"/>
         <source>Compass Calibration</source>
         <translation>罗盘校准</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="313"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="332"/>
         <source>requires app restart</source>
         <translation>需要重启软件</translation>
     </message>

@@ -38,6 +38,7 @@ class GPSInfoSettings : public QMLSettingsWrapper
     Q_PROPERTY(QString barChartOrder READ getBarChartOrder WRITE setBarChartOrder NOTIFY barChartOrderChanged)
     Q_PROPERTY(int updateInterval READ getUpdateInterval WRITE setUpdateInterval NOTIFY updateIntervalChanged)
     Q_PROPERTY(bool rotate READ getRotate WRITE setRotate NOTIFY rotateChanged)
+    Q_PROPERTY(bool showEmptyChannels READ getShowEmptyChannels WRITE setShowEmptyChannels NOTIFY showEmptyChannelsChanged)
 public:
     explicit GPSInfoSettings(QObject *parent = 0);
 
@@ -72,6 +73,7 @@ public:
     QString getBarChartOrder() {return this->value("barChartOrder", "id").toString();}
     int getUpdateInterval() {return this->value("updateInterval", 1).toInt();}
     bool getRotate() {return this->value("rotate", true).toBool();}
+    bool getShowEmptyChannels() {return this->value("showEmptyChannels", true).toBool();}
 
     void setCoordinateFormat(QString val) {this->setValue("coordinateFormat", val); emit coordinateFormatChanged(val);}
     void setLocale(QString val) {this->setValue("locale", val); emit localeChanged(val);}
@@ -104,6 +106,7 @@ public:
     void setBarChartOrder(QString val) {this->setValue("barChartOrder", val); emit barChartOrderChanged(val);}
     void setUpdateInterval(int val) {this->setValue("updateInterval", val); emit updateIntervalChanged(val);}
     void setRotate(bool val) {this->setValue("rotate", val); emit rotateChanged(val);}
+    void setShowEmptyChannels(bool val) {this->setValue("showEmptyChannels", val); emit showEmptyChannelsChanged(val);}
 private:
 
 signals:
@@ -138,6 +141,7 @@ signals:
     void barChartOrderChanged(QString);
     void updateIntervalChanged(int);
     void rotateChanged(bool);
+    void showEmptyChannelsChanged(bool);
 public slots:
 
 };

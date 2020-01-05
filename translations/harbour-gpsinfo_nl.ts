@@ -359,5 +359,9 @@
         <source>signal strength</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Show empty channels</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

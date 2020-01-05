@@ -17,7 +17,6 @@ Page {
 
     onStatusChanged: {
         if (status == PageStatus.Active && !subPagesPushed) {
-            console.log(subPagesPushed)
             subPagesPushed = true
             pageStack.pushAttached(Qt.resolvedUrl("FirstPage.qml"),
                            { positionSource: satelliteBarchartPage.positionSource,
@@ -83,13 +82,7 @@ Page {
             if (!rssiBarChart.componentLoaded || pageStack.currentPage !== satelliteBarchartPage)
                 return;
 
-            var results = [];
-            gpsDataSource.satellites.forEach(function(sat) {
-
-                // Add visible satellites
-                if(sat.signalStrength > 0)
-                    results.push(sat)
-            });
+            var results = gpsDataSource.satellites;
 
             if(results.length > 0) {
                 // Sort satellites by signal strength
