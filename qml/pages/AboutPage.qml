@@ -61,7 +61,7 @@ Page {
             AboutLabel {
                 font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.secondaryColor
-                text: "Copyright © 2014-2016 Marcel Witte\n2019-2020 Matti Viljanen\n2019 Miklós Márton"
+                text: "Copyright © 2014-2016 Marcel Witte\n2019 Miklós Márton\n2019 Matti Lehtimäki\n2019-2020 Matti Viljanen"
             }
 
             AboutLabel {
@@ -74,7 +74,7 @@ Page {
                       "Français: ???\n"+
                       "Nederlands: ???\n"+
                       "Magyar: Márton Miklós\n"+
-                      "Polskie: ???\n"+
+                      "Polskie: atlochowski\n"+
                       "Pусский: ???\n"+
                       "Svenska: Åke Engelbrektson\n"+
                       "简体中文: dashinfantry"
