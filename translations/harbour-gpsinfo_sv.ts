@@ -198,7 +198,7 @@
     <name>SatelliteBarchartPage</name>
     <message>
         <source>Satellite signal strengths</source>
-        <translation type="unfinished"></translation>
+        <translation>Satellitsignalstyrka</translation>
     </message>
     <message>
         <source>Satellites in use / view</source>
@@ -348,20 +348,20 @@
     </message>
     <message>
         <source>Satellite bar chart order</source>
-        <translation type="unfinished"></translation>
+        <translation>Satellitordning i stapeldiagram</translation>
     </message>
     <message>
         <source>identifier</source>
         <comment>&apos;Number&apos; of the satellite</comment>
-        <translation type="unfinished"></translation>
+        <translation>identifierare</translation>
     </message>
     <message>
         <source>signal strength</source>
-        <translation type="unfinished"></translation>
+        <translation>signalstyrka</translation>
     </message>
     <message>
         <source>Show empty channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa tomma kanaler</translation>
     </message>
 </context>
 </TS>
