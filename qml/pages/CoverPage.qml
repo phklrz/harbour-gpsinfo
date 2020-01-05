@@ -164,7 +164,7 @@ CoverBackground {
         id: coverAction
 
         CoverAction {
-            iconSource: positionSource.active ? "image://theme/icon-cover-cancel" : "image://theme/icon-cover-play"
+            iconSource: positionSource.active ? "image://theme/icon-cover-pause" : "image://theme/icon-cover-play"
             onTriggered: {
                 if (positionSource.active) {
                     console.log("deactivating GPS");
