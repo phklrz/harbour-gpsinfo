@@ -245,7 +245,7 @@
     <message>
         <location filename="../qml/pages/SatelliteBarchartPage.qml" line="30"/>
         <source>Satellite signal strengths</source>
-        <translation type="unfinished"></translation>
+        <translation>卫星信号强度</translation>
     </message>
     <message>
         <location filename="../qml/pages/SatelliteBarchartPage.qml" line="124"/>
@@ -370,12 +370,12 @@
         <location filename="../qml/pages/SettingsPage.qml" line="191"/>
         <source>identifier</source>
         <comment>&apos;Number&apos; of the satellite</comment>
-        <translation type="unfinished"></translation>
+        <translation>卫星数量</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="197"/>
         <source>signal strength</source>
-        <translation type="unfinished"></translation>
+        <translation>信号强度</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="216"/>

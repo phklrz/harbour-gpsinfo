@@ -59,6 +59,7 @@ void GPSDataSource::satellitesInViewUpdated(const QList<QGeoSatelliteInfo> &info
             sat->setAzimuth(info.attribute(QGeoSatelliteInfo::Azimuth));
             sat->setElevation(info.attribute(QGeoSatelliteInfo::Elevation));
             sat->setIdentifier(info.satelliteIdentifier());
+            sat->setSystem(info.satelliteSystem());
             sat->setInUse(false);
             sat->setSignalStrength(info.signalStrength());
             this->satellites[info.satelliteIdentifier()] = sat;
