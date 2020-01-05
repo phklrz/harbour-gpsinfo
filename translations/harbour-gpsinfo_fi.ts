@@ -36,18 +36,18 @@
     </message>
     <message>
         <source>inactive</source>
-        <translation>pois päältä</translation>
+        <translation>pois</translation>
     </message>
     <message>
         <source>Latitude</source>
         <translatorcomment>I translated these, but the English names are valid as well:
 Latitude = Leveysaste
 Longitude = Pituusaste</translatorcomment>
-        <translation>Leveysaste</translation>
+        <translation>Lev.</translation>
     </message>
     <message>
         <source>Longitude</source>
-        <translation>Pituusaste</translation>
+        <translation>Pit.</translation>
     </message>
     <message>
         <source>Altitude</source>
@@ -72,7 +72,7 @@ Longitude = Pituusaste</translatorcomment>
     </message>
     <message>
         <source>Mov.</source>
-        <translation>Liik.</translation>
+        <translation>Liikes.</translation>
     </message>
     <message>
         <source>Com.</source>
@@ -204,7 +204,7 @@ Longitude = Pituusaste</translatorcomment>
     <name>SatelliteBarchartPage</name>
     <message>
         <source>Satellite signal strengths</source>
-        <translation type="unfinished"></translation>
+        <translation>Satelliittien signaalinvoimakkuus</translation>
     </message>
     <message>
         <source>Satellites in use / view</source>
@@ -354,16 +354,16 @@ Longitude = Pituusaste</translatorcomment>
     </message>
     <message>
         <source>Satellite bar chart order</source>
-        <translation type="unfinished"></translation>
+        <translation>Pylväskuvaajan järjestys</translation>
     </message>
     <message>
         <source>identifier</source>
         <comment>&apos;Number&apos; of the satellite</comment>
-        <translation type="unfinished"></translation>
+        <translation>tunniste</translation>
     </message>
     <message>
         <source>signal strength</source>
-        <translation type="unfinished"></translation>
+        <translation>signaalinvoimakkuus</translation>
     </message>
     <message>
         <source>Show empty channels</source>
