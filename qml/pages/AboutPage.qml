@@ -74,7 +74,7 @@ Page {
                       "Français: ???\n"+
                       "Nederlands: ???\n"+
                       "Magyar: Márton Miklós\n"+
-                      "Polskie: atlochowski\n"+
+                      "Polski: atlochowski\n"+
                       "Pусский: ???\n"+
                       "Svenska: Åke Engelbrektson\n"+
                       "简体中文: dashinfantry"
