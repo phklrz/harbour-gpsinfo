@@ -176,7 +176,7 @@ Page {
             InfoField {
                 label: qsTr("Last update")
                 visible: settings.showLastUpdateApp
-                value: positionSource.position.valid ? Qt.formatTime(positionSource.position.timestamp, "hh:mm:ss") : "-"
+                value: positionSource.position.coordinate.isValid ? Qt.formatTime(positionSource.position.timestamp, "hh:mm:ss") : "-"
             }
             InfoField {
                 label: qsTr("Vertical accuracy")
