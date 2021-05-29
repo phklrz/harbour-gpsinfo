@@ -66,7 +66,7 @@ private:
     QGeoPositionInfoSource* pSource;
     QMap<int, GPSSatellite*> satellites;
     bool active;
-    qreal movementDirection = NAN;
+    qreal movementDirection = qQNaN();
     int numberOfUsedSatellites;
     int numberOfVisibleSatellites;
     GPSInfoSettings settings;
