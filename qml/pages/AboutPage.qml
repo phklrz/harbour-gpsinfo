@@ -70,12 +70,13 @@ Page {
                 text: "English: Marcel Witte\n"+
                       "Deutsch: Marcel Witte\n"+
                       "Español: ???\n"+
-                      "Suomi: Tenho\n"+
+                      "Suomi: specig, Tenho, direc85\n"+
                       "Français: ???\n"+
                       "Nederlands: ???\n"+
                       "Magyar: Márton Miklós\n"+
                       "Polski: atlochowski\n"+
                       "Pусский: ???\n"+
+                      "Slovenčina: okruhliak\n"+
                       "Svenska: Åke Engelbrektson\n"+
                       "简体中文: dashinfantry"
             }
