@@ -64,6 +64,13 @@ TRANSLATIONS += \
     translations/harbour-gpsinfo_sv.ts \
     translations/harbour-gpsinfo_zh_CN.ts
 
+# 1) Run lupdate from SDK menu
+# 2) Run "lrelease harbour-gpsinfo.pro" from terminal (not SFDK)
+# 3) Generate RPM packages for deployment
+qmfiles.files = $$files(translations/*.qm)
+qmfiles.path = /usr/share/$${TARGET}/translations
+INSTALLS += qmfiles
+
 images.files = \
     images/coverbg.png
 
