@@ -14,7 +14,7 @@
         <translation>版本</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="86"/>
+        <location filename="../qml/pages/AboutPage.qml" line="87"/>
         <source>GPSInfo is open source software licensed under the terms of the GNU General Public License.</source>
         <translation>GPSInfo 是 GNU 通用许可协议条款下的开源软件。</translation>
     </message>
@@ -24,7 +24,7 @@
         <translation>查看版本</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="92"/>
+        <location filename="../qml/pages/AboutPage.qml" line="93"/>
         <source>For suggestions, bugs and ideas visit </source>
         <translation>提出建议、反馈缺陷并给予灵感</translation>
     </message>

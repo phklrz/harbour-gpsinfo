@@ -14,7 +14,7 @@
         <translation>Verzió</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="86"/>
+        <location filename="../qml/pages/AboutPage.qml" line="87"/>
         <source>GPSInfo is open source software licensed under the terms of the GNU General Public License.</source>
         <translation>A GPSInfo egy nyílt forráskódú GNU General Public licenszű szoftver.</translation>
     </message>
@@ -24,7 +24,7 @@
         <translation>Licensz megtekintése</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="92"/>
+        <location filename="../qml/pages/AboutPage.qml" line="93"/>
         <source>For suggestions, bugs and ideas visit </source>
         <translation>Javaslataiddal, hibajelentésekkel 
 kérjük ide fordulj</translation>
