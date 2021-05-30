@@ -1,3 +1,9 @@
+* Sun May 30 2021 Matti Viljanen 0.13.1-1
+- Create changelog
+- Update Chinese, Swedish and Slovak language
+- Fix last update timestamp (thanks, AndreySV)
+- Fix build errors on newer SDKs
+
 * Sun Jan 5 2020 Matti Viljanen 0.13.0-1
 - Add satellite system data field (unused)
 - Update Polish translation (thanks, atlochowski)

@@ -1,12 +1,12 @@
 Name: harbour-gpsinfo
 Summary: GPSInfo
 # Checklist: AboutPage.qml
-Version: 0.13
+Version: 0.13.1
 Release: 1
 # The contents of the Group field should be one of the groups listed here:
 # https://github.com/mer-tools/spectacle/blob/master/data/GROUPS
 Group: Qt/Qt
-URL: https://github.com/balta3/sailfish-gpsinfo
+URL: https://github.com/direc85/sailfish-gpsinfo
 License: GPL-2.0
 # This must be generated before uploading a package to a remote build service.
 # Usually this line does not need to be modified.
