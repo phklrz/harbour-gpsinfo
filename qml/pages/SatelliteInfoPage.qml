@@ -13,6 +13,7 @@ Page {
     property Compass compass
     property GPSDataSource gpsDataSource
     property bool satelliteBarchartPagePushed: false
+    property int declination: settings.magneticDeclination==undefined ? 0:settings.magneticDeclination
 
     PageHeader {
         title: qsTr("Satellite Info")
@@ -88,7 +89,8 @@ Page {
 
         // At least with Jolla Phone, the reading must be negated
         // so that the compass turns in correct direction.
-        property int north: !settings.rotate || status === PageStatus.Inactive || compass.reading === null ? 0 : -compass.reading.azimuth;
+
+        property int north: !settings.rotate || status === PageStatus.Inactive || compass.reading === null ? 0 : -compass.reading.azimuth - declination;
         rotation: north
 
         // At least with Sony Xperia XA2, the compass value is updated
@@ -114,11 +116,99 @@ Page {
                 opacity: 0.5
             }
         }
+        //Magnetic N line
+            Rectangle {
+                        width: Theme.iconSizeExtraSmall / 10.0
+                        height: diameter/2
+                        anchors.left: parent.horizontalCenter
+                        anchors.bottom: parent.verticalCenter  //+diameter/2
+                        transform: Rotation { origin.x: 0 ; origin.y: diameter/2; angle: declination}
+                        color: "#ff0000"
+                        opacity: (declination !=0) ? 1 : 0 //0.5
+                    }
+        //Movement Direction line
+            Rectangle { visible:  !isNaN(gpsDataSource.movementDirection)
+                        width: Theme.iconSizeExtraSmall / 10.0
+                        height: diameter/2
+                        anchors.left: parent.horizontalCenter
+                        anchors.bottom: parent.verticalCenter  //+diameter/2
+                        transform: Rotation { origin.x: 0 ; origin.y: diameter/2; angle: isNaN(gpsDataSource.movementDirection) ? 170 : gpsDataSource.movementDirection}
+                        color: "cyan"
+                        opacity: 1//(declination !=0) ? 1 : 0
+                    }
 
-        // Satellite identifiers (numbers)
-        // and their respective box color
+        // North, East, South, West, MagneticNorth indicators
         Repeater {
-            model: status === PageStatus.Inactive ? [] : gpsDataSource.satellites
+            model: declination !=0 ? ["N", "E", "S", "W", "M"]:["N", "E", "S", "W"]
+
+            delegate:
+                Label {
+                x: center + Math.sin((index !==4 ? (index * 90) : declination) * Math.PI / 180) * (radius+width/2) - width / 2.0
+                y: center - Math.cos((index !==4 ? (index * 90) : declination) * Math.PI / 180) * (radius+width/2) - height / 2.0
+                color: "white"
+                font.weight: Font.Bold
+                font.pixelSize: Theme.fontSizeExtraSmall
+                text: index !==4 ? " "+modelData+" " : compass.reading.calibrationLevel > 0.99 ? " M ":" m "
+
+
+                // Negate the radar containers rotation, so that the boxes and texts
+                // stay upright according to device orientation. Note that radar.rotation
+                // value read is already smoothed, so we can just use it raw.
+                rotation: -radar.rotation
+
+                Rectangle {
+                    z: -1
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: parent.width + parent.font.pixelSize / 8.0
+                    height: parent.height + parent.font.pixelSize / 8.0
+                    color: index !== 4 ? "blue" : "red"
+                    radius: parent.font.pixelSize / 8.0
+                }
+            }
+        }
+        // Satellite identifiers (numbers), and their respective box rssi color and inUse border
+        // first draw them all solid , hiding the radar chart background, and ensuring colors are correct
+        Repeater {
+            model: status === PageStatus.Inactive ? [] : gpsDataSource.satellites.sort(function(a,b) {return (a.inUse ? 1:-1) - (b.inUse ? 1:-1)})
+            delegate:
+                Label {
+                x: center + Math.sin((modelData.azimuth) * Math.PI / 180) * radius * Math.cos(modelData.elevation * Math.PI / 180) - width / 2.0
+                y: center - Math.cos((modelData.azimuth) * Math.PI / 180) * radius * Math.cos(modelData.elevation * Math.PI / 180) - height / 2.0
+                font.weight: Font.Bold
+                font.pixelSize: Theme.fontSizeExtraSmall
+                text: " "+modelData.identifier+" "
+                color: "white"
+                opacity: 1.0
+
+                // Negate the radar containers rotation, so that the boxes and texts
+                // stay upright according to device orientation. Note that radar.rotation
+                // value read is already smoothed, so we can just use it raw.
+                rotation: -radar.rotation
+
+                Rectangle {
+                    z: -1
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: parent.width + parent.font.pixelSize / 8.0
+                    height: parent.height + parent.font.pixelSize / 8.0
+                    color:  Qt.hsla(Math.floor(modelData.signalStrength < 40.0 ? modelData.signalStrength-(1.0/modelData.signalStrength) : 40.0) / 120.0, 1.0, 0.35, 1.0)
+                    opacity: 1
+                    radius: parent.font.pixelSize / 8.0
+
+                    // If the satellite is used for calculating the position,
+                    // draw a white border around the background box.
+                    border.color: modelData.inUse ? "white" : "transparent"
+                    border.width: modelData.inUse ? Theme.iconSizeExtraSmall / 10.0 : 0.0
+                }
+            }
+        }
+
+        // Satellite identifiers (numbers), and their respective box rssi color and inUse border
+        //now draw transparent, so that overlaid numbers can be read.
+        Repeater {
+            //sort active sats on top.
+            model: status === PageStatus.Inactive ? [] : gpsDataSource.satellites.sort(function(a,b) {return (a.inUse ? 1:-1) - (b.inUse ? 1:-1)})
             delegate:
                 Label {
                 x: center + Math.sin((modelData.azimuth) * Math.PI / 180) * radius * Math.cos(modelData.elevation * Math.PI / 180) - width / 2.0
@@ -133,51 +223,25 @@ Page {
                 // value read is already smoothed, so we can just use it raw.
                 rotation: -radar.rotation
 
-                Rectangle {
-                    z: -1
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
-                    width: parent.width + parent.font.pixelSize / 8.0
-                    height: parent.height + parent.font.pixelSize / 8.0
-                    color: Qt.hsla(Math.floor(modelData.signalStrength < 40.0 ? modelData.signalStrength-(1.0/modelData.signalStrength) : 40.0) / 120.0, 1.0, 0.35, 1.0)
-                    radius: parent.font.pixelSize / 8.0
+//                Rectangle {
+//                    z: -1
+//                    anchors.horizontalCenter: parent.horizontalCenter
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    width: parent.width + parent.font.pixelSize / 8.0
+//                    height: parent.height + parent.font.pixelSize / 8.0
+//                    color: "transparent" //Qt.hsla(Math.floor(modelData.signalStrength < 40.0 ? modelData.signalStrength-(1.0/modelData.signalStrength) : 40.0) / 120.0, 1.0, 0.35, 1.0)
+//                    opacity: 0.5
+//                    radius: parent.font.pixelSize / 8.0
 
-                    // If the satellite is used for calculating the position,
-                    // draw a white border around the background box.
-                    border.color: modelData.inUse ? "white" : "transparent"
-                    border.width: modelData.inUse ? Theme.iconSizeExtraSmall / 10.0 : 0.0
-                }
+//                    // If the satellite is used for calculating the position,
+//                    // draw a white border around the background box.
+//                    border.color: modelData.inUse ? "white" : "transparent"
+//                    border.width: modelData.inUse ? Theme.iconSizeExtraSmall / 10.0 : 0.0
+//                }
             }
         }
 
-        // North, East, South and West indicators
-        Repeater {
-            model: ["N", "E", "S", "W"]
-            delegate:
-                Label {
-                x: center + Math.sin((index * 90) * Math.PI / 180) * radius - width / 2.0
-                y: center - Math.cos((index * 90) * Math.PI / 180) * radius - height / 2.0
-                color: "white"
-                font.weight: Font.Bold
-                font.pixelSize: Theme.fontSizeSmall
-                text: " "+modelData+" "
 
-                // Negate the radar containers rotation, so that the boxes and texts
-                // stay upright according to device orientation. Note that radar.rotation
-                // value read is already smoothed, so we can just use it raw.
-                rotation: -radar.rotation
-
-                Rectangle {
-                    z: -1
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
-                    width: parent.width + parent.font.pixelSize / 8.0
-                    height: parent.height + parent.font.pixelSize / 8.0
-                    color: "blue"
-                    radius: parent.font.pixelSize / 8.0
-                }
-            }
-        }
     }
 
     InfoField {
@@ -185,6 +249,6 @@ Page {
         label: qsTr("Satellites in use / view")
         value: gpsDataSource.numberOfUsedSatellites + " / " + gpsDataSource.numberOfVisibleSatellites
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: Theme.paddingLarge
+        anchors.bottomMargin: Theme.paddingLarge*1.1  //move up a bit for parallax clipping at glass edge
     }
 }

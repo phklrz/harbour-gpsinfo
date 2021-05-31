@@ -24,6 +24,7 @@ DISTFILES += qml/pages/CoverPage.qml \
     qml/components/DoubleSwitch.qml \
     qml/pages/AboutPage.qml \
     qml/pages/LicensePage.qml \
+    qml/pages/SharePage.qml \
     rpm/harbour-gpsinfo.spec \
     harbour-gpsinfo.desktop \
     qml/harbour-gpsinfo.qml \

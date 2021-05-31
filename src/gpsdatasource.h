@@ -1,6 +1,7 @@
 #ifndef GPSDATASOURCE_H
 #define GPSDATASOURCE_H
 
+#include <math.h> //sjb  for NAN
 #include <QObject>
 #include <QVariant>
 #include <QMap>

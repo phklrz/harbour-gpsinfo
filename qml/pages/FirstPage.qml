@@ -1,6 +1,6 @@
-import QtQuick 2.0
+import QtQuick 2.6//0
 import Sailfish.Silica 1.0
-import QtPositioning 5.2
+import QtPositioning 5.4//2
 import QtSensors 5.0
 import harbour.gpsinfo 1.0
 import "../components"
@@ -13,6 +13,7 @@ Page {
     property Compass compass
     property GPSDataSource gpsDataSource
     property bool subPagesPushed: false
+    property date activateGPSTimestamp: new Date()
 
     allowedOrientations: Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted
 
@@ -22,6 +23,41 @@ Page {
             pageStack.pushAttached(Qt.resolvedUrl("SatelliteInfoPage.qml"),
                            { gpsDataSource: page.gpsDataSource, compass: page.compass})
         }
+    }
+    Item {
+            id: gpsTimes
+            property date activateGPSTimestamp: new Date()
+            property date firstFixTimestamp: new Date()
+            property bool pendingFix : true;
+            property int tTFF: { console.log("PF"+pendingFix);
+                if ( pendingFix && positionSource.position.coordinate.isValid && (positionSource.position.timestamp > activateGPSTimestamp)) {
+                    pendingFix=false
+                    firstFixTimestamp=positionSource.position.timestamp
+                    Notices.show("GPS Time to First Fix ", Notice.Long)
+                }
+                if ( pendingFix) {
+                    console.log("PF"+pendingFix);
+                    return Math.round((new Date() - activateGPSTimestamp)/1000)
+                } else {
+                    console.log("PF"+pendingFix);
+                 return Math.round((firstFixTimestamp - activateGPSTimestamp)/1000)
+                }
+            }
+            function tTFFStr() {
+
+            }
+
+            function clear() {
+              firstFixTimestamp = activateGPSTimestamp = new Date()
+              pendingFix =true
+            }
+            function roundElapsedTime(T) {
+                if (T<=90) return Math.round(T)+ "sec"
+                T=T/60;
+                if (T<=90) return LocationFormater.roundToDecimal(T,1)+ "min"
+                T=T/60;
+                return LocationFormater.roundToDecimal(T,1)+ "hr"
+            }
     }
 
     states: [
@@ -60,6 +96,8 @@ Page {
                         console.log("activating GPS");
                         positionSource.start();
                         gpsDataSource.active = true;
+                        gpsTimes.clear()
+                        activateGPSTimestamp = new Date()
                         console.log("active: " + positionSource.active);
                     }
                 }
@@ -79,13 +117,18 @@ Page {
                     }
                 }
             }
+            MenuItem {
+                enabled: gpsDataSource.active
+                text: qsTr("Share Location")
+                onClicked: pageStack.push(Qt.resolvedUrl("SharePage.qml"))
+            }
         }
 
         contentHeight: pageHeader.height + column.height;
 
         PageHeader {
             id: pageHeader
-            title: qsTr("GPSInfo")
+            title: qsTr("GPS Info")
         }
 
         Column {
@@ -176,8 +219,19 @@ Page {
             InfoField {
                 label: qsTr("Last update")
                 visible: settings.showLastUpdateApp
-                value: positionSource.position.coordinate.isValid ? Qt.formatTime(positionSource.position.timestamp, "hh:mm:ss") : "-"
+                value: { //
+                    var secsSincePosition = (new Date() - positionSource.position.timestamp)/1000
+                    return ((secsSincePosition > (1 +settings.updateInterval) ) ? "-"+roundElapsedTime(secsSincePosition)+"  " : " ")
+                            + (positionSource.position.coordinate.isValid ? Qt.formatTime(positionSource.position.timestamp, "hh:mm:ss") : "-")
+                }
             }
+            InfoField {
+                label: qsTr("Time to First Fix")
+                visible: settings.showLastUpdateApp
+                value : gpsTimes.tTFF//roundElapsedTime(gpsTimes.tTFF) // roundElapsedTime((positionSource.position.timestamp - activateGPSTimestamp)/1000) //Qt.formatTime(Date(new Date() - positionSource.position.timestamp),"h:mm:ss.zzz")
+                //value: positionSource.position.coordinate.isValid ? Qt.formatTime(new Date - positionSource.position.timestamp, "hh:mm:ss") : "-"
+            }
+
             InfoField {
                 label: qsTr("Vertical accuracy")
                 visible: settings.showVerticalAccuracyApp
@@ -211,16 +265,41 @@ Page {
                 visible: settings.showSatelliteInfoApp
                 value: gpsDataSource.numberOfUsedSatellites + " / " + gpsDataSource.numberOfVisibleSatellites
             }
+            SectionHeader {
+                visible: settings.showCompassDirectionApp
+                text: "Compass"
+            }
             InfoField {
-                label: qsTr("Compass direction")
+                label: qsTr("Direction")
                 visible: settings.showCompassDirectionApp
                 value: compass.reading === null ? "-" : LocationFormater.formatDirection(compass.reading.azimuth)
             }
             InfoField {
-                label: qsTr("Compass calibration")
-                visible: settings.showCompassCalibrationApp
+                label: qsTr("Calibration")
+                visible: settings.showCompassCalibrationApp && settings.showCompassDirectionApp
                 value: compass.reading === null ? "-" : Math.round(compass.reading.calibrationLevel * 100) + "%"
             }
+            InfoField { //this won't work until QTPositioning V5.4 or maybe 5.2 or, who knows?
+                label: qsTr("Magnetic Variation")
+                visible: settings.showCompassDirectionApp
+                value: {
+                    if (positionSource.position.magneticVariationValid === true) {
+                        var md = LocationFormater.roundToDecimal(positionSource.position.magneticVariation, 1)
+                        return md
+                    } else {
+                        if (positionSource.position.magneticVariationValid === undefined)
+                        return  "req QtPos 5.4"
+                        else return " - "
+
+
+                } }
+            }
+            InfoField {
+                label: qsTr("Magnetic Declination")
+                visible: settings.showCompassDirectionApp && (settings.magneticDeclination >0)
+                value:  LocationFormater.roundToDecimal(settings.magneticDeclination,0)
+            }
+
             // This element is "necessary", because Sony Xperia XA2 Ultra (at least)
             // messes up the column height calculation with only InfoFields...
             Rectangle {
