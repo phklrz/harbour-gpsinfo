@@ -148,7 +148,8 @@ Page {
                 color: "white"
                 font.weight: Font.Bold
                 font.pixelSize: Theme.fontSizeExtraSmall
-                text: index !==4 ? " "+modelData+" " : compass.reading.calibrationLevel > 0.99 ? " M ":" m "
+                property int iN: index !==4 ? 0 : compass.reading.calibrationLevel > 0.99 ?1:2
+                text: " "+[modelData,"M","m"][iN]+" "  //index !==4 ? " "+modelData+" " : compass.reading.calibrationLevel > 0.99 ? " M ":" m "
 
 
                 // Negate the radar containers rotation, so that the boxes and texts
@@ -162,7 +163,7 @@ Page {
                     anchors.verticalCenter: parent.verticalCenter
                     width: parent.width + parent.font.pixelSize / 8.0
                     height: parent.height + parent.font.pixelSize / 8.0
-                    color: index !== 4 ? "blue" : "red"
+                    color: ["blue","red","transparent"][iN] //index !== 4 ? "blue" : "red"
                     radius: parent.font.pixelSize / 8.0
                 }
             }
