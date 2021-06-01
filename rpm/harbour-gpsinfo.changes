@@ -1,0 +1,115 @@
+* Sun May 30 2021 Matti Viljanen 0.13.2-1
+- Fix Chinese translation file
+- Add notes of how to generate qm files
+- Actually include translations
+
+* Sun May 30 2021 Matti Viljanen 0.13.1-1
+- Create changelog
+- Update Chinese, Swedish and Slovak language
+- Fix last update timestamp (thanks, AndreySV)
+- Fix build errors on newer SDKs
+
+* Sun Jan 5 2020 Matti Viljanen 0.13.0-1
+- Add satellite system data field (unused)
+- Update Polish translation (thanks, atlochowski)
+
+* Sun Jan 5 2020 Matti Viljanen 0.12.0-1
+- Add option to show/hide satellites with zero signal strength
+- Fix cover page value formatting
+- User play/pause icons in cover actioin
+- Update Finnish translation
+- Update Chinise translation (thanks, dashinfantry)
+
+* Sun Dec 1 2019 Matti Viljanen 0.11.0-1
+- Added satellite bar chart view (thanks, martonmiklos)
+- Re-implement radar view, frame date issue fixed
+- Translation fixes, updates, (incomplete) credits added
+- Add Hungarian translation (thanks, martonmiklos)
+- Add dummy satellites for devices (emulator) with no GPS (originally created by mikkosyrja)
+- Don't count satellites that have zero signal strength
+- Minor performance optimizations
+
+* Mon Nov 25 2019 Matti Viljanen 0.10.0-1
+- Update AboutPage and LicencePage layouts
+- Add Chinese translation (thanks, dashinfantry)
+
+* Mon Nov 25 2019 Matti Viljanen 0.9.0-1
+- Add bunch of files to .gitignore
+- Recreate, simplify and rename .pro file
+- Fix and add missing icons
+- Make sure RPM tests pass
+- Reorganize source files
+- Create .yaml, remove autocreated .spec
+- Fix license fields in yaml/spec
+- Use standard translations' folder
+- Fix applying tranlations in-app
+- Reimplement ShowGridRowLabel.qml with DoubleSwitch.qml
+- Compact and clarify Settings.qml a bit
+- Inline and remove CircleCalculator.js
+- User visible changes (word of adding in changed):
+- Add compass calibration value display
+- Fix column height for all devices in FirstPage
+- Implement a setting (not) to rotate satellite view
+- Fix various minor rounding, margin and layout issues
+- Update Finnish translation
+- Improve satellite view performance (I hope)
+- Draw N, S, W, E signs on top of satellites
+- Display more "-" values on FirstPage if there's no data yet
+
+* Fri May 6 2016 Marcel Witte 0.8.0-1
+- Better support tablet screen size
+- Add more icon sizes
+
+* Thu Sep 24 2015 Marcel Witte 0.7.1-1
+- Add Dutch, Polish and Spanish translations (Transifex)
+- Update Russian and Swedish translations (Transifex)
+- Fix language detection in settings
+
+* Mon Jul 6 2015 Marcel Witte 0.7.0-1
+- Default to zero satellites at startup
+- Fix building translations
+- Add copying location to clipboard
+- Add Russian translation (Transifex)
+
+* Thu May 14 2015 Marcel Witte 0.6.0-1
+- Migrate configuration folder name to harbour-gpsinfo
+- Use default system language by default
+- Fix text overlaps
+
+* Thu May 7 2015 Marcel Witte 0.5.1-1
+- Update Swedish translation
+
+* Wed May 6 2015 Marcel Witte 0.5.0-1
+- Add Swedish translation
+- Use QtPositioning 5.2 for Jolla Store compliancy
+- Fix more decimal roundings
+
+* Wed Mar 25 2015 Marcel Witte 0.4.0-1
+- Add Finnish translation (thanks, specig)
+- Jolla Store compliancy fixes
+- Implement landscape support
+
+* Fri Dec 19 2014 Marcel Witte 0.3.1-1
+- Fix build dependency for SFOS 1.1+
+- Use default font in satellite view
+
+* Sat Apr 19 2014 Marcel Witte 0.3-1
+- Add movement direction
+- Adjust cover page
+- Add speet unit setting
+- Adjust satellite info page layout
+- Fix mph rounding precision
+
+* Mon Feb 24 2014 Marcel Witte 0.2-1
+- Add settings page and a bunch of settings
+- Add about page
+- Add cover page
+- Add icons
+- Add German tranlation
+- Add satellite info screen
+- Use "harbour-gpsinfo" instead of "GPSInfo"
+- Lots of code and project improvements and fixes
+- Better format information
+
+* Sun Jan 12 2014 Marcel Witte 0.1-1
+- Initial release
