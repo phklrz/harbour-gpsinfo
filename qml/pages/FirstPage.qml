@@ -28,23 +28,27 @@ Page {
             id: gpsTimes
             property date activateGPSTimestamp: new Date()
             property date firstFixTimestamp: new Date()
-            property bool pendingFix : true;
-            property int tTFF: { console.log("PF"+pendingFix);
-                if ( pendingFix && positionSource.position.coordinate.isValid && (positionSource.position.timestamp > activateGPSTimestamp)) {
-                    pendingFix=false
-                    firstFixTimestamp=positionSource.position.timestamp
-                    Notices.show("GPS Time to First Fix ", Notice.Long)
-                }
-                if ( pendingFix) {
-                    console.log("PF"+pendingFix);
-                    return Math.round((new Date() - activateGPSTimestamp)/1000)
-                } else {
-                    console.log("PF"+pendingFix);
-                 return Math.round((firstFixTimestamp - activateGPSTimestamp)/1000)
-                }
-            }
-            function tTFFStr() {
+            property bool pendingFix : true
+            property int secsSincePosition : Math.round((new Date() - positionSource.position.timestamp)/1000)
 
+            property int secs2FF : 0
+            property string secs2FFStr: roundElapsedTime(secs2FF)
+            property string tTFF: {
+                if ( pendingFix) {
+                    if (positionSource.position.coordinate.isValid && (positionSource.position.timestamp > activateGPSTimestamp)) {
+                        pendingFix=false
+                        t2secs2FF(positionSource.position.timestamp)
+                        //firstFixTimestamp=positionSource.position.timestamp
+                        //Math.round((firstFixTimestamp - activateGPSTimestamp)/1000)
+                        Notices.show("GPS Time to First Fix "+secs2FFStr, Notice.Long)
+                    } else {
+//                        t2secs2FF(new Date())
+                    }
+                }
+                return secs2FFStr
+            }
+            function t2secs2FF(T){
+                secs2FF = Math.round((T - activateGPSTimestamp)/1000)
             }
 
             function clear() {
@@ -59,6 +63,7 @@ Page {
                 return LocationFormater.roundToDecimal(T,1)+ "hr"
             }
     }
+
 
     states: [
         State {
@@ -219,17 +224,18 @@ Page {
             InfoField {
                 label: qsTr("Last update")
                 visible: settings.showLastUpdateApp
-                value: { //
-                    var secsSincePosition = (new Date() - positionSource.position.timestamp)/1000
-                    return ((secsSincePosition > (1 +settings.updateInterval) ) ? "-"+roundElapsedTime(secsSincePosition)+"  " : " ")
-                            + (positionSource.position.coordinate.isValid ? Qt.formatTime(positionSource.position.timestamp, "hh:mm:ss") : "-")
-                }
+                value: ((gpsTimes.secsSincePosition > (1 +settings.updateInterval) ) ? "-"+gpsTimes.roundElapsedTime(secsSincePosition)+"  " : " ")
+                       + (positionSource.position.coordinate.isValid ? Qt.formatTime(positionSource.position.timestamp, "hh:mm:ss") : "-")
+//                {
+//                    var secsSincePosition = (new Date() - positionSource.position.timestamp)/1000
+//                    return ((secsSincePosition > (1 +settings.updateInterval) ) ? "-"+gpsTimes.roundElapsedTime(secsSincePosition)+"  " : " ")
+//                            + (positionSource.position.coordinate.isValid ? Qt.formatTime(positionSource.position.timestamp, "hh:mm:ss") : "-")
+//                }
             }
             InfoField {
                 label: qsTr("Time to First Fix")
                 visible: settings.showLastUpdateApp
-                value : gpsTimes.tTFF//roundElapsedTime(gpsTimes.tTFF) // roundElapsedTime((positionSource.position.timestamp - activateGPSTimestamp)/1000) //Qt.formatTime(Date(new Date() - positionSource.position.timestamp),"h:mm:ss.zzz")
-                //value: positionSource.position.coordinate.isValid ? Qt.formatTime(new Date - positionSource.position.timestamp, "hh:mm:ss") : "-"
+                value : gpsTimes.tTFF  //roundElapsedTime(gpsTimes.tTFF)
             }
 
             InfoField {
