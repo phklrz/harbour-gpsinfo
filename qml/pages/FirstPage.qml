@@ -117,11 +117,11 @@ Page {
                     }
                 }
             }
-            MenuItem {
-                enabled: gpsDataSource.active
-                text: qsTr("Share Location")
-                onClicked: pageStack.push(Qt.resolvedUrl("SharePage.qml"))
-            }
+//            MenuItem {
+//                enabled: gpsDataSource.active
+//                text: qsTr("Share Location")
+//                onClicked: pageStack.push(Qt.resolvedUrl("SharePage.qml"))
+//            }
         }
 
         contentHeight: pageHeader.height + column.height;
