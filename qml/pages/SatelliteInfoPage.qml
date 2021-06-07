@@ -14,6 +14,11 @@ Page {
     property GPSDataSource gpsDataSource
     property bool satelliteBarchartPagePushed: false
     property int declination: settings.magneticDeclination==undefined ? 0:settings.magneticDeclination
+    property variant satellites: status === PageStatus.Inactive ? [] : gpsDataSource.satellites;
+    property variant sortedSatellites: [] //so we can draw InUse sats on top...
+    onSatellitesChanged: {
+        sortedSatellites = gpsDataSource.satellites.sort(function(a,b) {return (a.inUse ? 1:-1) - (b.inUse ? 1:-1)})
+    }
 
     PageHeader {
         title: qsTr("Satellite Info")
@@ -40,6 +45,13 @@ Page {
     property int diameter: radarWidth - 2 * Theme.paddingLarge
     property int radius: diameter / 2
     property int center: radarWidth / 2
+    SilicaFlickable {
+        anchors.fill: parent
+
+    MainMenu {
+        id: siMainMenu
+        positionSource: providers.positionSource
+    }
 
     // Radar background gradient is symmetrical,
     // so we don't have to waste cycles rotating it.
@@ -127,14 +139,14 @@ Page {
                         opacity: (declination !=0) ? 1 : 0 //0.5
                     }
         //Movement Direction line
-            Rectangle { visible:  !isNaN(gpsDataSource.movementDirection)
+            Rectangle { visible: !isNaN(gpsDataSource.movementDirection)
                         width: Theme.iconSizeExtraSmall / 10.0
-                        height: diameter/2
+                        height: 1.1*diameter/2
                         anchors.left: parent.horizontalCenter
                         anchors.bottom: parent.verticalCenter  //+diameter/2
-                        transform: Rotation { origin.x: 0 ; origin.y: diameter/2; angle: isNaN(gpsDataSource.movementDirection) ? 170 : gpsDataSource.movementDirection}
+                        transform: Rotation { origin.x: 0 ; origin.y: 1.1*diameter/2; angle: isNaN(gpsDataSource.movementDirection) ? 170 : gpsDataSource.movementDirection}
                         color: "cyan"
-                        opacity: 1//(declination !=0) ? 1 : 0
+                        opacity: 1
                     }
 
         // North, East, South, West, MagneticNorth indicators
@@ -145,7 +157,7 @@ Page {
                 Label {
                 x: center + Math.sin((index !==4 ? (index * 90) : declination) * Math.PI / 180) * (radius+width/2) - width / 2.0
                 y: center - Math.cos((index !==4 ? (index * 90) : declination) * Math.PI / 180) * (radius+width/2) - height / 2.0
-                color: "white"
+                color: ["white","white","red"][iN]
                 font.weight: Font.Bold
                 font.pixelSize: Theme.fontSizeExtraSmall
                 property int iN: index !==4 ? 0 : compass.reading.calibrationLevel > 0.99 ?1:2
@@ -171,7 +183,7 @@ Page {
         // Satellite identifiers (numbers), and their respective box rssi color and inUse border
         // first draw them all solid , hiding the radar chart background, and ensuring colors are correct
         Repeater {
-            model: status === PageStatus.Inactive ? [] : gpsDataSource.satellites.sort(function(a,b) {return (a.inUse ? 1:-1) - (b.inUse ? 1:-1)})
+            model: status === PageStatus.Inactive ? [] : sortedSatellites
             delegate:
                 Label {
                 x: center + Math.sin((modelData.azimuth) * Math.PI / 180) * radius * Math.cos(modelData.elevation * Math.PI / 180) - width / 2.0
@@ -209,7 +221,7 @@ Page {
         //now draw transparent, so that overlaid numbers can be read.
         Repeater {
             //sort active sats on top.
-            model: status === PageStatus.Inactive ? [] : gpsDataSource.satellites.sort(function(a,b) {return (a.inUse ? 1:-1) - (b.inUse ? 1:-1)})
+            model: status === PageStatus.Inactive ? [] : sortedSatellites
             delegate:
                 Label {
                 x: center + Math.sin((modelData.azimuth) * Math.PI / 180) * radius * Math.cos(modelData.elevation * Math.PI / 180) - width / 2.0
@@ -252,4 +264,5 @@ Page {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: Theme.paddingLarge*1.1  //move up a bit for parallax clipping at glass edge
     }
+}
 }
