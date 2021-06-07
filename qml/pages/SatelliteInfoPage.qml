@@ -15,14 +15,7 @@ Page {
     property bool satelliteBarchartPagePushed: false
     property int declination: settings.magneticDeclination==undefined ? 0:settings.magneticDeclination
     property variant satellites: status === PageStatus.Inactive ? [] : gpsDataSource.satellites;
-    property variant sortedSatellites: [] //so we can draw InUse sats on top...
-    onSatellitesChanged: {
-        sortedSatellites = gpsDataSource.satellites.sort(function(a,b) {return (a.inUse ? 1:-1) - (b.inUse ? 1:-1)})
-    }
-
-    PageHeader {
-        title: qsTr("Satellite Info")
-    }
+    property variant sortedSatellites: status === PageStatus.Inactive ? [] : gpsDataSource.satellites.sort(function(a,b) {return (a.inUse ? 1:-1) - (b.inUse ? 1:-1)}) //so we can draw InUse sats on top...
 
     states: [
         State {
@@ -45,6 +38,7 @@ Page {
     property int diameter: radarWidth - 2 * Theme.paddingLarge
     property int radius: diameter / 2
     property int center: radarWidth / 2
+
     SilicaFlickable {
         anchors.fill: parent
 
@@ -52,6 +46,10 @@ Page {
         id: siMainMenu
         positionSource: providers.positionSource
     }
+    PageHeader {
+        title: qsTr("Satellite Info")
+    }
+
 
     // Radar background gradient is symmetrical,
     // so we don't have to waste cycles rotating it.
@@ -96,7 +94,7 @@ Page {
         width: radarWidth
         height: radarWidth
         anchors.verticalCenter: parent.verticalCenter
-        anchors.horizontalCenter: satelliteInfoPage.horizontalCenter;
+        anchors.horizontalCenter: parent.horizontalCenter; //satelliteInfoPage.horizontalCenter;
         anchors.left: undefined;
 
         // At least with Jolla Phone, the reading must be negated

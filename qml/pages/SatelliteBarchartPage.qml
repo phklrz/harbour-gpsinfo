@@ -1,9 +1,9 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import QtPositioning 5.4//2
+import QtPositioning 5.2
 import QtSensors 5.0
 import harbour.gpsinfo 1.0
-import "../QChart"
+import "../QChart"   //must init and update the submodule "git submodule update --init"
 import "../components"
 
 Page {
@@ -25,6 +25,7 @@ Page {
             pageStack.navigateForward(PageStackAction.Immediate)
         }
     }
+
     PageHeader {
         id: header
         title: qsTr("Satellite signal strengths")
@@ -139,3 +140,4 @@ Page {
         visible: parent.isPortrait
     }
 }
+

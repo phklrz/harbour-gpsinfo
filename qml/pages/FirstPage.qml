@@ -1,6 +1,6 @@
-import QtQuick 2.6//0
+import QtQuick 2.0 //2.6
 import Sailfish.Silica 1.0
-import QtPositioning 5.4//2
+import QtPositioning 5.2 //5.4
 import QtSensors 5.0
 import harbour.gpsinfo 1.0
 import "../components"
@@ -13,7 +13,6 @@ Page {
     property Compass compass
     property GPSDataSource gpsDataSource
     property bool subPagesPushed: false
-    property date activateGPSTimestamp: new Date()
 
     allowedOrientations: Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted
 
@@ -24,47 +23,6 @@ Page {
                            { gpsDataSource: page.gpsDataSource, compass: page.compass})
         }
     }
-    Item {
-            id: gpsTimes
-            property date activateGPSTimestamp: new Date()
-            property date firstFixTimestamp: new Date()
-            property bool pendingFix : true
-            property int secsSincePosition : Math.round((new Date() - positionSource.position.timestamp)/1000)
-
-            property int secs2FF : 0
-            property string secs2FFStr: roundElapsedTime(secs2FF)
-            property string tTFF: {
-                if ( pendingFix) {
-                    if (positionSource.position.coordinate.isValid && (positionSource.position.timestamp > activateGPSTimestamp)) {
-                        pendingFix=false
-                        t2secs2FF(positionSource.position.timestamp)
-                        //firstFixTimestamp=positionSource.position.timestamp
-                        //Math.round((firstFixTimestamp - activateGPSTimestamp)/1000)
-                        Notices.show("GPS Time to First Fix "+secs2FFStr, Notice.Long)
-                    } else {
-//                        t2secs2FF(new Date())
-                    }
-                }
-                return secs2FFStr
-            }
-            function t2secs2FF(T){
-                secs2FF = Math.round((T - activateGPSTimestamp)/1000)
-            }
-
-            function clear() {
-              firstFixTimestamp = activateGPSTimestamp = new Date()
-              pendingFix =true
-            }
-            function roundElapsedTime(T) {
-                if (T<=90) return Math.round(T)+ "sec"
-                T=T/60;
-                if (T<=90) return LocationFormater.roundToDecimal(T,1)+ "min"
-                T=T/60;
-                return LocationFormater.roundToDecimal(T,1)+ "hr"
-            }
-    }
-
-
     states: [
         State {
             name: 'landscape';
@@ -79,54 +37,9 @@ Page {
 
     SilicaFlickable {
         anchors.fill: parent
-
-        PullDownMenu {
-            MenuItem {
-                text: qsTr("About")
-                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
-            }
-            MenuItem {
-                text: qsTr("Settings")
-                onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
-            }
-            MenuItem {
-                text: positionSource.active ? qsTr("Deactivate GPS") : qsTr("Activate GPS")
-                onClicked: {
-                    if (positionSource.active) {
-                        console.log("deactivating GPS");
-                        positionSource.stop();
-                        gpsDataSource.active = false;
-                        console.log("active: " + positionSource.active);
-                    } else {
-                        console.log("activating GPS");
-                        positionSource.start();
-                        gpsDataSource.active = true;
-                        gpsTimes.clear()
-                        activateGPSTimestamp = new Date()
-                        console.log("active: " + positionSource.active);
-                    }
-                }
-            }
-            MenuItem {
-                enabled: gpsDataSource.active
-                text: qsTr("Copy location")
-                onClicked: {
-                    if (settings.coordinateFormat === "DEG") {
-                        Clipboard.text = LocationFormater.decimalLatToDMS(positionSource.position.coordinate.latitude, 2)
-                                + ", "
-                                + LocationFormater.decimalLongToDMS(positionSource.position.coordinate.longitude, 2);
-                    } else {
-                        Clipboard.text = positionSource.position.coordinate.latitude
-                                + ", "
-                                + positionSource.position.coordinate.longitude
-                    }
-                }
-            }
-//            MenuItem {
-//                enabled: gpsDataSource.active
-//                text: qsTr("Share Location")
-//                onClicked: pageStack.push(Qt.resolvedUrl("SharePage.qml"))
-//            }
+        MainMenu {
+            id: siMainMenu
+            positionSource: providers.positionSource
         }
 
         contentHeight: pageHeader.height + column.height;
@@ -224,18 +137,16 @@ Page {
             InfoField {
                 label: qsTr("Last update")
                 visible: settings.showLastUpdateApp
-                value: ((gpsTimes.secsSincePosition > (1 +settings.updateInterval) ) ? "-"+gpsTimes.roundElapsedTime(secsSincePosition)+"  " : " ")
-                       + (positionSource.position.coordinate.isValid ? Qt.formatTime(positionSource.position.timestamp, "hh:mm:ss") : "-")
-//                {
-//                    var secsSincePosition = (new Date() - positionSource.position.timestamp)/1000
-//                    return ((secsSincePosition > (1 +settings.updateInterval) ) ? "-"+gpsTimes.roundElapsedTime(secsSincePosition)+"  " : " ")
-//                            + (positionSource.position.coordinate.isValid ? Qt.formatTime(positionSource.position.timestamp, "hh:mm:ss") : "-")
-//                }
+                value: ((providers.timing.secsSincePosition > (1 +settings.updateInterval) ) ? //if more than a few secs then also show elapsed time
+                            "-"+providers.timing.formatElapsedTime(providers.timing.secsSincePosition)+"  " : " ")
+                       + (positionSource.position.coordinate.isValid ? Qt.formatTime(positionSource.position.timestamp, "hh:mm:ss") : "-") //always show actual time
             }
             InfoField {
+                id:ttff
                 label: qsTr("Time to First Fix")
                 visible: settings.showLastUpdateApp
-                value : gpsTimes.tTFF  //roundElapsedTime(gpsTimes.tTFF)
+                value: providers.timing.formatElapsedTime(providers.timing.secs2FF)
+                highlight: providers.timing.secs2FF<0
             }
 
             InfoField {
