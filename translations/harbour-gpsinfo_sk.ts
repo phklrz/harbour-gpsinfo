@@ -13,11 +13,11 @@
     </message>
     <message>
         <source>For suggestions, bugs and ideas visit </source>
-        <translation>Pre návrhy, chyby a nápady navštívte stránku</translation>
+        <translation>Pre návrhy, chyby a nápady navštívte stránku </translation>
     </message>
     <message>
         <source>GPSInfo is open source software licensed under the terms of the GNU General Public License.</source>
-        <translation>GPSInfo je otvorený zdrojový softvér podľa Všeobecnej verejnej licencie GNU</translation>
+        <translation>GPSInfo je otvorený zdrojový softvér podľa Všeobecnej verejnej licencie GNU.</translation>
     </message>
     <message>
         <source>Version</source>
