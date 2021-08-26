@@ -4,7 +4,6 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtPositioning 5.2
 
-//import "../pages"   //sjb why doesn't this work?why do I have to explicitly put it in url?
 Item {
     property PositionSource positionSource
 
@@ -38,11 +37,5 @@ Item {
                 }
             }
         }
-//            MenuItem {
-//                enabled: gpsDataSource.active
-//                text: qsTr("Share Location")
-//                onClicked: pageStack.push(Qt.resolvedUrl("SharePage.qml"))
-//            }
     }
-
 }
