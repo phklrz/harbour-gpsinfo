@@ -44,9 +44,6 @@ Page {
         width: parent.width - 2 * Theme.horizontalPageMargin
         height: satelliteBarchartPage.isPortrait ? width : parent.height - 2 * Theme.horizontalPageMargin
         anchors.centerIn: parent
-        chartAnimated: true;
-        chartAnimationEasing: Easing.Linear;
-        chartAnimationDuration: 2000;
         chartType: Charts.ChartType.BAR
         property variant satellites: status === PageStatus.Inactive ? [] : gpsDataSource.satellites;
         property bool componentLoaded: false
