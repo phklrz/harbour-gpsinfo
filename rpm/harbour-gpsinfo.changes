@@ -1,3 +1,6 @@
+* Thu 26 Aug 2021 Matti Viljanen 0.13.3-1
+- Fix missing Slovak translation
+
 * Sun May 30 2021 Matti Viljanen 0.13.2-1
 - Fix Chinese translation file
 - Add notes of how to generate qm files
