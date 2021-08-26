@@ -39,6 +39,7 @@ DISTFILES += qml/pages/CoverPage.qml \
     translations/harbour-gpsinfo_nl.ts \
     translations/harbour-gpsinfo_pl.ts \
     translations/harbour-gpsinfo_ru.ts \
+    translations/harbour-gpsinfo_sk.ts \
     translations/harbour-gpsinfo_sv.ts \
     translations/harbour-gpsinfo_zh_CN.ts
 
@@ -61,6 +62,7 @@ TRANSLATIONS += \
     translations/harbour-gpsinfo_nl.ts \
     translations/harbour-gpsinfo_pl.ts \
     translations/harbour-gpsinfo_ru.ts \
+    translations/harbour-gpsinfo_sk.ts \
     translations/harbour-gpsinfo_sv.ts \
     translations/harbour-gpsinfo_zh_CN.ts
 
