@@ -129,7 +129,7 @@ void GPSDataSource::setUpdateInterval(int updateInterval) {
 
 void GPSDataSource::SimulatorTimeout()
 {
-    QList<QGeoSatelliteInfo> satellites;
+    QList<QGeoSatelliteInfo> satellites, satellitesInUse;
     QGeoSatelliteInfo satellite;
 
     satellite.setAttribute(QGeoSatelliteInfo::Azimuth, 60.0);
@@ -138,6 +138,7 @@ void GPSDataSource::SimulatorTimeout()
     satellite.setSatelliteSystem(QGeoSatelliteInfo::GPS);
     satellite.setSignalStrength(40);
     satellites.append(satellite);
+    satellitesInUse.append(satellite);
 
     satellite.setAttribute(QGeoSatelliteInfo::Azimuth, 100.0);
     satellite.setAttribute(QGeoSatelliteInfo::Elevation, 40.0);
@@ -145,6 +146,7 @@ void GPSDataSource::SimulatorTimeout()
     satellite.setSatelliteSystem(QGeoSatelliteInfo::GLONASS);
     satellite.setSignalStrength(35);
     satellites.append(satellite);
+    satellitesInUse.append(satellite);
 
     satellite.setAttribute(QGeoSatelliteInfo::Azimuth, 200.0);
     satellite.setAttribute(QGeoSatelliteInfo::Elevation, 60.0);
@@ -166,13 +168,15 @@ void GPSDataSource::SimulatorTimeout()
     satellite.setSatelliteSystem(QGeoSatelliteInfo::GLONASS);
     satellite.setSignalStrength(16);
     satellites.append(satellite);
+    satellitesInUse.append(satellite);
 
     satellite.setAttribute(QGeoSatelliteInfo::Azimuth, 250.0);
     satellite.setAttribute(QGeoSatelliteInfo::Elevation, 60.0);
     satellite.setSatelliteIdentifier(228);
     satellite.setSatelliteSystem(QGeoSatelliteInfo::GPS);
-    satellite.setSignalStrength(2);
+    satellite.setSignalStrength(3);
     satellites.append(satellite);
+    satellitesInUse.append(satellite);
 
     satellite.setAttribute(QGeoSatelliteInfo::Azimuth, 280.0);
     satellite.setAttribute(QGeoSatelliteInfo::Elevation, 75.0);
@@ -181,10 +185,8 @@ void GPSDataSource::SimulatorTimeout()
     satellite.setSignalStrength(0);
     satellites.append(satellite);
 
-    // Return all satellites in view
     satellitesInViewUpdated(satellites);
-    // Return only half of the satellites in use
-    satellitesInUseUpdated(satellites.mid(0, satellites.size()/2));
+    satellitesInUseUpdated(satellitesInUse);
 
     QGeoPositionInfo position;
     position.setAttribute(QGeoPositionInfo::Direction, 24.0);
