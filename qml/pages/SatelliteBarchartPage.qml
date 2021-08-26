@@ -54,8 +54,8 @@ Page {
                 datasets: [{
                         data: [],
                         fillColor: [],
-                        borderWidth: [],
-                        borderColor: []
+                        barStrokeWidth: [],
+                        strokeColor: []
                     }]
             }
             chartOptions = {
@@ -92,22 +92,18 @@ Page {
 
                 // Clear the chart data
                 rssiBarChart.chartData.labels = []
-                rssiBarChart.chartData.labelsColor = []
+                rssiBarChart.chartData.labelColors = []
                 rssiBarChart.chartData.datasets[0].data = []
                 rssiBarChart.chartData.datasets[0].fillColor = []
-                rssiBarChart.chartData.datasets[0].borderColor = []
-                rssiBarChart.chartData.datasets[0].borderWidth = []
                 // Insert the data
                 results.forEach(function(barSat) {
-                    rssiBarChart.chartData.labels.push(barSat.identifier);                    
-                    rssiBarChart.chartData.datasets[0].data.push(barSat.signalStrength);
-                    //bar color change is used to show sats inUse
-                    rssiBarChart.chartData.datasets[0].fillColor.push(barSat.inUse ? getRSSI_Color(barSat.signalStrength):Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity))
-                    
-                    rssiBarChart.chartData.labelsColor.push(barSat.inUse ? Theme.HighlightColor: Theme.secondaryHighlightColor );
-                    rssiBarChart.chartData.datasets[0].borderWidth.push(Theme.fontSizeTiny / 10.0)
-                    rssiBarChart.chartData.datasets[0].borderColor.push(barSat.inUse ? "white" : "transparent");
+                    rssiBarChart.chartData.labels.push(barSat.identifier);
+                    rssiBarChart.chartData.labelColors.push(barSat.inUse ? Theme.highlightColor : Theme.secondaryColor);
 
+                    rssiBarChart.chartData.datasets[0].data.push(barSat.signalStrength);
+                    rssiBarChart.chartData.datasets[0].fillColor.push(barSat.inUse ? getRSSI_Color(barSat.signalStrength) : Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity))
+                    rssiBarChart.chartData.datasets[0].barStrokeWidth.push(barSat.inUse ? (Theme.iconSizeExtraSmall / 5.0) : 0.0);
+                    rssiBarChart.chartData.datasets[0].strokeColor.push(barSat.inUse ? "white" : "transparent");
                 });
 
                 // Draw minimum of 5 (10) bars in portrait (landscape)
