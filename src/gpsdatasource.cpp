@@ -31,18 +31,18 @@ GPSDataSource::GPSDataSource(QObject *parent) :
 }
 
 void GPSDataSource::satellitesInUseUpdated(const QList<QGeoSatelliteInfo> &infos) {
-    foreach (QGeoSatelliteInfo info, infos) {
-        if (!this->satellites.contains(info.satelliteIdentifier())) {
+    for(auto info = infos.cbegin(); info < infos.cend(); info++) {
+        if (!this->satellites.contains(info->satelliteIdentifier())) {
             GPSSatellite* sat = new GPSSatellite(this);
-            sat->setAzimuth(info.attribute(QGeoSatelliteInfo::Azimuth));
-            sat->setElevation(info.attribute(QGeoSatelliteInfo::Elevation));
-            sat->setIdentifier(info.satelliteIdentifier());
-            sat->setSystem(info.satelliteSystem());
+            sat->setAzimuth(info->attribute(QGeoSatelliteInfo::Azimuth));
+            sat->setElevation(info->attribute(QGeoSatelliteInfo::Elevation));
+            sat->setIdentifier(info->satelliteIdentifier());
+            sat->setSystem(info->satelliteSystem());
             sat->setInUse(true);
-            sat->setSignalStrength(info.signalStrength());
-            this->satellites[info.satelliteIdentifier()] = sat;
+            sat->setSignalStrength(info->signalStrength());
+            this->satellites[info->satelliteIdentifier()] = sat;
         } else {
-            this->satellites[info.satelliteIdentifier()]->setInUse(true);
+            this->satellites[info->satelliteIdentifier()]->setInUse(true);
         }
     }
     emit this->satellitesChanged();
@@ -53,16 +53,16 @@ void GPSDataSource::satellitesInViewUpdated(const QList<QGeoSatelliteInfo> &info
     qDeleteAll(this->satellites);
     this->satellites.clear();
     bool showAll = this->settings.getShowEmptyChannels();
-    foreach (QGeoSatelliteInfo info, infos) {
-        if(showAll || info.signalStrength() > 0) {
+    for(auto info = infos.cbegin(); info < infos.cend(); info++) {
+        if(showAll || info->signalStrength() > 0) {
             GPSSatellite* sat = new GPSSatellite(this);
-            sat->setAzimuth(info.attribute(QGeoSatelliteInfo::Azimuth));
-            sat->setElevation(info.attribute(QGeoSatelliteInfo::Elevation));
-            sat->setIdentifier(info.satelliteIdentifier());
-            sat->setSystem(info.satelliteSystem());
+            sat->setAzimuth(info->attribute(QGeoSatelliteInfo::Azimuth));
+            sat->setElevation(info->attribute(QGeoSatelliteInfo::Elevation));
+            sat->setIdentifier(info->satelliteIdentifier());
+            sat->setSystem(info->satelliteSystem());
             sat->setInUse(false);
-            sat->setSignalStrength(info.signalStrength());
-            this->satellites[info.satelliteIdentifier()] = sat;
+            sat->setSignalStrength(info->signalStrength());
+            this->satellites[info->satelliteIdentifier()] = sat;
         }
     }
     emit this->satellitesChanged();
