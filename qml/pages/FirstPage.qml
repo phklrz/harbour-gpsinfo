@@ -46,7 +46,7 @@ Page {
 
         PageHeader {
             id: pageHeader
-            title: qsTr("GPS Info")
+            title: qsTr("GPSInfo")
         }
 
         Column {
@@ -142,11 +142,10 @@ Page {
                        + (positionSource.position.coordinate.isValid ? Qt.formatTime(positionSource.position.timestamp, "hh:mm:ss") : "-") //always show actual time
             }
             InfoField {
-                id:ttff
                 label: qsTr("Time to First Fix")
                 visible: settings.showLastUpdateApp
-                value: providers.timing.formatElapsedTime(providers.timing.secs2FF)
-                highlight: providers.timing.secs2FF<0
+                value: providers.timing.formatElapsedTime(providers.timing.secsToFirstFix)
+                highlight: providers.timing.secsToFirstFix < 0
             }
 
             InfoField {
@@ -200,15 +199,14 @@ Page {
                 label: qsTr("Magnetic Variation")
                 visible: settings.showCompassDirectionApp
                 value: {
-                    if (positionSource.position.magneticVariationValid === true) {
-                        var md = LocationFormater.roundToDecimal(positionSource.position.magneticVariation, 1)
-                        return md
-                    } else {
-                        if (positionSource.position.magneticVariationValid === undefined)
-                        return  "req QtPos 5.4"
-                        else return " - "
-
-
+                    if(typeof positionSource.position.magneticVariationValid !== undefined) {
+                        if (positionSource.position.magneticVariationValid === true) {
+                            return LocationFormater.roundToDecimal(positionSource.position.magneticVariation, 1)
+                        }
+                        return "-"
+                    }
+                    return "N/A"
+                }
                 } }
             }
             InfoField {
@@ -227,5 +225,3 @@ Page {
         }
     }
 }
-
-
