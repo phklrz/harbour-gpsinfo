@@ -37,8 +37,9 @@ Page {
         case "nl": return 6
         case "pl": return 7
         case "ru": return 8
-        case "sv": return 9
-        case "zh_CN": return 10
+        case "sk": return 9
+        case "sv": return 10
+        case "zh_CN": return 11
         default:   return 0
         }
     }
@@ -122,8 +123,9 @@ Page {
                     MenuItem { text: "Français";   onClicked: settings.locale = "fr"; }
                     MenuItem { text: "Nederlands"; onClicked: settings.locale = "nl"; }
                     MenuItem { text: "Magyar";     onClicked: settings.locale = "hu"; }
-                    MenuItem { text: "Polski";    onClicked: settings.locale = "pl"; }
+                    MenuItem { text: "Polski";     onClicked: settings.locale = "pl"; }
                     MenuItem { text: "Pусский";    onClicked: settings.locale = "ru"; }
+                    MenuItem { text: "Slovenčina"; onClicked: settings.locale = "sk"; }
                     MenuItem { text: "Svenska";    onClicked: settings.locale = "sv"; }
                     MenuItem { text: "简体中文";       onClicked: settings.locale = "zh_CN"; }
                 }
