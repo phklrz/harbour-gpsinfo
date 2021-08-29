@@ -304,7 +304,7 @@
     </message>
     <message>
         <source>Satellite Info</source>
-        <translation>Informácia o staelitoch</translation>
+        <translation>Informácia o satelitoch</translation>
     </message>
     <message>
         <source>requires app restart</source>
