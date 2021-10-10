@@ -192,11 +192,11 @@ Page {
             }
             InfoField {
                 label: qsTr("Calibration")
-                visible: settings.showCompassCalibrationApp && settings.showCompassDirectionApp
+                visible: settings.showCompassCalibrationApp
                 value: compass.reading === null ? "-" : Math.round(compass.reading.calibrationLevel * 100) + "%"
             }
-            InfoField { //this won't work until QTPositioning V5.4 or maybe 5.2 or, who knows?
-                label: qsTr("Magnetic Variation")
+            InfoField { // Needs QtPositioning 5.4
+                label: qsTr("Magnetic Declination")
                 visible: settings.showCompassDirectionApp
                 value: {
                     if(typeof positionSource.position.magneticVariationValid !== undefined) {
@@ -207,12 +207,6 @@ Page {
                     }
                     return "N/A"
                 }
-                } }
-            }
-            InfoField {
-                label: qsTr("Magnetic Declination")
-                visible: settings.showCompassDirectionApp && (settings.magneticDeclination >0)
-                value:  LocationFormater.roundToDecimal(settings.magneticDeclination,0)
             }
 
             // This element is "necessary", because Sony Xperia XA2 Ultra (at least)

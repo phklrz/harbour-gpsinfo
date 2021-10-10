@@ -128,7 +128,7 @@ Item {
 
 //                {
 //                    var secsSincePosition = (new Date() - positionSource.position.timestamp)/1000
-//                    return ((secsSincePosition > (1 +settings.updateInterval) ) ? "-"+gpsTimes.roundElapsedTime(secsSincePosition)+"  " : " ")
+//                    return ((secsSincePosition > (1 +settings.updateInterval) ) ? "-"+gpsTimes.formatElapsedTime(secsSincePosition)+"  " : " ")
 //                            + (positionSource.position.coordinate.isValid ? Qt.formatTime(positionSource.position.timestamp, "hh:mm:ss") : "-")
 //                }
 
