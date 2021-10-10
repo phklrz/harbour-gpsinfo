@@ -98,7 +98,7 @@ Page {
                 visible: settings.showAltitudeApp
                 value: {
                     if (positionSource.position.altitudeValid) {
-                        if (settings.units == "MET") {
+                        if (settings.units === "MET") {
                             return LocationFormater.roundToDecimal(positionSource.position.coordinate.altitude, 2) + " m"
                         } else {
                             return LocationFormater.roundToDecimal(positionSource.position.coordinate.altitude * 3.2808399, 2) + " ft"
@@ -112,14 +112,14 @@ Page {
                 visible: settings.showSpeedApp
                 value: {
                     if (positionSource.position.speedValid) {
-                        if (settings.units == "MET") {
-                            if (settings.speedUnit == "SEC") {
+                        if (settings.units === "MET") {
+                            if (settings.speedUnit === "SEC") {
                                 return LocationFormater.roundToDecimal(positionSource.position.speed, 2) + " " + qsTr("m/s")
                             } else {
                                 return LocationFormater.roundToDecimal(positionSource.position.speed * 60 * 60 / 1000, 2) + " " + qsTr("km/h")
                             }
                         } else {
-                            if (settings.speedUnit == "SEC") {
+                            if (settings.speedUnit === "SEC") {
                                 return LocationFormater.roundToDecimal(positionSource.position.speed * 3.2808399, 2) + " " + qsTr("ft/s")
                             } else {
                                 return LocationFormater.roundToDecimal(positionSource.position.speed * 2.23693629, 2) + " " + qsTr("mph")
@@ -153,7 +153,7 @@ Page {
                 visible: settings.showVerticalAccuracyApp
                 value: {
                     if (positionSource.position.verticalAccuracyValid) {
-                        if (settings.units == "MET") {
+                        if (settings.units === "MET") {
                             return LocationFormater.roundToDecimal(positionSource.position.verticalAccuracy, 2) + " m"
                         } else {
                             return LocationFormater.roundToDecimal(positionSource.position.verticalAccuracy * 3.2808399, 2) + " ft"
@@ -167,7 +167,7 @@ Page {
                 visible: settings.showHorizontalAccuracyApp
                 value: {
                     if (positionSource.position.horizontalAccuracyValid) {
-                        if (settings.units == "MET") {
+                        if (settings.units === "MET") {
                             return LocationFormater.roundToDecimal(positionSource.position.horizontalAccuracy, 2) + " m"
                         } else {
                             return LocationFormater.roundToDecimal(positionSource.position.horizontalAccuracy * 3.2808399, 2) + " ft"

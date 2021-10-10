@@ -222,7 +222,7 @@ Page {
                         }
                     }
                 }
-                Component.onCompleted: currentIndex = settings.barChartOrder == "id" ? 0 : 1
+                Component.onCompleted: currentIndex = (settings.barChartOrder === "id" ? 0 : 1)
             }
 
             Item {

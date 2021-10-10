@@ -13,7 +13,7 @@ Page {
     property Compass compass
     property GPSDataSource gpsDataSource
     property bool satelliteBarchartPagePushed: false
-    property int declination: settings.magneticDeclination==undefined ? 0:settings.magneticDeclination
+    property int declination: settings.magneticDeclination === undefined ? 0:settings.magneticDeclination
     property variant satellites: status === PageStatus.Inactive ? [] : gpsDataSource.satellites;
     property variant sortedSatellites: status === PageStatus.Inactive ? [] : gpsDataSource.satellites.sort(function(a,b) {return (a.inUse ? 1:-1) - (b.inUse ? 1:-1)}) //so we can draw InUse sats on top...
 
@@ -153,12 +153,12 @@ Page {
 
             delegate:
                 Label {
-                x: center + Math.sin((index !==4 ? (index * 90) : declination) * Math.PI / 180) * (radius+width/2) - width / 2.0
-                y: center - Math.cos((index !==4 ? (index * 90) : declination) * Math.PI / 180) * (radius+width/2) - height / 2.0
+                x: center + Math.sin((index !== 4 ? (index * 90) : declination) * Math.PI / 180) * (radius+width/2) - width / 2.0
+                y: center - Math.cos((index !== 4 ? (index * 90) : declination) * Math.PI / 180) * (radius+width/2) - height / 2.0
                 color: ["white","white","red"][iN]
                 font.weight: Font.Bold
                 font.pixelSize: Theme.fontSizeExtraSmall
-                property int iN: index !==4 ? 0 : compass.reading.calibrationLevel > 0.99 ?1:2
+                property int iN: (index !== 4 ? 0 : (compass.reading.calibrationLevel > 0.99 ? 1 : 2))
                 text: " "+[modelData,"M","m"][iN]+" "  //index !==4 ? " "+modelData+" " : compass.reading.calibrationLevel > 0.99 ? " M ":" m "
 
 

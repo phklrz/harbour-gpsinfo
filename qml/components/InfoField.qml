@@ -6,7 +6,7 @@ Item {
     property alias value: value.text
     property bool highlight: false  //alias highlighted: value.highlighted
     property alias color: value.color
-    property variant fontpixelSize: Theme.fontSizeLarge
+    property real fontpixelSize: Theme.fontSizeLarge
     anchors.left: parent.left
     anchors.leftMargin: Theme.paddingMedium
     anchors.right: parent.right
