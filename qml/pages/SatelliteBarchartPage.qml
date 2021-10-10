@@ -74,10 +74,10 @@ Page {
             rssiBarChart.componentLoaded = true
         }
 
-        function getRSSI_Color(rssi)
-        {
-            return "hsl(" + (rssi < 40 ? rssi : 40) * 3 + ",100%,35%)";
-        }
+            function getRSSI_Color(rssi, opacity)
+            {
+                return "hsla(" + (rssi < 40 ? rssi : 40) * 3 + ",100%,35%," + opacity + ")";
+            }
 
         onSatellitesChanged: {
             if (!rssiBarChart.componentLoaded || pageStack.currentPage !== satelliteBarchartPage)
@@ -101,7 +101,7 @@ Page {
                     rssiBarChart.chartData.labelColors.push(barSat.inUse ? Theme.highlightColor : Theme.secondaryColor);
 
                     rssiBarChart.chartData.datasets[0].data.push(barSat.signalStrength);
-                    rssiBarChart.chartData.datasets[0].fillColor.push(barSat.inUse ? getRSSI_Color(barSat.signalStrength) : Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity))
+                        rssiBarChart.chartData.datasets[0].fillColor.push(getRSSI_Color(barSat.signalStrength, barSat.inUse ? 1.0 : 0.75))
                     rssiBarChart.chartData.datasets[0].barStrokeWidth.push(barSat.inUse ? (Theme.iconSizeExtraSmall / 5.0) : 0.0);
                     rssiBarChart.chartData.datasets[0].strokeColor.push(barSat.inUse ? "white" : "transparent");
                 });
