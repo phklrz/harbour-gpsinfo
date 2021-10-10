@@ -155,9 +155,9 @@ Page {
                 text: settings.magneticDeclination
                 placeholderText: "manually set local declination"
                 validator: IntValidator {
-                        bottom: 0
-                        top: 359
-                    }
+                    bottom: 0
+                    top: 359
+                }
                 EnterKey.iconSource: "image://theme/icon-m-enter-close"
                 EnterKey.onClicked:  {focus = false
                     settings.magneticDeclination = parseInt(text, 10) //setDeclination(parseInt(text, 10))

@@ -1,6 +1,6 @@
-import QtQuick 2.0 //2.6
+import QtQuick 2.0
 import Sailfish.Silica 1.0
-import QtPositioning 5.2 //5.4
+import QtPositioning 5.2
 import QtSensors 5.0
 import harbour.gpsinfo 1.0
 import "../components"
@@ -19,8 +19,10 @@ Page {
     onStatusChanged: {
         if (status == PageStatus.Active && !subPagesPushed) {
             subPagesPushed = true
-            pageStack.pushAttached(Qt.resolvedUrl("SatelliteInfoPage.qml"),
-                           { gpsDataSource: page.gpsDataSource, compass: page.compass})
+            pageStack.pushAttached(Qt.resolvedUrl("SatelliteInfoPage.qml"),{
+                                       gpsDataSource: page.gpsDataSource,
+                                       compass: page.compass
+                                   })
         }
     }
     states: [
@@ -137,9 +139,15 @@ Page {
             InfoField {
                 label: qsTr("Last update")
                 visible: settings.showLastUpdateApp
-                value: ((providers.timing.secsSincePosition > (1 +settings.updateInterval) ) ? //if more than a few secs then also show elapsed time
-                            "-"+providers.timing.formatElapsedTime(providers.timing.secsSincePosition)+"  " : " ")
-                       + (positionSource.position.coordinate.isValid ? Qt.formatTime(positionSource.position.timestamp, "hh:mm:ss") : "-") //always show actual time
+                // If more than a few secs then also show elapsed time.
+                // Always show actual time at the end.
+                value: ((providers.timing.secsSincePosition > (1 + settings.updateInterval))
+                        ? "-" + providers.timing.formatElapsedTime(providers.timing.secsSincePosition)
+                        : "")
+                       + " "
+                       + (positionSource.position.coordinate.isValid
+                          ? Qt.formatTime(positionSource.position.timestamp, "hh:mm:ss")
+                          : "-")
             }
             InfoField {
                 label: qsTr("Time to First Fix")
