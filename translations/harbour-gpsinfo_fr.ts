@@ -99,7 +99,7 @@
     <name>FirstPage</name>
     <message>
         <source>About</source>
-        <translation>A propos</translation>
+        <translation>À propos</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -159,7 +159,7 @@
     </message>
     <message>
         <source>Vertical accuracy</source>
-        <translation>Précision horizontale</translation>
+        <translation>Précision verticale</translation>
     </message>
     <message>
         <source>Satellites in use / view</source>
@@ -191,14 +191,14 @@
     </message>
     <message>
         <source>Compass calibration</source>
-        <translation type="unfinished"></translation>
+        <translation>Calibration de la boussole</translation>
     </message>
 </context>
 <context>
     <name>SatelliteBarchartPage</name>
     <message>
         <source>Satellite signal strengths</source>
-        <translation type="unfinished"></translation>
+        <translation>Puissance du signal satellite</translation>
     </message>
     <message>
         <source>Satellites in use / view</source>
@@ -209,7 +209,7 @@
     <name>SatelliteInfoPage</name>
     <message>
         <source>Satellite Info</source>
-        <translation>Info des satellites  </translation>
+        <translation>Info des satellites</translation>
     </message>
     <message>
         <source>Satellites in use / view</source>
@@ -244,7 +244,7 @@
     </message>
     <message>
         <source>imperial</source>
-        <translation>impérial </translation>
+        <translation>impérial</translation>
     </message>
     <message>
         <source>Show</source>
@@ -284,7 +284,7 @@
     </message>
     <message>
         <source>Vertical Accuracy</source>
-        <translation>Précision horizontale</translation>
+        <translation>Précision verticale</translation>
     </message>
     <message>
         <source>Horizontal Accuracy</source>
@@ -300,11 +300,11 @@
     </message>
     <message>
         <source>Update interval</source>
-        <translation>Interval de mise à jour </translation>
+        <translation>Intervalle de mise à jour </translation>
     </message>
     <message>
         <source>Satellite Info</source>
-        <translation>Info des satellites  </translation>
+        <translation>Info des satellites</translation>
     </message>
     <message>
         <source>requires app restart</source>
@@ -332,36 +332,36 @@
     </message>
     <message>
         <source>Rotate satellite view</source>
-        <translation type="unfinished"></translation>
+        <translation>Tourner la vue satellite</translation>
     </message>
     <message>
         <source>yes</source>
-        <translation type="unfinished">oui</translation>
+        <translation>oui</translation>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished">non</translation>
+        <translation>non</translation>
     </message>
     <message>
         <source>Compass Calibration</source>
-        <translation type="unfinished"></translation>
+        <translation>Calibration de la boussole</translation>
     </message>
     <message>
         <source>Satellite bar chart order</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordre des canaux</translation>
     </message>
     <message>
         <source>identifier</source>
         <comment>&apos;Number&apos; of the satellite</comment>
-        <translation type="unfinished"></translation>
+        <translation>numéro</translation>
     </message>
     <message>
         <source>signal strength</source>
-        <translation type="unfinished"></translation>
+        <translation>Puiss. du signal</translation>
     </message>
     <message>
         <source>Show empty channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Montrer les canaux vides</translation>
     </message>
 </context>
 </TS>
