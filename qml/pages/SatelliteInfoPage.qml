@@ -135,6 +135,7 @@ Page {
                 transform: Rotation { origin.x: 0 ; origin.y: diameter/2; angle: declination}
                 color: "#ff0000"
                 opacity: (declination !=0) ? 1 : 0 //0.5
+                visible: settings.showMagneticNorth
             }
             //Movement Direction line
             Rectangle { visible: !isNaN(gpsDataSource.movementDirection)
@@ -145,11 +146,12 @@ Page {
                 transform: Rotation { origin.x: 0 ; origin.y: 1.1*diameter/2; angle: isNaN(gpsDataSource.movementDirection) ? 170 : gpsDataSource.movementDirection}
                 color: "cyan"
                 opacity: 1
+                visible: settings.showDirectionIndicator && !isNaN(gpsDataSource.movementDirection)
             }
 
             // North, East, South, West, MagneticNorth indicators
             Repeater {
-                model: declination !=0
+                model: settings.showMagneticNorth && declination !=0
                        ? [locationFormatter.north, locationFormatter.east, locationFormatter.south, locationFormatter.west, locationFormatter.mag]
                        : [locationFormatter.north, locationFormatter.east, locationFormatter.south, locationFormatter.west]
 
@@ -161,7 +163,7 @@ Page {
                     font.weight: Font.Bold
                     font.pixelSize: Theme.fontSizeExtraSmall
                     property int iN: ((index !== 4 || !compass.reading) ? 0 : (compass.reading.calibrationLevel > 0.99 ? 1 : 2))
-                    text: " "+[modelData,"M","m"][iN]+" "  //index !==4 ? " "+modelData+" " : compass.reading.calibrationLevel > 0.99 ? " M ":" m "
+                    text: " "+[modelData,qsTr(locationFormatter.mag),"?"][iN]+" "
 
 
                     // Negate the radar containers rotation, so that the boxes and texts

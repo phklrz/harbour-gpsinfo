@@ -165,7 +165,6 @@ Page {
                 function setDeclination(Dec) {
                     settings.magneticDeclination = Dec
                 }
-
             }
 
             ComboBox {
@@ -186,7 +185,42 @@ Page {
                 }
                 Component.onCompleted: currentIndex = settings.rotate ? 0 : 1
             }
-
+            ComboBox {
+                label: qsTr("Show movement direction")
+                menu: ContextMenu {
+                    MenuItem {
+                        text: qsTr("yes")
+                        onClicked: {
+                            settings.showDirectionIndicator = true;
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("no")
+                        onClicked: {
+                            settings.showDirectionIndicator = false;
+                        }
+                    }
+                }
+                Component.onCompleted: currentIndex = settings.showDirectionIndicator ? 0 : 1
+            }
+            ComboBox {
+                label: qsTr("Show magnetic north")
+                menu: ContextMenu {
+                    MenuItem {
+                        text: qsTr("yes")
+                        onClicked: {
+                            settings.showMagneticNorth = true;
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("no")
+                        onClicked: {
+                            settings.showMagneticNorth = false;
+                        }
+                    }
+                }
+                Component.onCompleted: currentIndex = settings.showMagneticNorth ? 0 : 1
+            }
             ComboBox {
                 label: qsTr("Show empty channels")
                 menu: ContextMenu {

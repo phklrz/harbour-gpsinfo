@@ -15,6 +15,7 @@ class GPSInfoSettings : public QMLSettingsWrapper
     Q_PROPERTY(bool showCompassDirectionCover READ getShowCompassDirectionCover WRITE setShowCompassDirectionCover NOTIFY showCompassDirectionCoverChanged)
     Q_PROPERTY(bool showCompassCalibrationApp READ getShowCompassCalibrationApp WRITE setShowCompassCalibrationApp NOTIFY showCompassCalibrationAppChanged)
     Q_PROPERTY(bool showCompassCalibrationCover READ getShowCompassCalibrationCover WRITE setShowCompassCalibrationCover NOTIFY showCompassCalibrationCoverChanged)
+    Q_PROPERTY(bool showDirectionIndicator READ getShowDirectionIndicator WRITE setShowDirectionIndicator NOTIFY showDirectionIndicatorChanged)
     Q_PROPERTY(bool showGpsStateApp READ getShowGpsStateApp WRITE setShowGpsStateApp NOTIFY showGpsStateAppChanged)
     Q_PROPERTY(bool showGpsStateCover READ getShowGpsStateCover WRITE setShowGpsStateCover NOTIFY showGpsStateCoverChanged)
     Q_PROPERTY(bool showHorizontalAccuracyApp READ getShowHorizontalAccuracyApp WRITE setShowHorizontalAccuracyApp NOTIFY showHorizontalAccuracyAppChanged)
@@ -25,6 +26,7 @@ class GPSInfoSettings : public QMLSettingsWrapper
     Q_PROPERTY(bool showLatitudeCover READ getShowLatitudeCover WRITE setShowLatitudeCover NOTIFY showLatitudeCoverChanged)
     Q_PROPERTY(bool showLongitudeApp READ getShowLongitudeApp WRITE setShowLongitudeApp NOTIFY showLongitudeAppChanged)
     Q_PROPERTY(bool showLongitudeCover READ getShowLongitudeCover WRITE setShowLongitudeCover NOTIFY showLongitudeCoverChanged)
+    Q_PROPERTY(bool showMagneticNorth READ getShowMagneticNorth WRITE setShowMagneticNorth NOTIFY showMagneticNorthChanged)
     Q_PROPERTY(bool showMovementDirectionApp READ getShowMovementDirectionApp WRITE setShowMovementDirectionApp NOTIFY showMovementDirectionAppChanged)
     Q_PROPERTY(bool showMovementDirectionCover READ getShowMovementDirectionCover WRITE setShowMovementDirectionCover NOTIFY showMovementDirectionCoverChanged)
     Q_PROPERTY(bool showSatelliteInfoApp READ getShowSatelliteInfoApp WRITE setShowSatelliteInfoApp NOTIFY showSatelliteInfoAppChanged)
@@ -51,6 +53,7 @@ public:
     bool getShowCompassDirectionCover() {return this->value("showCompassDirectionCover", false).toBool();}
     bool getShowCompassCalibrationApp() {return this->value("showCompassCalibrationApp", true).toBool();}
     bool getShowCompassCalibrationCover() {return this->value("showCompassCalibrationCover", false).toBool();}
+    bool getShowDirectionIndicator() {return this->value("showDirectionIndicator", false).toBool();}
     bool getShowGpsStateApp() {return this->value("showGpsStateApp", true).toBool();}
     bool getShowGpsStateCover() {return this->value("showGpsStateCover", true).toBool();}
     bool getShowHorizontalAccuracyApp() {return this->value("showHorizontalAccuracyApp", true).toBool();}
@@ -61,6 +64,7 @@ public:
     bool getShowLatitudeCover() {return this->value("showLatitudeCover", true).toBool();}
     bool getShowLongitudeApp() {return this->value("showLongitudeApp", true).toBool();}
     bool getShowLongitudeCover() {return this->value("showLongitudeCover", true).toBool();}
+    bool getShowMagneticNorth() {return this->value("showMagneticNorth", false).toBool();}
     bool getShowMovementDirectionApp() {return this->value("showMovementDirectionApp", true).toBool();}
     bool getShowMovementDirectionCover() {return this->value("showMovementDirectionCover", false).toBool();}
     bool getShowSatelliteInfoApp() {return this->value("showSatelliteInfoApp", true).toBool();}
@@ -85,6 +89,7 @@ public:
     void setShowCompassDirectionCover(bool val) {this->setValue("showCompassDirectionCover", val); emit showCompassDirectionCoverChanged(val);}
     void setShowCompassCalibrationApp(bool val) {this->setValue("showCompassCalibrationApp", val); emit showCompassCalibrationAppChanged(val);}
     void setShowCompassCalibrationCover(bool val) {this->setValue("showCompassCalibrationCover", val); emit showCompassCalibrationCoverChanged(val);}
+    void setShowDirectionIndicator(bool val) {this->setValue("showDirectionIndicator", val); emit showDirectionIndicatorChanged(val);}
     void setShowGpsStateApp(bool val) {this->setValue("showGpsStateApp", val); emit showGpsStateAppChanged(val);}
     void setShowGpsStateCover(bool val) {this->setValue("showGpsStateCover", val); emit showGpsStateCoverChanged(val);}
     void setShowHorizontalAccuracyApp(bool val) {this->setValue("showHorizontalAccuracyApp", val); emit showHorizontalAccuracyAppChanged(val);}
@@ -95,6 +100,7 @@ public:
     void setShowLatitudeCover(bool val) {this->setValue("showLatitudeCover", val); emit showLatitudeCoverChanged(val);}
     void setShowLongitudeApp(bool val) {this->setValue("showLongitudeApp", val); emit showLongitudeAppChanged(val);}
     void setShowLongitudeCover(bool val) {this->setValue("showLongitudeCover", val); emit showLongitudeCoverChanged(val);}
+    void setShowMagneticNorth(bool val) {this->setValue("showMagneticNorth", val); emit showMagneticNorthChanged(val);}
     void setShowMovementDirectionApp(bool val) {this->setValue("showMovementDirectionApp", val); emit showMovementDirectionAppChanged(val);}
     void setShowMovementDirectionCover(bool val) {this->setValue("showMovementDirectionCover", val); emit showMovementDirectionCoverChanged(val);}
     void setShowSatelliteInfoApp(bool val) {this->setValue("showSatelliteInfoApp", val); emit showSatelliteInfoAppChanged(val);}
@@ -121,6 +127,7 @@ signals:
     void showCompassDirectionCoverChanged(bool);
     void showCompassCalibrationAppChanged(bool);
     void showCompassCalibrationCoverChanged(bool);
+    void showDirectionIndicatorChanged(bool);
     void showGpsStateAppChanged(bool);
     void showGpsStateCoverChanged(bool);
     void showHorizontalAccuracyAppChanged(bool);
@@ -131,6 +138,7 @@ signals:
     void showLatitudeCoverChanged(bool);
     void showLongitudeAppChanged(bool);
     void showLongitudeCoverChanged(bool);
+    void showMagneticNorthChanged(bool);
     void showMovementDirectionAppChanged(bool);
     void showMovementDirectionCoverChanged(bool);
     void showSatelliteInfoAppChanged(bool);
