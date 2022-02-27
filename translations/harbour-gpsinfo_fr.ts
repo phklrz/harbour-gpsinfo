@@ -98,22 +98,6 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <source>About</source>
-        <translation>A propos</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Paramètres</translation>
-    </message>
-    <message>
-        <source>Deactivate GPS</source>
-        <translation>Désactiver le GPS</translation>
-    </message>
-    <message>
-        <source>Activate GPS</source>
-        <translation>Activer le GPS</translation>
-    </message>
-    <message>
         <source>GPSInfo</source>
         <translation>Info GPS</translation>
     </message>
@@ -150,10 +134,6 @@
         <translation>Précision horizontale</translation>
     </message>
     <message>
-        <source>Compass direction</source>
-        <translation>Direct. de la boussole </translation>
-    </message>
-    <message>
         <source>Speed</source>
         <translation>Vitesse</translation>
     </message>
@@ -186,23 +166,142 @@
         <translation>mph</translation>
     </message>
     <message>
-        <source>Copy location</source>
-        <translation>Copier la position</translation>
+        <source>Time to First Fix</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Compass calibration</source>
+        <source>Direction</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Calibration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Magnetic Declination</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>LocationFormatter</name>
+    <message>
+        <source>M</source>
+        <comment>Magnetic North</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>N</source>
+        <comment>North</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S</source>
+        <comment>South</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>E</source>
+        <comment>East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>W</source>
+        <comment>West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NNE</source>
+        <comment>North North East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NE</source>
+        <comment>North East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ENE</source>
+        <comment>East North East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ESE</source>
+        <comment>East South East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SE</source>
+        <comment>South East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SSE</source>
+        <comment>South South East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SSW</source>
+        <comment>South South West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SW</source>
+        <comment>South West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WSW</source>
+        <comment>West South West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WNW</source>
+        <comment>West North West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NW</source>
+        <comment>Norh West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NNW</source>
+        <comment>North North West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainMenu</name>
+    <message>
+        <source>About</source>
+        <translation type="unfinished">A propos</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Paramètres</translation>
+    </message>
+    <message>
+        <source>Deactivate GPS</source>
+        <translation type="unfinished">Désactiver le GPS</translation>
+    </message>
+    <message>
+        <source>Activate GPS</source>
+        <translation type="unfinished">Activer le GPS</translation>
+    </message>
+    <message>
+        <source>Copy location</source>
+        <translation type="unfinished">Copier la position</translation>
     </message>
 </context>
 <context>
     <name>SatelliteBarchartPage</name>
     <message>
-        <source>Satellite signal strengths</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Satellites in use / view</source>
         <translation>Satellites utilisés / vus</translation>
+    </message>
+    <message>
+        <source>Satellite signal strengths</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -331,10 +430,6 @@
         <translation>Direct. du mouvement</translation>
     </message>
     <message>
-        <source>Rotate satellite view</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>yes</source>
         <translation type="unfinished">oui</translation>
     </message>
@@ -343,7 +438,11 @@
         <translation type="unfinished">non</translation>
     </message>
     <message>
-        <source>Compass Calibration</source>
+        <source>Rotate satellite view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show empty channels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -360,7 +459,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show empty channels</source>
+        <source>Compass Calibration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Magnetic Declination</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Local declination</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

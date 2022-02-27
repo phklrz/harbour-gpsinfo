@@ -5,7 +5,7 @@
     <name>AboutPage</name>
     <message>
         <source>An app to show all position information</source>
-        <translation>Ohjelma, joka näyttää kaikki paikkatiedot</translation>
+        <translation>Ohjelma, joka näyttää kaikki paikannustiedot</translation>
     </message>
     <message>
         <source>View license</source>
@@ -13,7 +13,7 @@
     </message>
     <message>
         <source>For suggestions, bugs and ideas visit </source>
-        <translation>Ehdotukset, bugit ja ideat (englanniksi) osoitteessa</translation>
+        <translation>Ehdotukset, bugit ja ideat osoitteessa </translation>
     </message>
     <message>
         <source>GPSInfo is open source software licensed under the terms of the GNU General Public License.</source>
@@ -103,22 +103,6 @@ Longitude = Pituusaste</translatorcomment>
 <context>
     <name>FirstPage</name>
     <message>
-        <source>About</source>
-        <translation>Tietoja</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Asetukset</translation>
-    </message>
-    <message>
-        <source>Deactivate GPS</source>
-        <translation>Kytke GPS pois</translation>
-    </message>
-    <message>
-        <source>Activate GPS</source>
-        <translation>Kytke GPS päälle</translation>
-    </message>
-    <message>
         <source>GPSInfo</source>
         <translation>GPS-tiedot</translation>
     </message>
@@ -156,10 +140,6 @@ Longitude = Pituusaste</translatorcomment>
         <translation>Vaakatarkkuus</translation>
     </message>
     <message>
-        <source>Compass direction</source>
-        <translation>Kompassisuunta</translation>
-    </message>
-    <message>
         <source>Speed</source>
         <translation>Nopeus</translation>
     </message>
@@ -192,12 +172,131 @@ Longitude = Pituusaste</translatorcomment>
         <translation>mph</translation>
     </message>
     <message>
-        <source>Copy location</source>
-        <translation>Kopioi sijainti</translation>
+        <source>Time to First Fix</source>
+        <translation>Aika sijaintiin</translation>
     </message>
     <message>
-        <source>Compass calibration</source>
-        <translation>Kompassikalibraatio</translation>
+        <source>Direction</source>
+        <translation>Suunta</translation>
+    </message>
+    <message>
+        <source>Calibration</source>
+        <translation>Kalibraatio</translation>
+    </message>
+    <message>
+        <source>Magnetic Declination</source>
+        <translation>Eranto</translation>
+    </message>
+</context>
+<context>
+    <name>LocationFormatter</name>
+    <message>
+        <source>M</source>
+        <comment>Magnetic North</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>N</source>
+        <comment>North</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S</source>
+        <comment>South</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>E</source>
+        <comment>East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>W</source>
+        <comment>West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NNE</source>
+        <comment>North North East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NE</source>
+        <comment>North East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ENE</source>
+        <comment>East North East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ESE</source>
+        <comment>East South East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SE</source>
+        <comment>South East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SSE</source>
+        <comment>South South East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SSW</source>
+        <comment>South South West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SW</source>
+        <comment>South West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WSW</source>
+        <comment>West South West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WNW</source>
+        <comment>West North West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NW</source>
+        <comment>Norh West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NNW</source>
+        <comment>North North West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainMenu</name>
+    <message>
+        <source>About</source>
+        <translation>Tietoja</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Asetukset</translation>
+    </message>
+    <message>
+        <source>Deactivate GPS</source>
+        <translation>Sammuta GPS</translation>
+    </message>
+    <message>
+        <source>Activate GPS</source>
+        <translation>Käynnistä GPS</translation>
+    </message>
+    <message>
+        <source>Copy location</source>
+        <translation>Kopioi sijainti</translation>
     </message>
 </context>
 <context>
@@ -368,6 +467,14 @@ Longitude = Pituusaste</translatorcomment>
     <message>
         <source>Show empty channels</source>
         <translation>Näytä tyhjät kanavat</translation>
+    </message>
+    <message>
+        <source>Magnetic Declination</source>
+        <translation>Eranto</translation>
+    </message>
+    <message>
+        <source>Local declination</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

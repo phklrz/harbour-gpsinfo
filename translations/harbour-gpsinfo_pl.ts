@@ -98,22 +98,6 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <source>About</source>
-        <translation>O GPSInfo</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>Ustawienia</translation>
-    </message>
-    <message>
-        <source>Deactivate GPS</source>
-        <translation>Wyłącz GPS</translation>
-    </message>
-    <message>
-        <source>Activate GPS</source>
-        <translation>Włącz GPS</translation>
-    </message>
-    <message>
         <source>GPSInfo</source>
         <translation>GPSInfo</translation>
     </message>
@@ -150,10 +134,6 @@
         <translation>Dokładność pozioma</translation>
     </message>
     <message>
-        <source>Compass direction</source>
-        <translation>Kierunek kompasu</translation>
-    </message>
-    <message>
         <source>Speed</source>
         <translation>Prędkość</translation>
     </message>
@@ -186,12 +166,131 @@
         <translation>mph</translation>
     </message>
     <message>
-        <source>Copy location</source>
-        <translation>Kopiuj lokalizację</translation>
+        <source>Time to First Fix</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Compass calibration</source>
-        <translation>Kalibracja kompasu</translation>
+        <source>Direction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Calibration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Magnetic Declination</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>LocationFormatter</name>
+    <message>
+        <source>M</source>
+        <comment>Magnetic North</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>N</source>
+        <comment>North</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S</source>
+        <comment>South</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>E</source>
+        <comment>East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>W</source>
+        <comment>West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NNE</source>
+        <comment>North North East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NE</source>
+        <comment>North East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ENE</source>
+        <comment>East North East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ESE</source>
+        <comment>East South East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SE</source>
+        <comment>South East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SSE</source>
+        <comment>South South East</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SSW</source>
+        <comment>South South West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SW</source>
+        <comment>South West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WSW</source>
+        <comment>West South West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WNW</source>
+        <comment>West North West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NW</source>
+        <comment>Norh West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NNW</source>
+        <comment>North North West</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainMenu</name>
+    <message>
+        <source>About</source>
+        <translation type="unfinished">O GPSInfo</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Ustawienia</translation>
+    </message>
+    <message>
+        <source>Deactivate GPS</source>
+        <translation type="unfinished">Wyłącz GPS</translation>
+    </message>
+    <message>
+        <source>Activate GPS</source>
+        <translation type="unfinished">Włącz GPS</translation>
+    </message>
+    <message>
+        <source>Copy location</source>
+        <translation type="unfinished">Kopiuj lokalizację</translation>
     </message>
 </context>
 <context>
@@ -361,6 +460,14 @@
     </message>
     <message>
         <source>Show empty channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Magnetic Declination</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Local declination</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
