@@ -1,3 +1,16 @@
+* Sun Feb 27 2022 Matti Viljanen 0.14.0-1
+- Built with SDK 3.8.3 for 4.3.0.15
+- Make N/E/S/W et. al. translatable
+- Make magnetic north indicator optional
+- Make movement indicator optional
+- Update base translation base
+- Update Finnish translation
+- Update French translation (thanks, Ric9k)
+
+* Thu Dec 02 2021 Matti Viljanen 0.13.5-1
+- Fix binary file path in spec
+- Built with SDK 3.7.4 for 4.3.0.12
+
 * Thu Aug 26 2021 Matti Viljanen 0.13.4-1
 - Add Slovak to language selection
 - Update Slovak translation (thanks, okruhliak)
