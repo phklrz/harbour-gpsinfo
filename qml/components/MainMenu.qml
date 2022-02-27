@@ -25,9 +25,9 @@ Item {
             text: qsTr("Copy location")
             onClicked: {
                 if (settings.coordinateFormat === "DEG") {
-                    Clipboard.text = LocationFormater.decimalLatToDMS(positionSource.position.coordinate.latitude, 2)
+                    Clipboard.text = locationFormatter.decimalLatToDMS(positionSource.position.coordinate.latitude, 2)
                             + ", "
-                            + LocationFormater.decimalLongToDMS(positionSource.position.coordinate.longitude, 2);
+                            + locationFormatter.decimalLongToDMS(positionSource.position.coordinate.longitude, 2);
                 } else {
                     Clipboard.text = positionSource.position.coordinate.latitude
                             + ", "

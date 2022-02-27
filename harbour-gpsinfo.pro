@@ -20,7 +20,7 @@ DISTFILES += qml/pages/CoverPage.qml \
     qml/components/InfoField.qml \
     qml/pages/SatelliteBarchartPage.qml \
     qml/pages/SettingsPage.qml \
-    qml/LocationFormatter.js \
+    qml/LocationFormatter.qml \
     qml/components/Providers.qml \
     qml/components/DoubleSwitch.qml \
     qml/pages/AboutPage.qml \

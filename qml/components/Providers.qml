@@ -3,7 +3,7 @@ import QtPositioning 5.2
 import QtSensors 5.0
 import harbour.gpsinfo 1.0
 import Sailfish.Silica 1.0
-import "../LocationFormatter.js" as LocationFormater
+import "../components"
 
 
 Item {
@@ -97,9 +97,9 @@ Item {
         function formatElapsedTime(t) { //print fn for elapsed times
             if (t<=90) return Math.round(t)+ "sec"
             t=t/60;
-            if (t<=90) return LocationFormater.roundToDecimal(T,1)+ "min"
+            if (t<=90) return locationFormatter.roundToDecimal(T,1)+ "min"
             t=t/60;
-            return LocationFormater.roundToDecimal(t,1)+ "hr"
+            return locationFormatter.roundToDecimal(t,1)+ "hr"
         }
         Component.onCompleted: {
 

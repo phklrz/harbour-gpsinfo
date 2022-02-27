@@ -149,7 +149,9 @@ Page {
 
             // North, East, South, West, MagneticNorth indicators
             Repeater {
-                model: declination !=0 ? ["N", "E", "S", "W", "M"]:["N", "E", "S", "W"]
+                model: declination !=0
+                       ? [locationFormatter.north, locationFormatter.east, locationFormatter.south, locationFormatter.west, locationFormatter.mag]
+                       : [locationFormatter.north, locationFormatter.east, locationFormatter.south, locationFormatter.west]
 
                 delegate:
                     Label {

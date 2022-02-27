@@ -5,8 +5,6 @@ import QtSensors 5.0
 import harbour.gpsinfo 1.0
 import "../components"
 
-import "../LocationFormatter.js" as LocationFormater
-
 CoverBackground {
     property PositionSource positionSource
     property Compass compass
@@ -37,7 +35,7 @@ CoverBackground {
             value: {
                 if (positionSource.position.latitudeValid) {
                     if (settings.coordinateFormat === "DEG") {
-                        return LocationFormater.decimalLatToDMS(positionSource.position.coordinate.latitude, 0)
+                        return locationFormatter.decimalLatToDMS(positionSource.position.coordinate.latitude, 0)
                     } else {
                         return positionSource.position.coordinate.latitude
                     }
@@ -52,7 +50,7 @@ CoverBackground {
             value: {
                 if (positionSource.position.longitudeValid) {
                     if (settings.coordinateFormat === "DEG") {
-                        return LocationFormater.decimalLongToDMS(positionSource.position.coordinate.longitude, 0)
+                        return locationFormatter.decimalLongToDMS(positionSource.position.coordinate.longitude, 0)
                     } else {
                         return positionSource.position.coordinate.longitude
                     }
@@ -67,9 +65,9 @@ CoverBackground {
             value: {
                 if (positionSource.position.altitudeValid) {
                     if (settings.units == "MET") {
-                        return LocationFormater.roundToDecimal(positionSource.position.coordinate.altitude, 2) + " m"
+                        return locationFormatter.roundToDecimal(positionSource.position.coordinate.altitude, 2) + " m"
                     } else {
-                        return LocationFormater.roundToDecimal(positionSource.position.coordinate.altitude * 3.2808399, 2) + " ft"
+                        return locationFormatter.roundToDecimal(positionSource.position.coordinate.altitude * 3.2808399, 2) + " ft"
                     }
                 }
                 return "-"
@@ -83,15 +81,15 @@ CoverBackground {
                 if (positionSource.position.speedValid) {
                     if (settings.units == "MET") {
                         if (settings.speedUnit == "SEC") {
-                            return LocationFormater.roundToDecimal(positionSource.position.speed, 2) + " " + qsTr("m/s")
+                            return locationFormatter.roundToDecimal(positionSource.position.speed, 2) + " " + qsTr("m/s")
                         } else {
-                            return LocationFormater.roundToDecimal(positionSource.position.speed * 60 * 60 / 1000, 2) + " " + qsTr("km/h")
+                            return locationFormatter.roundToDecimal(positionSource.position.speed * 60 * 60 / 1000, 2) + " " + qsTr("km/h")
                         }
                     } else {
                         if (settings.speedUnit == "SEC") {
-                            return LocationFormater.roundToDecimal(positionSource.position.speed * 3.2808399, 2) + " " + qsTr("ft/s")
+                            return locationFormatter.roundToDecimal(positionSource.position.speed * 3.2808399, 2) + " " + qsTr("ft/s")
                         } else {
-                            return LocationFormater.roundToDecimal(positionSource.position.speed * 2.23693629, 2) + " " + qsTr("mph")
+                            return locationFormatter.roundToDecimal(positionSource.position.speed * 2.23693629, 2) + " " + qsTr("mph")
                         }
                     }
                 }
@@ -102,7 +100,7 @@ CoverBackground {
             label: qsTr("Mov.")
             visible: settings.showMovementDirectionCover
             fontpixelSize: Theme.fontSizeMedium
-            value: isNaN(gpsDataSource.movementDirection) ? "-" : LocationFormater.formatDirection(gpsDataSource.movementDirection)
+            value: isNaN(gpsDataSource.movementDirection) ? "-" : locationFormatter.formatDirection(gpsDataSource.movementDirection)
         }
         InfoField {
             label: ""
@@ -117,9 +115,9 @@ CoverBackground {
             value: {
                 if (positionSource.position.verticalAccuracyValid) {
                     if (settings.units == "MET") {
-                        return LocationFormater.roundToDecimal(positionSource.position.verticalAccuracy, 2) + " m"
+                        return locationFormatter.roundToDecimal(positionSource.position.verticalAccuracy, 2) + " m"
                     } else {
-                        return LocationFormater.roundToDecimal(positionSource.position.verticalAccuracy * 3.2808399, 2) + " ft"
+                        return locationFormatter.roundToDecimal(positionSource.position.verticalAccuracy * 3.2808399, 2) + " ft"
                     }
                 }
                 return "-"
@@ -132,9 +130,9 @@ CoverBackground {
             value: {
                 if (positionSource.position.horizontalAccuracyValid) {
                     if (settings.units == "MET") {
-                        return LocationFormater.roundToDecimal(positionSource.position.horizontalAccuracy, 2) + " m"
+                        return locationFormatter.roundToDecimal(positionSource.position.horizontalAccuracy, 2) + " m"
                     } else {
-                        return LocationFormater.roundToDecimal(positionSource.position.horizontalAccuracy * 3.2808399, 2) + " ft"
+                        return locationFormatter.roundToDecimal(positionSource.position.horizontalAccuracy * 3.2808399, 2) + " ft"
                     }
                 }
                 return "-"
@@ -150,7 +148,7 @@ CoverBackground {
             label: qsTr("Com.")
             visible: settings.showCompassDirectionCover
             fontpixelSize: Theme.fontSizeMedium
-            value: LocationFormater.formatDirection(compass.reading === null ? 0 : compass.reading.azimuth)
+            value: locationFormatter.formatDirection(compass.reading === null ? 0 : compass.reading.azimuth)
         }
         InfoField {
             label: qsTr("Cal.")

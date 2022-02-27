@@ -5,6 +5,10 @@ import "components"
 
 ApplicationWindow
 {
+    LocationFormatter {
+        id: locationFormatter
+    }
+
     Providers {
         id: providers
     }
