@@ -139,7 +139,7 @@
     </message>
     <message>
         <source>Vertical accuracy</source>
-        <translation>Précision horizontale</translation>
+        <translation>Précision verticale</translation>
     </message>
     <message>
         <source>Satellites in use / view</source>
