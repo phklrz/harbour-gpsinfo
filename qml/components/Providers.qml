@@ -90,7 +90,7 @@ Item {
             if (pendingFix) {
                 secsToFirstFix = Math.round((t - activateGPSTimestamp)/1000)  //using actual position time
                 pendingFix=false
-                Notices.show("GPS Time to First Fix " + secsToFirstFix, Notice.Long)
+                Notices.show(qsTr("Time to First Fix")+" "+secsToFirstFix, Notice.Long)
             }
 
         }
