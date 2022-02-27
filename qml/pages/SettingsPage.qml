@@ -151,9 +151,9 @@ Page {
             TextField {
                 id: declinationField
                 inputMethodHints: Qt.ImhFormattedNumbersOnly
-                label: "Magnetic Declination"
+                label: qsTr("Magnetic Declination")
                 text: settings.magneticDeclination
-                placeholderText: "manually set local declination"
+                placeholderText: qsTr("Local declination")
                 validator: IntValidator {
                     bottom: 0
                     top: 359
