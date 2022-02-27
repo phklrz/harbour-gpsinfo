@@ -126,26 +126,26 @@ Page {
                     opacity: 0.5
                 }
             }
-            //Magnetic N line
+            // Magnetic North Indicator
             Rectangle {
                 width: Theme.iconSizeExtraSmall / 10.0
                 height: diameter/2
                 anchors.left: parent.horizontalCenter
-                anchors.bottom: parent.verticalCenter  //+diameter/2
+                anchors.bottom: parent.verticalCenter
                 transform: Rotation { origin.x: 0 ; origin.y: diameter/2; angle: declination}
-                color: "#ff0000"
-                opacity: (declination !=0) ? 1 : 0 //0.5
+                color: "#77ff77"
+                opacity: 0.5
                 visible: settings.showMagneticNorth
             }
-            //Movement Direction line
-            Rectangle { visible: !isNaN(gpsDataSource.movementDirection)
+            // Movement Direction Indicator
+            Rectangle {
                 width: Theme.iconSizeExtraSmall / 10.0
-                height: 1.1*diameter/2
+                height: diameter/2
                 anchors.left: parent.horizontalCenter
-                anchors.bottom: parent.verticalCenter  //+diameter/2
-                transform: Rotation { origin.x: 0 ; origin.y: 1.1*diameter/2; angle: isNaN(gpsDataSource.movementDirection) ? 170 : gpsDataSource.movementDirection}
-                color: "cyan"
-                opacity: 1
+                anchors.bottom: parent.verticalCenter
+                transform: Rotation { origin.x: 0 ; origin.y: diameter/2; angle: isNaN(gpsDataSource.movementDirection) ? 0 : gpsDataSource.movementDirection }
+                border.color: "#ffffff"
+                opacity: !isNaN(gpsDataSource.movementDirection) ? 0.75 : 0.0
                 visible: settings.showDirectionIndicator && !isNaN(gpsDataSource.movementDirection)
             }
 
