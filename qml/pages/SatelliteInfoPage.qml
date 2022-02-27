@@ -160,7 +160,7 @@ Page {
                     color: ["white","white","red"][iN]
                     font.weight: Font.Bold
                     font.pixelSize: Theme.fontSizeExtraSmall
-                    property int iN: (index !== 4 ? 0 : (compass.reading.calibrationLevel > 0.99 ? 1 : 2))
+                    property int iN: ((index !== 4 || !compass.reading) ? 0 : (compass.reading.calibrationLevel > 0.99 ? 1 : 2))
                     text: " "+[modelData,"M","m"][iN]+" "  //index !==4 ? " "+modelData+" " : compass.reading.calibrationLevel > 0.99 ? " M ":" m "
 
 
