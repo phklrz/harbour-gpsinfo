@@ -300,6 +300,13 @@ Longitude = Pituusaste</translatorcomment>
     </message>
 </context>
 <context>
+    <name>Providers</name>
+    <message>
+        <source>Time to First Fix</source>
+        <translation>Aika sijaintiin</translation>
+    </message>
+</context>
+<context>
     <name>SatelliteBarchartPage</name>
     <message>
         <source>Satellite signal strengths</source>
@@ -474,7 +481,15 @@ Longitude = Pituusaste</translatorcomment>
     </message>
     <message>
         <source>Local declination</source>
-        <translation type="unfinished"></translation>
+        <translation>Paikallinen eranto</translation>
+    </message>
+    <message>
+        <source>Show magnetic north</source>
+        <translation>Näytä mag. pohjoisen nuoli</translation>
+    </message>
+    <message>
+        <source>Show movement direction</source>
+        <translation>Näytä liikeen suuntanuoli</translation>
     </message>
 </context>
 </TS>

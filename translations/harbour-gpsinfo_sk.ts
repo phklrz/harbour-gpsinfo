@@ -294,6 +294,13 @@
     </message>
 </context>
 <context>
+    <name>Providers</name>
+    <message>
+        <source>Time to First Fix</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SatelliteBarchartPage</name>
     <message>
         <source>Satellite signal strengths</source>
@@ -468,6 +475,14 @@
     </message>
     <message>
         <source>Local declination</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show magnetic north</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show movement direction</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
