@@ -167,19 +167,19 @@
     </message>
     <message>
         <source>Time to First Fix</source>
-        <translation type="unfinished"></translation>
+        <translation>Čas do prvého zamerania</translation>
     </message>
     <message>
         <source>Direction</source>
-        <translation type="unfinished"></translation>
+        <translation>Smerovanie</translation>
     </message>
     <message>
         <source>Calibration</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalibrácia</translation>
     </message>
     <message>
         <source>Magnetic Declination</source>
-        <translation type="unfinished"></translation>
+        <translation>Magnetická deklinácia</translation>
     </message>
 </context>
 <context>
@@ -187,117 +187,117 @@
     <message>
         <source>M</source>
         <comment>Magnetic North</comment>
-        <translation type="unfinished"></translation>
+        <translation>M</translation>
     </message>
     <message>
         <source>N</source>
         <comment>North</comment>
-        <translation type="unfinished"></translation>
+        <translation>S</translation>
     </message>
     <message>
         <source>S</source>
         <comment>South</comment>
-        <translation type="unfinished"></translation>
+        <translation>J</translation>
     </message>
     <message>
         <source>E</source>
         <comment>East</comment>
-        <translation type="unfinished"></translation>
+        <translation>V</translation>
     </message>
     <message>
         <source>W</source>
         <comment>West</comment>
-        <translation type="unfinished"></translation>
+        <translation>Z</translation>
     </message>
     <message>
         <source>NNE</source>
         <comment>North North East</comment>
-        <translation type="unfinished"></translation>
+        <translation>SSV</translation>
     </message>
     <message>
         <source>NE</source>
         <comment>North East</comment>
-        <translation type="unfinished"></translation>
+        <translation>SV</translation>
     </message>
     <message>
         <source>ENE</source>
         <comment>East North East</comment>
-        <translation type="unfinished"></translation>
+        <translation>VSV</translation>
     </message>
     <message>
         <source>ESE</source>
         <comment>East South East</comment>
-        <translation type="unfinished"></translation>
+        <translation>VJV</translation>
     </message>
     <message>
         <source>SE</source>
         <comment>South East</comment>
-        <translation type="unfinished"></translation>
+        <translation>JV</translation>
     </message>
     <message>
         <source>SSE</source>
         <comment>South South East</comment>
-        <translation type="unfinished"></translation>
+        <translation>JJV</translation>
     </message>
     <message>
         <source>SSW</source>
         <comment>South South West</comment>
-        <translation type="unfinished"></translation>
+        <translation>JJZ</translation>
     </message>
     <message>
         <source>SW</source>
         <comment>South West</comment>
-        <translation type="unfinished"></translation>
+        <translation>JZ</translation>
     </message>
     <message>
         <source>WSW</source>
         <comment>West South West</comment>
-        <translation type="unfinished"></translation>
+        <translation>ZJZ</translation>
     </message>
     <message>
         <source>WNW</source>
         <comment>West North West</comment>
-        <translation type="unfinished"></translation>
+        <translation>ZSZ</translation>
     </message>
     <message>
         <source>NW</source>
         <comment>Norh West</comment>
-        <translation type="unfinished"></translation>
+        <translation>SZ</translation>
     </message>
     <message>
         <source>NNW</source>
         <comment>North North West</comment>
-        <translation type="unfinished"></translation>
+        <translation>SSZ</translation>
     </message>
 </context>
 <context>
     <name>MainMenu</name>
     <message>
         <source>About</source>
-        <translation type="unfinished">O aplikácii</translation>
+        <translation>O aplikácii</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Nastavenia</translation>
+        <translation>Nastavenia</translation>
     </message>
     <message>
         <source>Deactivate GPS</source>
-        <translation type="unfinished">Vypnúť GPS</translation>
+        <translation>Vypnúť GPS</translation>
     </message>
     <message>
         <source>Activate GPS</source>
-        <translation type="unfinished">Zapnúť GPS</translation>
+        <translation>Zapnúť GPS</translation>
     </message>
     <message>
         <source>Copy location</source>
-        <translation type="unfinished">Kopírovať polohu</translation>
+        <translation>Kopírovať polohu</translation>
     </message>
 </context>
 <context>
     <name>Providers</name>
     <message>
         <source>Time to First Fix</source>
-        <translation type="unfinished"></translation>
+        <translation>Čas do prvého zamerania</translation>
     </message>
 </context>
 <context>
@@ -471,19 +471,19 @@
     </message>
     <message>
         <source>Magnetic Declination</source>
-        <translation type="unfinished"></translation>
+        <translation>Magnetická deklinácia</translation>
     </message>
     <message>
         <source>Local declination</source>
-        <translation type="unfinished"></translation>
+        <translation>Miestna deklinácia</translation>
     </message>
     <message>
         <source>Show magnetic north</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukázať magnetický sever</translation>
     </message>
     <message>
         <source>Show movement direction</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukázať smer pohybu</translation>
     </message>
 </context>
 </TS>
