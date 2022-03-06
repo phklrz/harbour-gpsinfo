@@ -55,7 +55,7 @@ Page {
             AboutLabel {
                 font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.secondaryColor
-                text: qsTr("Version") + " 0.14.0-1"
+                text: qsTr("Version") + " 0.14.1-1"
             }
 
             AboutLabel {
