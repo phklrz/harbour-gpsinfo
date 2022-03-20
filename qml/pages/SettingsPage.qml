@@ -115,7 +115,7 @@ Page {
             }
             ComboBox {
                 id: languageCombobox
-                label: qsTr("Language") + "*"
+                label: qsTr("Language")
                 menu: ContextMenu {
                     MenuItem { text: "English";    onClicked: settings.locale = "en"; }
                     MenuItem { text: "Deutsch";    onClicked: settings.locale = "de"; }
@@ -131,6 +131,7 @@ Page {
                     MenuItem { text: "简体中文";       onClicked: settings.locale = "zh_CN"; }
                 }
                 Component.onCompleted: currentIndex = setLanguageCombobox()
+                description: qsTr("Requires app restart")
             }
 
             Label {
@@ -382,11 +383,6 @@ Page {
                 rSw.onClicked: settings.showCompassCalibrationCover = rSw.checked
             }
 
-            Text {
-                font.pixelSize: Theme.fontSizeExtraSmall
-                color: Theme.secondaryColor
-                text: "*" + qsTr("requires app restart")
-            }
         }
     }
 }

@@ -466,7 +466,7 @@
         <translation>罗盘校准</translation>
     </message>
     <message>
-        <source>requires app restart</source>
+        <source>Requires app restart</source>
         <translation>需要重启软件</translation>
     </message>
     <message>

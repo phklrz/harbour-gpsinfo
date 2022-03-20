@@ -413,8 +413,8 @@
         <translation>Informácia o satelitoch</translation>
     </message>
     <message>
-        <source>requires app restart</source>
-        <translation>vyžaduje reštart aplikácie</translation>
+        <source>Requires app restart</source>
+        <translation>Vyžaduje reštart aplikácie</translation>
     </message>
     <message>
         <source>m/s</source>

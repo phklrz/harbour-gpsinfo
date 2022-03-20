@@ -413,8 +413,8 @@
         <translation>Satellit-info</translation>
     </message>
     <message>
-        <source>requires app restart</source>
-        <translation>kräver app-omstart</translation>
+        <source>Requires app restart</source>
+        <translation>Kräver app-omstart</translation>
     </message>
     <message>
         <source>m/s</source>

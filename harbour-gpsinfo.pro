@@ -7,7 +7,6 @@ SOURCES += \
     src/gpsdatasource.cpp \
     src/qmlsettingswrapper.cpp \
     src/gpsinfosettings.cpp \
-    src/app.cpp \
     src/harbour-gpsinfo.cpp
 
 DISTFILES += qml/pages/CoverPage.qml \
@@ -49,8 +48,7 @@ SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172 256x256
 HEADERS += \
     src/gpsdatasource.h \
     src/qmlsettingswrapper.h \
-    src/gpsinfosettings.h \
-    src/app.h
+    src/gpsinfosettings.h
 
 QT += positioning
 

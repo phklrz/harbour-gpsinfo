@@ -413,8 +413,8 @@
         <translation>Инфо о спутниках</translation>
     </message>
     <message>
-        <source>requires app restart</source>
-        <translation>требует перезапуска приложения</translation>
+        <source>Requires app restart</source>
+        <translation>Требует перезапуска приложения</translation>
     </message>
     <message>
         <source>m/s</source>

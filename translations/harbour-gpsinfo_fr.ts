@@ -413,8 +413,8 @@
         <translation>Info des satellites  </translation>
     </message>
     <message>
-        <source>requires app restart</source>
-        <translation>requiert le redémarrage de l&apos;application</translation>
+        <source>Requires app restart</source>
+        <translation>Requiert le redémarrage de l&apos;application</translation>
     </message>
     <message>
         <source>m/s</source>

@@ -434,8 +434,8 @@ kérjük ide fordulj</translation>
         <translation>Iránytű</translation>
     </message>
     <message>
-        <source>requires app restart</source>
-        <translation>átállítása az alkalmazás újraindítását igényli</translation>
+        <source>Requires app restart</source>
+        <translation>Átállítása az alkalmazás újraindítását igényli</translation>
     </message>
     <message>
         <source>Rotate satellite view</source>

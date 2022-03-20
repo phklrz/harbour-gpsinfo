@@ -419,8 +419,8 @@ Longitude = Pituusaste</translatorcomment>
         <translation>Satelliittitieto</translation>
     </message>
     <message>
-        <source>requires app restart</source>
-        <translation>vaatii uudelleenkäynnistyksen</translation>
+        <source>Requires app restart</source>
+        <translation>Vaatii uudelleenkäynnistyksen</translation>
     </message>
     <message>
         <source>m/s</source>

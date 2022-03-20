@@ -4,7 +4,6 @@
 #include <QTranslator>
 #include "gpsdatasource.h"
 #include "gpsinfosettings.h"
-#include "app.h"
 
 
 int main(int argc, char *argv[]) {
@@ -20,8 +19,6 @@ int main(int argc, char *argv[]) {
     qmlRegisterType<GPSSatellite>();
     GPSInfoSettings* settings = new GPSInfoSettings();
     QGuiApplication* qGuiAppl = SailfishApp::application(argc, argv);
-    App* app = new App();
-    app->connect(settings, SIGNAL(localeChanged(QString)), app, SLOT(localeChanged(QString)));
     QStringList locales;
     QString baseName("/usr/share/harbour-gpsinfo/translations/");
     QDir localesDir(baseName);

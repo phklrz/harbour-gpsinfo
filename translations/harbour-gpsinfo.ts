@@ -599,7 +599,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="388"/>
-        <source>requires app restart</source>
+        <source>Requires app restart</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
