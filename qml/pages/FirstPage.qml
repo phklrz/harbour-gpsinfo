@@ -7,13 +7,15 @@ Page {
 
     allowedOrientations: Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted
 
+    property bool radarPagePushed: false
     onStatusChanged: {
-        if (status == PageStatus.Active && !subPagesPushed) {
-            subPagesPushed = true
-            pageStack.pushAttached(Qt.resolvedUrl("SatelliteInfoPage.qml"),{
-                                       gpsDataSource: page.gpsDataSource,
-                                       compass: page.compass
-                                   })
+        if(!radarPagePushed && status === PageStatus.Active) {
+            console.log("Push radarPage")
+            pageStack.pushAttached(radarPage)
+            radarPagePushed = true
+        }
+        if(!radarPage.barchartPagePushed && status === PageStatus.Inactive) {
+            radarPage.pagePushTimer.start()
         }
     }
     states: [

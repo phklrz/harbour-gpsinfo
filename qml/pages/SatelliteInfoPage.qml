@@ -29,6 +29,24 @@ Page {
         }
     ]
 
+    property alias pagePushTimer: pagePushTimer
+    property bool barchartPagePushed: false
+    Timer {
+        id: pagePushTimer
+        interval: 100
+        repeat: false
+        running: false
+        onTriggered: {
+            if(!barchartPagePushed && satelliteInfoPage.status === PageStatus.Active) {
+                console.log("Push barchartPage")
+                pageStack.pushAttached(barchartPage)
+                barchartPagePushed = true
+            }
+            else
+                console.log("Don't push")
+        }
+    }
+
     property int radarWidth: Screen.width - Theme.paddingLarge
     property int diameter: radarWidth - 2 * Theme.paddingLarge
     property int radius: diameter / 2

@@ -10,16 +10,6 @@ Page {
     SilicaFlickable {
         anchors.fill: parent
 
-    onStatusChanged: {
-        if (status == PageStatus.Active && !subPagesPushed) {
-            subPagesPushed = true
-            pageStack.pushAttached(Qt.resolvedUrl("FirstPage.qml"),
-                                   { positionSource: satelliteBarchartPage.positionSource,
-                                       gpsDataSource: satelliteBarchartPage.gpsDataSource,
-                                       compass: satelliteBarchartPage.compass})
-            pageStack.navigateForward(PageStackAction.Immediate)
-        }
-    }
         MainMenu { }
 
         PageHeader {
