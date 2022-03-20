@@ -84,7 +84,6 @@ Item {
         }
 
         function setTimeToFirstFix() {
-            timer.restart() //stop timer from timing out
             secsSincePosition = Math.round((positionSource.position.timestamp - lastTimestamp)/1000)
             lastTimestamp = positionSource.position.timestamp
             if (pendingFix) {
