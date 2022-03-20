@@ -55,13 +55,16 @@ Page {
             AboutLabel {
                 font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.secondaryColor
-                text: qsTr("Version") + " 0.14.1-1"
+                text: qsTr("Version") + " 0.15.0-1"
             }
 
             AboutLabel {
                 font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.secondaryColor
-                text: "Copyright © 2014-2016 Marcel Witte\n2019 Miklós Márton\n2019 Matti Lehtimäki\n2019-2021 Matti Viljanen"
+                text: "Copyright © 2014-2016 Marcel Witte\n"+
+                      "2019 Miklós Márton\n"+
+                      "2019 Matti Lehtimäki\n"+
+                      "2019-2022 Matti Viljanen"
             }
 
             AboutLabel {
