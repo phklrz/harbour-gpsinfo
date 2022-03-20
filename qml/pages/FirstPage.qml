@@ -1,16 +1,9 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import QtPositioning 5.2
-import QtSensors 5.0
-import harbour.gpsinfo 1.0
 import "../components"
 
 Page {
     id: page
-    property PositionSource positionSource
-    property Compass compass
-    property GPSDataSource gpsDataSource
-    property bool subPagesPushed: false
 
     allowedOrientations: Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted
 
@@ -37,10 +30,8 @@ Page {
 
     SilicaFlickable {
         anchors.fill: parent
-        MainMenu {
-            id: siMainMenu
-            positionSource: providers.positionSource
-        }
+
+        MainMenu { }
 
         contentHeight: pageHeader.height + column.height;
 
@@ -63,17 +54,17 @@ Page {
             InfoField {
                 label: qsTr("GPS")
                 visible: settings.showGpsStateApp
-                value: positionSource.active ? qsTr("active") : qsTr("inactive")
+                value: providers.position.active ? qsTr("active") : qsTr("inactive")
             }
             InfoField {
                 label: qsTr("Latitude")
                 visible: settings.showLatitudeApp
                 value: {
-                    if (positionSource.position.latitudeValid) {
+                    if (providers.position.position.latitudeValid) {
                         if (settings.coordinateFormat === "DEG") {
-                            return locationFormatter.decimalLatToDMS(positionSource.position.coordinate.latitude, 2)
+                            return locationFormatter.decimalLatToDMS(providers.position.position.coordinate.latitude, 2)
                         } else {
-                            return positionSource.position.coordinate.latitude
+                            return providers.position.position.coordinate.latitude
                         }
                     }
                     return "-"
@@ -83,11 +74,11 @@ Page {
                 label: qsTr("Longitude")
                 visible: settings.showLongitudeApp
                 value: {
-                    if (positionSource.position.longitudeValid) {
+                    if (providers.position.position.longitudeValid) {
                         if (settings.coordinateFormat === "DEG") {
-                            return locationFormatter.decimalLongToDMS(positionSource.position.coordinate.longitude, 2)
+                            return locationFormatter.decimalLongToDMS(providers.position.position.coordinate.longitude, 2)
                         } else {
-                            return positionSource.position.coordinate.longitude
+                            return providers.position.position.coordinate.longitude
                         }
                     }
                     return "-"
@@ -97,11 +88,11 @@ Page {
                 label: qsTr("Altitude")
                 visible: settings.showAltitudeApp
                 value: {
-                    if (positionSource.position.altitudeValid) {
+                    if (providers.position.position.altitudeValid) {
                         if (settings.units === "MET") {
-                            return locationFormatter.roundToDecimal(positionSource.position.coordinate.altitude, 2) + " m"
+                            return locationFormatter.roundToDecimal(providers.position.position.coordinate.altitude, 2) + " m"
                         } else {
-                            return locationFormatter.roundToDecimal(positionSource.position.coordinate.altitude * 3.2808399, 2) + " ft"
+                            return locationFormatter.roundToDecimal(providers.position.position.coordinate.altitude * 3.2808399, 2) + " ft"
                         }
                     }
                     return "-"
@@ -111,18 +102,18 @@ Page {
                 label: qsTr("Speed")
                 visible: settings.showSpeedApp
                 value: {
-                    if (positionSource.position.speedValid) {
+                    if (providers.position.position.speedValid) {
                         if (settings.units === "MET") {
                             if (settings.speedUnit === "SEC") {
-                                return locationFormatter.roundToDecimal(positionSource.position.speed, 2) + " " + qsTr("m/s")
+                                return locationFormatter.roundToDecimal(providers.position.position.speed, 2) + " " + qsTr("m/s")
                             } else {
-                                return locationFormatter.roundToDecimal(positionSource.position.speed * 60 * 60 / 1000, 2) + " " + qsTr("km/h")
+                                return locationFormatter.roundToDecimal(providers.position.position.speed * 60 * 60 / 1000, 2) + " " + qsTr("km/h")
                             }
                         } else {
                             if (settings.speedUnit === "SEC") {
-                                return locationFormatter.roundToDecimal(positionSource.position.speed * 3.2808399, 2) + " " + qsTr("ft/s")
+                                return locationFormatter.roundToDecimal(providers.position.position.speed * 3.2808399, 2) + " " + qsTr("ft/s")
                             } else {
-                                return locationFormatter.roundToDecimal(positionSource.position.speed * 2.23693629, 2) + " " + qsTr("mph")
+                                return locationFormatter.roundToDecimal(providers.position.position.speed * 2.23693629, 2) + " " + qsTr("mph")
                             }
                         }
                     }
@@ -132,37 +123,37 @@ Page {
             InfoField {
                 label: qsTr("Movement direction")
                 visible: settings.showMovementDirectionApp
-                value: isNaN(gpsDataSource.movementDirection) ? "-" : locationFormatter.formatDirection(gpsDataSource.movementDirection)
+                value: isNaN(providers.gps.movementDirection) ? "-" : locationFormatter.formatDirection(providers.gps.movementDirection)
             }
             InfoField {
                 label: qsTr("Last update")
                 visible: settings.showLastUpdateApp
                 // If more than a few secs then also show elapsed time.
                 // Always show actual time at the end.
-                value: ((providers.timing.secsSincePosition > (1 + settings.updateInterval))
-                        ? "-" + providers.timing.formatElapsedTime(providers.timing.secsSincePosition)
+                value: ((providers.timing.secondsSinceLastLocationFix > (1 + settings.updateInterval))
+                        ? "-" + providers.timing.formatElapsedTime(providers.timing.secondsSinceLastLocationFix)
                         : "")
                        + " "
-                       + (positionSource.position.coordinate.isValid
-                          ? Qt.formatTime(positionSource.position.timestamp, "hh:mm:ss")
+                       + (providers.position.position.coordinate.isValid
+                          ? Qt.formatTime(providers.position.position.timestamp, "hh:mm:ss")
                           : "-")
             }
             InfoField {
                 label: qsTr("Time to First Fix")
                 visible: settings.showLastUpdateApp
-                value: providers.timing.formatElapsedTime(providers.timing.secsToFirstFix)
-                highlight: providers.timing.secsToFirstFix < 0
+                value: providers.timing.formatElapsedTime(providers.timing.secondsToLocationFix)
+                highlight: providers.timing.secondsToLocationFix < 0
             }
 
             InfoField {
                 label: qsTr("Vertical accuracy")
                 visible: settings.showVerticalAccuracyApp
                 value: {
-                    if (positionSource.position.verticalAccuracyValid) {
+                    if (providers.position.position.verticalAccuracyValid) {
                         if (settings.units === "MET") {
-                            return locationFormatter.roundToDecimal(positionSource.position.verticalAccuracy, 2) + " m"
+                            return locationFormatter.roundToDecimal(providers.position.position.verticalAccuracy, 2) + " m"
                         } else {
-                            return locationFormatter.roundToDecimal(positionSource.position.verticalAccuracy * 3.2808399, 2) + " ft"
+                            return locationFormatter.roundToDecimal(providers.position.position.verticalAccuracy * 3.2808399, 2) + " ft"
                         }
                     }
                     return "-"
@@ -172,11 +163,11 @@ Page {
                 label: qsTr("Horizontal accuracy")
                 visible: settings.showHorizontalAccuracyApp
                 value: {
-                    if (positionSource.position.horizontalAccuracyValid) {
+                    if (providers.position.position.horizontalAccuracyValid) {
                         if (settings.units === "MET") {
-                            return locationFormatter.roundToDecimal(positionSource.position.horizontalAccuracy, 2) + " m"
+                            return locationFormatter.roundToDecimal(providers.position.position.horizontalAccuracy, 2) + " m"
                         } else {
-                            return locationFormatter.roundToDecimal(positionSource.position.horizontalAccuracy * 3.2808399, 2) + " ft"
+                            return locationFormatter.roundToDecimal(providers.position.position.horizontalAccuracy * 3.2808399, 2) + " ft"
                         }
                     }
                     return "-"
@@ -185,7 +176,7 @@ Page {
             InfoField {
                 label: qsTr("Satellites in use / view")
                 visible: settings.showSatelliteInfoApp
-                value: gpsDataSource.numberOfUsedSatellites + " / " + gpsDataSource.numberOfVisibleSatellites
+                value: providers.gps.active ? providers.gps.numberOfUsedSatellites + " / " + providers.gps.numberOfVisibleSatellites : "-"
             }
             SectionHeader {
                 visible: settings.showCompassDirectionApp
@@ -194,20 +185,20 @@ Page {
             InfoField {
                 label: qsTr("Direction")
                 visible: settings.showCompassDirectionApp
-                value: compass.reading === null ? "-" : locationFormatter.formatDirection(compass.reading.azimuth)
+                value: providers.compass.reading === null ? "-" : locationFormatter.formatDirection(providers.compass.reading.azimuth)
             }
             InfoField {
                 label: qsTr("Calibration")
                 visible: settings.showCompassCalibrationApp
-                value: compass.reading === null ? "-" : Math.round(compass.reading.calibrationLevel * 100) + "%"
+                value: providers.compass.reading === null ? "-" : Math.round(providers.compass.reading.calibrationLevel * 100) + "%"
             }
             InfoField { // Needs QtPositioning 5.4
                 label: qsTr("Magnetic Declination")
                 visible: settings.showCompassDirectionApp
                 value: {
-                    if(typeof positionSource.position.magneticVariationValid !== undefined) {
-                        if (positionSource.position.magneticVariationValid === true) {
-                            return locationFormatter.roundToDecimal(positionSource.position.magneticVariation, 1)
+                    if(typeof providers.position.position.magneticVariationValid !== undefined) {
+                        if (providers.position.position.magneticVariationValid === true) {
+                            return locationFormatter.roundToDecimal(providers.position.position.magneticVariation, 1)
                         }
                         return "-"
                     }

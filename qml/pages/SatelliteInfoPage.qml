@@ -1,8 +1,6 @@
 import QtQuick 2.0
-import QtGraphicalEffects 1.0
 import Sailfish.Silica 1.0
-import QtSensors 5.0
-import harbour.gpsinfo 1.0
+import QtGraphicalEffects 1.0
 import "../components"
 
 Page {
@@ -10,12 +8,9 @@ Page {
 
     allowedOrientations: Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted
 
-    property Compass compass
-    property GPSDataSource gpsDataSource
-    property bool satelliteBarchartPagePushed: false
-    property int declination: settings.magneticDeclination === undefined ? 0:settings.magneticDeclination
-    property variant satellites: status === PageStatus.Inactive ? [] : gpsDataSource.satellites;
-    property variant sortedSatellites: status === PageStatus.Inactive ? [] : gpsDataSource.satellites.sort(function(a,b) {return (a.inUse ? 1:-1) - (b.inUse ? 1:-1)}) //so we can draw InUse sats on top...
+    property int declination: settings.magneticDeclination === undefined ? 0 : settings.magneticDeclination
+    property variant satellites: status === PageStatus.Inactive ? [] : providers.gps.satellites;
+    property variant sortedSatellites: status === PageStatus.Inactive ? [] : providers.gps.satellites.sort(function(a,b) {return (a.inUse ? 1:-1) - (b.inUse ? 1:-1)}) //so we can draw InUse sats on top...
 
     states: [
         State {
@@ -42,10 +37,8 @@ Page {
     SilicaFlickable {
         anchors.fill: parent
 
-        MainMenu {
-            id: siMainMenu
-            positionSource: providers.positionSource
-        }
+        MainMenu { }
+
         PageHeader {
             title: qsTr("Satellite Info")
         }
@@ -100,7 +93,7 @@ Page {
             // At least with Jolla Phone, the reading must be negated
             // so that the compass turns in correct direction.
 
-            property int north: !settings.rotate || status === PageStatus.Inactive || compass.reading === null ? 0 : -compass.reading.azimuth - declination;
+            property int north: !settings.rotate || status === PageStatus.Inactive || providers.compass.reading === null ? 0 : -providers.compass.reading.azimuth - declination;
             rotation: north
 
             // At least with Sony Xperia XA2, the compass value is updated
@@ -143,10 +136,10 @@ Page {
                 height: diameter/2
                 anchors.left: parent.horizontalCenter
                 anchors.bottom: parent.verticalCenter
-                transform: Rotation { origin.x: 0 ; origin.y: diameter/2; angle: isNaN(gpsDataSource.movementDirection) ? 0 : gpsDataSource.movementDirection }
+                transform: Rotation { origin.x: 0 ; origin.y: diameter/2; angle: isNaN(providers.gps.movementDirection) ? 0 : providers.gps.movementDirection }
                 border.color: "#ffffff"
-                opacity: !isNaN(gpsDataSource.movementDirection) ? 0.75 : 0.0
-                visible: settings.showDirectionIndicator && !isNaN(gpsDataSource.movementDirection)
+                opacity: !isNaN(providers.gps.movementDirection) ? 0.75 : 0.0
+                visible: settings.showDirectionIndicator && !isNaN(providers.gps.movementDirection)
             }
 
             // North, East, South, West, MagneticNorth indicators
@@ -162,7 +155,7 @@ Page {
                     color: ["white","white","red"][iN]
                     font.weight: Font.Bold
                     font.pixelSize: Theme.fontSizeExtraSmall
-                    property int iN: ((index !== 4 || !compass.reading) ? 0 : (compass.reading.calibrationLevel > 0.99 ? 1 : 2))
+                    property int iN: ((index !== 4 || !providers.compass.reading) ? 0 : (providers.compass.reading.calibrationLevel > 0.99 ? 1 : 2))
                     text: " "+[modelData,qsTr(locationFormatter.mag),"?"][iN]+" "
 
 
@@ -262,7 +255,7 @@ Page {
         InfoField {
             id: satellitesInfo
             label: qsTr("Satellites in use / view")
-            value: gpsDataSource.numberOfUsedSatellites + " / " + gpsDataSource.numberOfVisibleSatellites
+            value: providers.gps.active ? providers.gps.numberOfUsedSatellites + " / " + providers.gps.numberOfVisibleSatellites : "-"
             anchors.bottom: parent.bottom
             anchors.bottomMargin: Theme.paddingLarge*1.1  //move up a bit for parallax clipping at glass edge
         }

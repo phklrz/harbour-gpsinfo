@@ -1,10 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import QtPositioning 5.2
 
 Item {
-    property PositionSource positionSource
-
     PullDownMenu {
         MenuItem {
             text: qsTr("About")
@@ -15,23 +12,23 @@ Item {
             onClicked: pageStack.push(Qt.resolvedUrl("../pages/SettingsPage.qml"))
         }
         MenuItem {
-            text: positionSource.active ? qsTr("Deactivate GPS") : qsTr("Activate GPS")
+            text: providers.position.active ? qsTr("Deactivate GPS") : qsTr("Activate GPS")
             onClicked: {
                 providers.toggleActive()
             }
         }
         MenuItem {
-            enabled: gpsDataSource.active
+            enabled: providers.gps.active
             text: qsTr("Copy location")
             onClicked: {
                 if (settings.coordinateFormat === "DEG") {
-                    Clipboard.text = locationFormatter.decimalLatToDMS(positionSource.position.coordinate.latitude, 2)
+                    Clipboard.text = locationFormatter.decimalLatToDMS(providers.position.position.coordinate.latitude, 2)
                             + ", "
-                            + locationFormatter.decimalLongToDMS(positionSource.position.coordinate.longitude, 2);
+                            + locationFormatter.decimalLongToDMS(providers.position.position.coordinate.longitude, 2);
                 } else {
-                    Clipboard.text = positionSource.position.coordinate.latitude
+                    Clipboard.text = providers.position.position.coordinate.latitude
                             + ", "
-                            + positionSource.position.coordinate.longitude
+                            + providers.position.position.coordinate.longitude
                 }
             }
         }

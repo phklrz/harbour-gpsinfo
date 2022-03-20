@@ -1,14 +1,9 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import QtPositioning 5.2
-import QtSensors 5.0
-import harbour.gpsinfo 1.0
 import "../components"
 
 CoverBackground {
-    property PositionSource positionSource
-    property Compass compass
-    property GPSDataSource gpsDataSource
+
     Image {
         id: bgimg
         source: "../../images/coverbg.png"
@@ -26,33 +21,33 @@ CoverBackground {
             label: qsTr("GPS")
             visible: settings.showGpsStateCover
             fontpixelSize: Theme.fontSizeMedium
-            value: positionSource.active ? qsTr("active") : qsTr("inactive")
+            value: providers.position.active ? qsTr("active") : qsTr("inactive")
         }
         InfoField {
-            label: positionSource.position.latitudeValid ? "" : qsTr("Latitude")
+            label: providers.position.position.latitudeValid ? "" : qsTr("Latitude")
             visible: settings.showLatitudeCover
             fontpixelSize: Theme.fontSizeMedium
             value: {
-                if (positionSource.position.latitudeValid) {
+                if (providers.position.position.latitudeValid) {
                     if (settings.coordinateFormat === "DEG") {
-                        return locationFormatter.decimalLatToDMS(positionSource.position.coordinate.latitude, 0)
+                        return locationFormatter.decimalLatToDMS(providers.position.position.coordinate.latitude, 0)
                     } else {
-                        return positionSource.position.coordinate.latitude
+                        return providers.position.position.coordinate.latitude
                     }
                 }
                 return "-"
             }
         }
         InfoField {
-            label: positionSource.position.longitudeValid ? "" : qsTr("Longitude")
+            label: providers.position.position.longitudeValid ? "" : qsTr("Longitude")
             visible: settings.showLongitudeCover
             fontpixelSize: Theme.fontSizeMedium
             value: {
-                if (positionSource.position.longitudeValid) {
+                if (providers.position.position.longitudeValid) {
                     if (settings.coordinateFormat === "DEG") {
-                        return locationFormatter.decimalLongToDMS(positionSource.position.coordinate.longitude, 0)
+                        return locationFormatter.decimalLongToDMS(providers.position.position.coordinate.longitude, 0)
                     } else {
-                        return positionSource.position.coordinate.longitude
+                        return providers.position.position.coordinate.longitude
                     }
                 }
                 return "-"
@@ -63,33 +58,33 @@ CoverBackground {
             visible: settings.showAltitudeCover
             fontpixelSize: Theme.fontSizeMedium
             value: {
-                if (positionSource.position.altitudeValid) {
+                if (providers.position.position.altitudeValid) {
                     if (settings.units == "MET") {
-                        return locationFormatter.roundToDecimal(positionSource.position.coordinate.altitude, 2) + " m"
+                        return locationFormatter.roundToDecimal(providers.position.position.coordinate.altitude, 2) + " m"
                     } else {
-                        return locationFormatter.roundToDecimal(positionSource.position.coordinate.altitude * 3.2808399, 2) + " ft"
+                        return locationFormatter.roundToDecimal(providers.position.position.coordinate.altitude * 3.2808399, 2) + " ft"
                     }
                 }
                 return "-"
             }
         }
         InfoField {
-            label: positionSource.position.speedValid ? "" : qsTr("Speed")
+            label: providers.position.position.speedValid ? "" : qsTr("Speed")
             visible: settings.showSpeedCover
             fontpixelSize: Theme.fontSizeMedium
             value: {
-                if (positionSource.position.speedValid) {
+                if (providers.position.position.speedValid) {
                     if (settings.units == "MET") {
                         if (settings.speedUnit == "SEC") {
-                            return locationFormatter.roundToDecimal(positionSource.position.speed, 2) + " " + qsTr("m/s")
+                            return locationFormatter.roundToDecimal(providers.position.position.speed, 2) + " " + qsTr("m/s")
                         } else {
-                            return locationFormatter.roundToDecimal(positionSource.position.speed * 60 * 60 / 1000, 2) + " " + qsTr("km/h")
+                            return locationFormatter.roundToDecimal(providers.position.position.speed * 60 * 60 / 1000, 2) + " " + qsTr("km/h")
                         }
                     } else {
                         if (settings.speedUnit == "SEC") {
-                            return locationFormatter.roundToDecimal(positionSource.position.speed * 3.2808399, 2) + " " + qsTr("ft/s")
+                            return locationFormatter.roundToDecimal(providers.position.position.speed * 3.2808399, 2) + " " + qsTr("ft/s")
                         } else {
-                            return locationFormatter.roundToDecimal(positionSource.position.speed * 2.23693629, 2) + " " + qsTr("mph")
+                            return locationFormatter.roundToDecimal(providers.position.position.speed * 2.23693629, 2) + " " + qsTr("mph")
                         }
                     }
                 }
@@ -100,24 +95,24 @@ CoverBackground {
             label: qsTr("Mov.")
             visible: settings.showMovementDirectionCover
             fontpixelSize: Theme.fontSizeMedium
-            value: isNaN(gpsDataSource.movementDirection) ? "-" : locationFormatter.formatDirection(gpsDataSource.movementDirection)
+            value: isNaN(providers.gps.movementDirection) ? "-" : locationFormatter.formatDirection(providers.gps.movementDirection)
         }
         InfoField {
             label: ""
             visible: settings.showLastUpdateCover
             fontpixelSize: Theme.fontSizeMedium
-            value: positionSource.position.valid ? Qt.formatTime(positionSource.position.timestamp, "hh:mm:ss") : "-"
+            value: providers.position.position.valid ? Qt.formatTime(providers.position.position.timestamp, "hh:mm:ss") : "-"
         }
         InfoField {
             label: qsTr("Vert. acc.")
             visible: settings.showVerticalAccuracyCover
             fontpixelSize: Theme.fontSizeMedium
             value: {
-                if (positionSource.position.verticalAccuracyValid) {
+                if (providers.position.position.verticalAccuracyValid) {
                     if (settings.units == "MET") {
-                        return locationFormatter.roundToDecimal(positionSource.position.verticalAccuracy, 2) + " m"
+                        return locationFormatter.roundToDecimal(providers.position.position.verticalAccuracy, 2) + " m"
                     } else {
-                        return locationFormatter.roundToDecimal(positionSource.position.verticalAccuracy * 3.2808399, 2) + " ft"
+                        return locationFormatter.roundToDecimal(providers.position.position.verticalAccuracy * 3.2808399, 2) + " ft"
                     }
                 }
                 return "-"
@@ -128,11 +123,11 @@ CoverBackground {
             visible: settings.showHorizontalAccuracyCover
             fontpixelSize: Theme.fontSizeMedium
             value: {
-                if (positionSource.position.horizontalAccuracyValid) {
+                if (providers.position.position.horizontalAccuracyValid) {
                     if (settings.units == "MET") {
-                        return locationFormatter.roundToDecimal(positionSource.position.horizontalAccuracy, 2) + " m"
+                        return locationFormatter.roundToDecimal(providers.position.position.horizontalAccuracy, 2) + " m"
                     } else {
-                        return locationFormatter.roundToDecimal(positionSource.position.horizontalAccuracy * 3.2808399, 2) + " ft"
+                        return locationFormatter.roundToDecimal(providers.position.position.horizontalAccuracy * 3.2808399, 2) + " ft"
                     }
                 }
                 return "-"
@@ -142,19 +137,19 @@ CoverBackground {
             label: qsTr("Satel.")
             visible: settings.showSatelliteInfoCover
             fontpixelSize: Theme.fontSizeMedium
-            value: gpsDataSource.numberOfUsedSatellites + "/" + gpsDataSource.numberOfVisibleSatellites
+            value: providers.gps.numberOfUsedSatellites + "/" + providers.gps.numberOfVisibleSatellites
         }
         InfoField {
             label: qsTr("Com.")
             visible: settings.showCompassDirectionCover
             fontpixelSize: Theme.fontSizeMedium
-            value: locationFormatter.formatDirection(compass.reading === null ? 0 : compass.reading.azimuth)
+            value: locationFormatter.formatDirection(providers.compass.reading === null ? 0 : providers.compass.reading.azimuth)
         }
         InfoField {
             label: qsTr("Cal.")
             visible: settings.showCompassCalibrationCover
             fontpixelSize: Theme.fontSizeMedium
-            value: compass.reading === null ? "-" : Math.round(compass.reading.calibrationLevel * 100) + "%"
+            value: providers.compass.reading === null ? "-" : Math.round(providers.compass.reading.calibrationLevel * 100) + "%"
         }
     }
 
@@ -162,7 +157,7 @@ CoverBackground {
         id: coverAction
 
         CoverAction {
-            iconSource: positionSource.active ? "image://theme/icon-cover-pause" : "image://theme/icon-cover-play"
+            iconSource: providers.position.active ? "image://theme/icon-cover-pause" : "image://theme/icon-cover-play"
             onTriggered: { providers.toggleActive()
             }
         }

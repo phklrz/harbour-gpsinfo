@@ -5,23 +5,16 @@ import "components"
 
 ApplicationWindow
 {
-    LocationFormatter {
-        id: locationFormatter
-    }
+    LocationFormatter     { id: locationFormatter }
+    Providers             { id: providers         }
 
-    Providers {
-        id: providers
-    }
-    initialPage: Component {
-        SatelliteBarchartPage {
-            positionSource: providers.positionSource
-            compass: providers.compass
-            gpsDataSource: providers.gpsDataSource
-        }
-    }
-    cover: CoverPage {
-        positionSource: providers.positionSource
-        compass: providers.compass
-        gpsDataSource: providers.gpsDataSource
-    }
+    SatelliteBarchartPage { id: barchartPage      }
+    SatelliteInfoPage     { id: radarPage         }
+    FirstPage             { id: mainPage          }
+    
+    CoverPage             { id: coverPage         }
+
+    initialPage: mainPage
+
+    cover: coverPage
 }
