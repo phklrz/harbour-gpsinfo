@@ -88,7 +88,7 @@ Item {
             secsSincePosition = Math.round((positionSource.position.timestamp - lastTimestamp)/1000)
             lastTimestamp = positionSource.position.timestamp
             if (pendingFix) {
-                secsToFirstFix = Math.round((t - activateGPSTimestamp)/1000)  //using actual position time
+                secondsToLocationFix = Math.round((new Date() - gpsActivationTime)/1000)
                 pendingFix=false
                 Notices.show(qsTr("Time to First Fix")+" "+secsToFirstFix, Notice.Long)
             }
