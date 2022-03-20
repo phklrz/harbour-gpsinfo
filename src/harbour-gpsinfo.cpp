@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
         configdir.rename("gpsinfo", "harbour-gpsinfo");
     }
 
-    qmlRegisterType<GPSDataSource>("harbour.gpsinfo", 1, 0, "GPSDataSource");
+    qmlRegisterType<GPSDataSource>("Harbour.GPSInfo", 1, 0, "GPSDataSource");
     qmlRegisterType<GPSSatellite>();
     GPSInfoSettings* settings = new GPSInfoSettings();
     QGuiApplication* qGuiAppl = SailfishApp::application(argc, argv);
