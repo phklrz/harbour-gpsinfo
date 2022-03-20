@@ -8,9 +8,9 @@ import "../components"
 
 Item {
     id: providers
-    property alias positionSource: positionSource
+    property alias position: positionSource
     property alias compass: compass
-    property alias gpsDataSource: gpsDataSource
+    property alias gps: gpsDataSource
     property alias timing: timing
     function toggleActive() {
         if (positionSource.active) {
@@ -60,36 +60,42 @@ Item {
     }
     Item {
         id: timing
-        property date activateGPSTimestamp: new Date()
-        property date firstFixTimestamp: new Date()
-        property date lastTimestamp: positionSource.position.timestamp //new Date()
-        property bool pendingFix : true
-        property int secsToFirstFix : 0
-        property int secsSincePosition : 0
+        property date gpsActivationTime: new Date()
+        property date firstLocationFixTime: new Date()
+        property date lastPositionTimestamp: positionSource.position.timestamp //new Date()
+
+        property bool pendingFix: true
+        property int secondsToLocationFix: 0
+        property int secondsSinceLastLocationFix: 0
+
         Timer { //keep secsXX running when no position updates
             id: timer
-            interval: 1100; running: true; repeat: true;
+            interval: 1000;
+            running: true
+            repeat: true;
             onTriggered: {
                 //console.log("tick")
-                timing.secsSincePosition = Math.round((new Date() - timing.lastTimestamp)/1000)
-                if (timing.pendingFix) timing.secsToFirstFix = Math.round(-(new Date() - timing.activateGPSTimestamp)/1000);
+                timing.secondsSinceLastLocationFix = Math.round((new Date() - timing.lastPositionTimestamp)/1000)
+                if (timing.pendingFix) {
+                    timing.secondsToLocationFix = Math.round(-(new Date() - timing.gpsActivationTime)/1000);
+                }
             }
         }
         function start() {
-            firstFixTimestamp = activateGPSTimestamp = new Date()
-            lastTimestamp = positionSource.position.timestamp
+            firstLocationFixTime = gpsActivationTime = new Date()
+            lastPositionTimestamp = positionSource.position.timestamp
             pendingFix =true
-            secsToFirstFix = 0
+            secondsToLocationFix = 0
             console.log("c "+pendingFix)
         }
 
         function setTimeToFirstFix() {
-            secsSincePosition = Math.round((positionSource.position.timestamp - lastTimestamp)/1000)
-            lastTimestamp = positionSource.position.timestamp
+            secondsSinceLastLocationFix = Math.round((positionSource.position.timestamp - lastPositionTimestamp)/1000)
+            lastPositionTimestamp = positionSource.position.timestamp
             if (pendingFix) {
                 secondsToLocationFix = Math.round((new Date() - gpsActivationTime)/1000)
                 pendingFix=false
-                Notices.show(qsTr("Time to First Fix")+" "+secsToFirstFix, Notice.Long)
+                Notices.show(qsTr("Time to First Fix") + ": " + secondsToFirstFix + "s", Notice.Long)
             }
 
         }
