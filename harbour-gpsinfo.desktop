@@ -6,6 +6,6 @@ Icon=harbour-gpsinfo
 Exec=harbour-gpsinfo
 
 [X-Sailjail]
-Permissions=Location
+Permissions=Location;Sensors
 OrganizationName=harbour-gpsinfo
 ApplicationName=harbour-gpsinfo
