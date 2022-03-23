@@ -14,7 +14,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="87"/>
+        <location filename="../qml/pages/AboutPage.qml" line="90"/>
         <source>GPSInfo is open source software licensed under the terms of the GNU General Public License.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -24,7 +24,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="93"/>
+        <location filename="../qml/pages/AboutPage.qml" line="96"/>
         <source>For suggestions, bugs and ideas visit </source>
         <translation type="unfinished"></translation>
     </message>
